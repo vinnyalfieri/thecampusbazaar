@@ -9,11 +9,36 @@
 </head>
 <body>
 
-<% if current_user %>
-  Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
-<% else %>
-  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
-<% end %>
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+      <%= link_to 'CampusBazaar', root_path, {class: "navbar-brand page-scroll"} %>
+    </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+      <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+        <li class="hidden">
+          <a href="#page-top"></a> 
+          </li>
+            <% if current_user %>
+             <li><a href= '#'> Signed in as <%= current_user.name %></a></li>
+             <li><a href="#">|</a></li>
+             <li><%= link_to "Logout", '/logout' %></li>
+            <% else %>
+              <li><%= link_to 'Login', '/login' %></li>
+               <li><a href="#">|</a></li> 
+               <li><%= link_to 'Signup', '/signup' %></li>
+            <% end %>
+            <%= notice %>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <%= yield %>
 

@@ -8,7 +8,7 @@ describe User do
   describe 'associations' do
 
     let(:katie){
-      User.create(name: 'Katie', email: "jake@jake.com")
+      User.create(name: 'Katie', email: "jake@jake.com", password: "abc", password_confirmation: "abc")
     }
 
     let(:umbrella){Item.new(name: 'Umbrella')}
@@ -36,7 +36,9 @@ describe User do
 
     let(:user){
       User.new(name: name, 
-        email: email)
+        email: email,
+        password: "abc", 
+        password_confirmation: "abc")
     }
 
     let(:name) { 'jake'}

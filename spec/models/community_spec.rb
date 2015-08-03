@@ -8,7 +8,7 @@ require 'rails_helper'
 describe Community do
   describe 'associations' do
 
-    let(:katie) { User.new(name: 'Katie', email: "jake@jake.com")}
+    let(:katie) { User.new(name: 'Katie', email: "jake@jake.com", password: "abc", password_confirmation: "abc")}
     let(:umbrella) { Item.new(name:'Umbrella')}
     let(:community) { Community.new(name: 'NYU')}
     let(:furniture) { Category.new(name: "furniture")}

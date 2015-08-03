@@ -36,6 +36,12 @@ RSpec.configure do |config|
   config.before(:each) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.start
+    @katie = User.create(name: 'Katie')
+    @umbrella = Item.create(name: 'Umbrella')
+    @community1 = Community.create(name: 'NYU')
+    @katie.community = @community1
+    @katie.items << @umbrella
+    @katie.save
   end
 
   config.before(:each, :js => true) do

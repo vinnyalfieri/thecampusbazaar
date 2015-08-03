@@ -8,7 +8,11 @@ describe User do
   describe 'associations' do
 
     let(:katie){
+<<<<<<< HEAD
       User.create(name: 'Katie', email: "jake@jake.com", password: "abc", password_confirmation: "abc")
+=======
+      User.create(name: 'Katie', email: "jake@jake.com")
+>>>>>>> ee586ffc10f0ef8338c7812f9ebac709ed94a873
     }
 
     let(:umbrella){Item.new(name: 'Umbrella')}

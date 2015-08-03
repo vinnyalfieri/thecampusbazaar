@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
     with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i,
     message: "must be proper email format"
   }
-
+  
   has_secure_password
 end

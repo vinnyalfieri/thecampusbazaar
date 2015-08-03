@@ -3,4 +3,7 @@ class Item < ActiveRecord::Base
   delegate :community, to: :seller
   has_many :item_categories
   has_many :categories, through: :item_categories
+
+  validates :name, presence: true
+
 end

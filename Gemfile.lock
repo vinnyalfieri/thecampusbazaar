@@ -142,6 +142,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    prybaby (0.0.2.2)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -276,6 +277,7 @@ DEPENDENCIES
   jquery-rails
   pg
   pry
+  prybaby
   rails (= 4.2.0)
   rails_12factor
   rspec-rails
@@ -289,4 +291,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.5
+   1.10.6

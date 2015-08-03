@@ -40,6 +40,10 @@ RSpec.configure do |config|
     @umbrella = Item.create(name: 'Umbrella')
     @community1 = Community.create(name: 'NYU')
     @katie.community = @community1
+    @furniture = Category.create(name: 'Furniture')
+    @kitchen = Category.create(name: 'Kitchen')
+    @umbrella.categories << @furniture
+    @umbrella.categories << @kitchen
     @katie.items << @umbrella
     @katie.save
   end

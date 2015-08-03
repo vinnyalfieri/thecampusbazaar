@@ -17,6 +17,10 @@ describe Item do
     it 'belongs to a community through a seller' do
       expect(@umbrella.community).to eq(@community1)
     end
-    
+
+    it 'has many categories' do 
+      expect(@umbrella.categories).to include(@furniture)
+      expect(@umbrella.categories).to include(@kitchen)
+    end
   end
 end

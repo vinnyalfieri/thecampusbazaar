@@ -46,6 +46,7 @@ RSpec.configure do |config|
     @umbrella.categories << @kitchen
     @katie.items << @umbrella
     @katie.save
+    binding.pry
   end
 
   config.before(:each, :js => true) do

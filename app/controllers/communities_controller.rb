@@ -16,7 +16,7 @@ class CommunitiesController < ApplicationController
 
     @community = current_user.community
     #get all items for sale in a community
-    @items = @community.items
+    @items = @community.items.reject{|item| current_user.items.include?(item)}
   end
 
 

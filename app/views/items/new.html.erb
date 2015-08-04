@@ -1,4 +1,4 @@
-<%= form_for([current_user, Item.new]) do |item_form| %>
+<%= form_for([current_user, Item.new], :html => {:multipart => true}) do |item_form| %>
 
   <%= item_form.label :name %>
   <%= item_form.text_field :name %>
@@ -11,6 +11,12 @@
 
   <%= item_form.label :condition %>
   <%= item_form.text_field :condition %>
+
+  <%= item_form.label :product %>
+  <%= item_form.file_field :product %>
+
+  <%= item_form.label :delete_product%>
+  <%= item_form.check_box(:delete_product)%><br>
 
   <%= item_form.submit %>
 

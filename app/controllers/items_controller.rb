@@ -28,10 +28,15 @@ class ItemsController < ApplicationController
     @category = @item.categories.first
   end
 
+  def destroy
+    @item.product = nil
+    @item.save
+  end
+
   private
 
     def item_params
-      params.require(:item).permit(:name,:price,:description,:condition)
+      params.require(:item).permit(:name,:price,:description,:condition,:product, :delete_product)
     end
 
 end

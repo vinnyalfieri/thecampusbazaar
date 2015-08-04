@@ -1,61 +1,51 @@
 
-<div class="container align-center" style="border: 2px solid black">
+<div class="panel panel-info">
+<!-- <div class= "panel-heading"> -->
+<div class="panel-heading">
+  <h1>Sell an Item</h1>
+</div>
+  <div class= "panel-body">
 
-
-  <h1 class="row text-center" style="border: 2px dotted black">Sell an Item</h1>
-  <div class="container align-center text-center col-md-6" style="border: 2px solid green">
     <%= form_for([current_user, Item.new]) do |item_form| %>
-
-      <div class="form-group">
+<div class="form-group">
         <%= item_form.label :name %>
-
-          <%= item_form.text_field :name %>
-        
-      </div>
-
-      <div class="form-group">
+        <%= item_form.text_field :name %>
+</div>
+<div class="form-group">
         <%= item_form.label :price %>
-
-          <%= item_form.number_field :price %>
-        
-      </div>
-
-    <div class="form-group">
+        <%= item_form.number_field :price %>
+</div>
+<div class="form-group">
         <%= item_form.label :product %>
         <%= item_form.file_field :product %>
-        
-    </div>
-
-    <div class="form-group">
+</div>
+<div class = "check_box">
         <%= item_form.label :delete_product%>
         <%= item_form.check_box(:delete_product)%><br>
-        
-    </div>
+</div>
 
-      <div class="form-group">
         <%= item_form.label :description %>
+        <%= item_form.text_area :description, class: 'form-control' %>
+<div class = "form-group">
+Condition
+<select class="form-control"> 
+  <option>New</option>
+  <option>Excellent</option>
+  <option>Good</option>
+  <option>Acceptable</option>
+  <option disabled="disabled">restricted</option>
+</select>   
+</div>  
+        <%#= item_form.label :condition %>
+        <%#= item_form.text_field :condition, class: 'form-control' %>
+</select>
 
-          <%= item_form.text_area :description %>
-        
-      </div>
 
-      <div class="form-group">
-        <%= item_form.label :condition %>
+        <%= item_form.submit 'Add Item', :class => 'btn btn-info'%>
 
-          <%= item_form.text_field :condition %>
-        
-      </div>
-
-      <div class="form-group">
-        <%= item_form.submit %>
-      </div>
     <% end %>
-  </div>
-
-  <div class="container align-center text-center col-md-6" style="border: 2px solid red">
-
+</div>
+</div>
     <div>UPLOAD PHOTOS HERE??????</div>
 
     <div>SELECT CATEGOR{Y/IES} HERE</div>
-  </div>
-</div>

@@ -1,4 +1,4 @@
-<%= form_for([current_user.community, current_user, Item.new]) do |item_form| %>
+<%= form_for([current_user, Item.new]) do |item_form| %>
 
   <%= item_form.label :name %>
   <%= item_form.text_field :name %>

@@ -34,13 +34,12 @@ class UsersController < ApplicationController
     @community = @user.community.id
     if @user.update_attributes(user_params)
       flash[:notice] = "Profile successfully updated"
-      redirect_to community_user_path(@community, @user)
+      redirect_to user_path @user
     else 
       flash[:notice]  = "Please update again"
-      redirect_to edit_community_user_path(@user)
+      redirect_to edit_user_path @user
     end
   end
-
 
   def show
     @user = User.find(params[:id])

@@ -1,6 +1,6 @@
 <h1>Welcome, <%= current_user.name %></h1>
 
-<%= link_to("Sell a new item", new_community_user_item_path(current_user.community, current_user)) %>
+<%= link_to("Sell a new item", new_user_item_path(current_user)) %>
 
 <%= @community.name %>
 <br>
@@ -13,7 +13,7 @@
     <div class="panel panel-success">
       <div class="panel-heading">
         <h3>
-        <%= link_to(item.name, community_user_item_path(current_user.community, current_user, :id => item.id)) %>
+        <%= link_to(item.name, user_item_path(current_user, :id => item.id)) %>
         </h3>
       </div>
       <div class="panel-body">

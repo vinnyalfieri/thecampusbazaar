@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'communities#show'
   # resources :items
 
+  get '/communities/search', as: :search
 
   resources :communities do 
     resources :items
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: :logout
   get '/login', to: 'sessions#new', as: :login
   post '/login' => 'sessions#create'
-  get '/communities/search', to: 'communities#search', as: 'communities_search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

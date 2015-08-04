@@ -1,2 +1,9 @@
 <h1>Welcome, <%= current_user.name %></h1>
 <h2>Join a Community</h2>
+<%= form_for '/community' do |f| %>
+
+<%= f.collection_select :community_id, Community.order(:name),:id,:name, include_blank: true %>
+
+<%= f.submit %>
+<% end %>
+

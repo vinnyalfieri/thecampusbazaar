@@ -4,6 +4,9 @@ class CommunitiesController < ApplicationController
   #Index => List all different schools
 
 
+  def search
+
+  end 
 
   #Show => Show community & all items
   def show
@@ -16,6 +19,8 @@ class CommunitiesController < ApplicationController
     @items = @community.items
   end
 
+
+
   def create
     @community = Community.new(community_params)
     @community.save
@@ -24,10 +29,6 @@ class CommunitiesController < ApplicationController
     @user.save
     binding.pry
     redirect_to root_path
-  end 
-
-  def search 
-    redirect_to communities_search
   end 
 
   private

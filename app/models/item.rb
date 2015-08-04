@@ -6,4 +6,9 @@ class Item < ActiveRecord::Base
 
   validates :name, presence: true
 
+
+  def self.findselleritems(item)
+    user = User.find_by(:id => item.seller.id)
+    user.items
+  end
 end

@@ -22,12 +22,10 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @community = @user.community
   end
 
   def update
     @user = User.find(params[:id])
-    @community = @user.community.id
     if @user.update_attributes(user_params)
       flash[:notice] = "Profile successfully updated"
       redirect_to user_path @user

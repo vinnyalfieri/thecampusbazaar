@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
+  patch '/users/:id' => 'users#update'
   get '/signup' => 'users#new'
 
   get '/logout', to: 'sessions#destroy', as: :logout

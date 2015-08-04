@@ -1,0 +1,9 @@
+<h1>Welcome, <%= current_user.name %></h1>
+
+<%= link_to("Sell a new item", new_community_user_item_path(current_user.community, current_user)) %>
+
+Filters: <div>1</div> <div>2</div> <div>3</div>
+
+<% 10.times do |i| %>
+  <div>Item <%= i %></div>
+<% end %>

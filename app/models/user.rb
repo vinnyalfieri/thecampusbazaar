@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   has_many :items, :foreign_key => 'seller_id'
 
   validates :name, presence: true, format: { 
-    with: /\A[a-zA-Z]+\z/,
-    message: "only allows letters"
+    with: /[a-zA-Z\s]/,
+    message: "only allows letters and spaces"
   }
 
   validates :email, presence: true, format: {

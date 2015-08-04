@@ -2,6 +2,10 @@ class ItemsController < ApplicationController
 
   before_filter :authorize
 
+  def index
+    @items = current_user.items
+  end
+
   def new
     
   end
@@ -11,7 +15,7 @@ class ItemsController < ApplicationController
     # item = Item.new(item_params)
     current_user.items.build(item_params)
     if current_user.save
-      redirect_to community_user_item_path(current_user.community, current_user, current_user.items.last)
+      redirect_to user_item_path(current_user, current_user.items.last)
       flash[:notice] = "Item created!"
     else
       render 'items/new'
@@ -20,7 +24,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(:id => params[:id])
-    
+
   end
 
   private

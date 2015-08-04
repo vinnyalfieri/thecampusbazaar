@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_filter :authorize
 
   def index
+    # binding.pry
     @items = current_user.items
   end
 
@@ -24,6 +25,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(:id => params[:id])
+    @category = @item.categories.first
   end
 
   private

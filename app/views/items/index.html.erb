@@ -1,3 +1,7 @@
+<!-- this page will be used for indexing user's items -->
+
+<ul style="list-style-type: none">
 <% @items.each do |item| %>
-  <%= render item %>
+  <%= render partial: 'items/user_item', locals: {item: item} %>
 <% end %>
+</ul>

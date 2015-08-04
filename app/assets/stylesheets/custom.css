@@ -6054,6 +6054,7 @@ button.close {
 .carousel-inner {
   position: relative;
   width: 100%;
+  max-height: 300px;
   overflow: hidden;
 }
 .carousel-inner > .item {
@@ -6134,6 +6135,7 @@ button.close {
   bottom: 0;
   left: 0;
   width: 15%;
+  max-height: 25%;
   font-size: 20px;
   color: #fff;
   text-align: center;
@@ -6232,6 +6234,7 @@ button.close {
 .carousel-caption {
   position: absolute;
   right: 15%;
+  background: none !important;
   bottom: 20px;
   left: 15%;
   z-index: 10;

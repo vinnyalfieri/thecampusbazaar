@@ -1,5 +1,5 @@
 <h1> Update your profile </h1>
-<%= form_for [@community, @user], :html => {:multipart => true} do |f| %>
+<%= form_for @user, :html => {:multipart => true} do |f| %>
   <%= f.label :avatar, class: 'control-label'%>  
   <%= f.file_field :avatar, class: 'form_field' %>
   <%= f.label :delete_avatar%>

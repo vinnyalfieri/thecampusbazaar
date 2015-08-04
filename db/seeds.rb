@@ -34,7 +34,7 @@ users = User.create([{name: 'Karlie Kloss', email: 'kkloss@flatironschool.edu', 
   {name: 'Harry Potter', email: 'harry@harvard.edu', password: 'whyditransfer',password_confirmation: 'whyditransfer'}])
 
 @nyu = Community.create(name: 'New York University')
-@rit = Community.create(name: 'Rochester Institue of Technology')
+@rit = Community.create(name: 'Rochester Institute of Technology')
 @flatiron = Community.create(name: 'Flatiron School')
 @harvard = Community.create(name: 'Harvard University')
 

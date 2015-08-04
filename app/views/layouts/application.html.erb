@@ -34,12 +34,14 @@
                <li><a href="#">|</a></li> 
                <li><%= link_to 'Signup', '/signup' %></li>
             <% end %>
-            <%= notice %>
       </ul>
     </div>
   </div>
 </nav>
 
+<% if notice %>
+  <div class="alert alert-success"><%= notice %></div>
+  <% end %>
 <%= yield %>
 
 </body>

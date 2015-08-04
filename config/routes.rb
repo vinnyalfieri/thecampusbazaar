@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
-  resources :items
+  root 'communities#show'
+  # resources :items
 
-  resources :communities
 
-  resources :users
+  resources :communities do 
+    resources :users do
+      resources :items
+    end
+  end
 
   get '/signup' => 'users#new'
 

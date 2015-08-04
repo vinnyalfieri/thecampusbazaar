@@ -7,13 +7,17 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       community_valid = set_community
-      # if community_valid == nil 
-      #   #@user.destroy
-      #   redirect_to signup_path
-      # else 
+      ###################################
+      # Set up a "Create a community"   #
+      # option when no college found    #
+      ###################################
+      if community_valid == nil 
+        #@user.destroy
+        redirect_to signup_path
+      else 
         session[:user_id] = @user.id
         redirect_to root_path
-      # end 
+      end 
       
     else
       redirect_to signup_path

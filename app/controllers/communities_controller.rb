@@ -17,4 +17,19 @@ class CommunitiesController < ApplicationController
     @items = @community.items
   end
 
+  def create
+    @community = Community.new(community_params)
+    @community.save
+    ###Set the current users community to the community
+
+    redirect_to root_path
+  end 
+
+  def search 
+  end 
+
+  private
+  def community_params
+    params.require(:community).permit(:name)
+  end
 end

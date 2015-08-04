@@ -287,6 +287,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   paperclip (~> 4.3)
+  json
   pg
   pry
   prybaby

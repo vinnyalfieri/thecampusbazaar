@@ -12,9 +12,26 @@ class CommunitiesController < ApplicationController
     end
 
     @community = current_user.community
-    # binding.pry
     #get all items for sale in a community
     @items = @community.items
   end
 
+  def create
+    @community = Community.new(community_params)
+    @community.save
+    @user = User.find(session[:user_id])
+    @user.community = @community
+    @user.save
+    binding.pry
+    redirect_to root_path
+  end 
+
+  def search 
+    redirect_to communities_search
+  end 
+
+  private
+  def community_params
+    params.require(:community).permit(:name)
+  end
 end

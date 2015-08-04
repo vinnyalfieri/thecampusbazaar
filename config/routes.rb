@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # resources :items
 
   get '/communities/search', as: :search
+  post '/communities/search' => 'communities#set', as: :set
 
   resources :communities do 
     resources :items

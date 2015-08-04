@@ -8,6 +8,14 @@ class CommunitiesController < ApplicationController
 
   end 
 
+  def set 
+    @user = User.find(session[:user_id])
+    @community = Community.find(params["/community"][:community_id])
+    @user.community = @community
+    @user.save
+    redirect_to root_path
+  end 
+
   #Show => Show community & all items
   def show
     if !current_user
@@ -27,7 +35,6 @@ class CommunitiesController < ApplicationController
     @user = User.find(session[:user_id])
     @user.community = @community
     @user.save
-    binding.pry
     redirect_to root_path
   end 
 

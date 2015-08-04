@@ -4,6 +4,6 @@
 
 <%= f.collection_select :community_id, Community.order(:name),:id,:name, include_blank: true %>
 
-<%= f.submit %>
+<%= f.submit "Save" %>
 <% end %>
 

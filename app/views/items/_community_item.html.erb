@@ -7,7 +7,7 @@
     </div>
     <div class="panel-body">
       <div class="row">Condition: <%= item.condition %></div>
-      <div class="row">Price: $<%= item.price %></div>
+      <div class="row">Price: $<%=  format("%.2f", item.price) %></div>
       <div class="row">Offered by: <%= item.seller.name %></div>
     </div>
   </div>

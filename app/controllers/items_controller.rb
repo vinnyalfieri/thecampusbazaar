@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_filter :authorize
 
   def index
+    # binding.pry
     @items = current_user.items
   end
 

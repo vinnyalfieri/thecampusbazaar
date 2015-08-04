@@ -12,7 +12,6 @@ class CommunitiesController < ApplicationController
     end
 
     @community = current_user.community
-    # binding.pry
     #get all items for sale in a community
     @items = @community.items
   end
@@ -20,8 +19,10 @@ class CommunitiesController < ApplicationController
   def create
     @community = Community.new(community_params)
     @community.save
-    ###Set the current users community to the community
-
+    @user = User.find(session[:user_id])
+    @user.community = @community
+    @user.save
+    binding.pry
     redirect_to root_path
   end 
 

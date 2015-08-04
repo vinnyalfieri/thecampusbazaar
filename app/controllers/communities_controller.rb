@@ -2,7 +2,10 @@ class CommunitiesController < ApplicationController
   before_filter :authorize
 
   #Index => List all different schools
-
+  def info
+    @user = User.find(session[:user_id]) 
+    @community = Community.find(@user.community_id)
+  end 
 
   def search
 

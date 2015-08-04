@@ -41,8 +41,6 @@ GEM
       multi_json
     arel (6.0.2)
     bcrypt (3.1.10)
-    bcrypt-ruby (3.1.5)
-      bcrypt (>= 3.1.3)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -264,7 +262,6 @@ PLATFORMS
 DEPENDENCIES
   airbrake
   bcrypt
-  bcrypt-ruby
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.1.1)
@@ -294,4 +291,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.6
+   1.10.5

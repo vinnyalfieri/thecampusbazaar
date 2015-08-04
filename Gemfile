@@ -23,7 +23,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
 
-gem "bcrypt-ruby", :require => "bcrypt"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -52,7 +52,6 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'simplecov'
   gem 'database_cleaner'
-  gem 'pg'
   gem 'pry'
   gem 'guard-rspec', require: false
   gem 'thin'

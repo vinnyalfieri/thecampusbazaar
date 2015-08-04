@@ -13,7 +13,8 @@ class UsersController < ApplicationController
       ###################################
       if community_valid == nil 
         #@user.destroy
-        redirect_to signup_path
+        session[:user_id] = @user.id
+        redirect_to '/communities/new'
       else 
         session[:user_id] = @user.id
         redirect_to root_path
@@ -53,7 +54,7 @@ class UsersController < ApplicationController
   def set_community
     domain = @user.email.split("@")[1]
     community = find_community(domain)
-    if community 
+    if community != nil
       @user.community = find_community(domain)
       @user.save
     else
@@ -75,5 +76,6 @@ class UsersController < ApplicationController
         return community
       end 
     end 
+    return nil
   end 
 end

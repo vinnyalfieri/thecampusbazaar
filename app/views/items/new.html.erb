@@ -1,23 +1,55 @@
-<%= form_for([current_user, Item.new], :html => {:multipart => true}) do |item_form| %>
 
-  <%= item_form.label :name %>
-  <%= item_form.text_field :name %>
+<div class="container align-center" style="border: 2px solid black">
 
-  <%= item_form.label :price %>
-  <%= item_form.number_field :price %>
 
-  <%= item_form.label :description %>
-  <%= item_form.text_area :description %>
+  <h1 class="row text-center" style="border: 2px dotted black">Sell an Item</h1>
+  <div class="container align-center text-center col-md-6" style="border: 2px solid green">
+    <%= form_for([current_user, Item.new]) do |item_form| %>
 
-  <%= item_form.label :condition %>
-  <%= item_form.text_field :condition %>
+      <div class="form-group">
+        <%= item_form.label :name %>
+        <div class="controls">
+          <%= item_form.text_field :name %>
+        </div>
+      </div>
 
-  <%= item_form.label :product %>
-  <%= item_form.file_field :product %>
+      <div class="form-group">
+        <%= item_form.label :price %>
+        <div class="controls">
+          <%= item_form.number_field :price %>
+        </div>
+      </div>
 
-  <%= item_form.label :delete_product%>
-  <%= item_form.check_box(:delete_product)%><br>
+    <%= item_form.label :product %>
+    <%= item_form.file_field :product %>
 
-  <%= item_form.submit %>
+    <%= item_form.label :delete_product%>
+    <%= item_form.check_box(:delete_product)%><br>
 
-<% end %>
+      <div class="form-group">
+        <%= item_form.label :description %>
+        <div class="controls">
+          <%= item_form.text_area :description %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= item_form.label :condition %>
+        <div class="controls">
+          <%= item_form.text_field :condition %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= item_form.submit %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="container align-center text-center col-md-6" style="border: 2px solid red">
+
+    <div>UPLOAD PHOTOS HERE??????</div>
+
+    <div>SELECT CATEGOR{Y/IES} HERE</div>
+  </div>
+</div>

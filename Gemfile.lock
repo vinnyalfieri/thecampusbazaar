@@ -286,8 +286,8 @@ DEPENDENCIES
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
-  paperclip (~> 4.3)
   json
+  paperclip (~> 4.3)
   pg
   pry
   prybaby

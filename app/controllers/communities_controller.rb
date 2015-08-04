@@ -1,5 +1,5 @@
 class CommunitiesController < ApplicationController
-  # before_filter :authorize
+  before_filter :authorize
 
   #Index => List all different schools
 

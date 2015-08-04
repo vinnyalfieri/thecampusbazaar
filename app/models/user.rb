@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :items, :foreign_key => 'seller_id'
 
   validates :name, presence: true, format: { 
-    with: /[a-zA-Z\s]/,
+    with: /\A[a-zA-Z\s]+\z/,
     message: "only allows letters and spaces"
   }
 

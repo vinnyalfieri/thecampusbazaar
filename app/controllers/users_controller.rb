@@ -7,12 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       community_valid = set_community
-      ###################################
-      # Set up a "Create a community"   #
-      # option when no college found    #
-      ###################################
       if community_valid == nil 
-        #@user.destroy
         session[:user_id] = @user.id
         redirect_to '/communities/new'
       else 

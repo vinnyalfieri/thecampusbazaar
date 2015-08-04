@@ -4,6 +4,18 @@ class CommunitiesController < ApplicationController
   #Index => List all different schools
 
 
+  def search
+
+  end 
+
+  def set 
+    @user = User.find(session[:user_id])
+    @community = Community.find(params["/community"][:community_id])
+    @user.community = @community
+    @user.save
+    redirect_to root_path
+  end 
+
   #Show => Show community & all items
   def show
     if !current_user
@@ -15,18 +27,15 @@ class CommunitiesController < ApplicationController
     @items = @community.items.reject{|item| current_user.items.include?(item)}
   end
 
+
+
   def create
     @community = Community.new(community_params)
     @community.save
     @user = User.find(session[:user_id])
     @user.community = @community
     @user.save
-    binding.pry
     redirect_to root_path
-  end 
-
-  def search 
-    redirect_to communities_search
   end 
 
   private

@@ -1,0 +1,10 @@
+<h1> Update your profile </h1>
+<%= form_for [@community, @user] do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name, class: 'form-control', :placeholder => @user.name %><br />
+
+  <%= f.label :email %>:
+  <%= f.text_field :email, class: 'form-control', :placeholder => @user.email %><br />
+
+  <%= f.submit "Save Changes", class: "btn btn-primary" %>
+<% end %>

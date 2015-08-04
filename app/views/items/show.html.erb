@@ -1,10 +1,28 @@
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-   <h1> <%= @item.name %> </h1>
+<div class="col-sm-7">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+     <h1> <%= @item.name %> </h1>
+    </div>
+    <div class="panel-body">
+      <img data-src="holder.js/200x200" class="img-thumbnail" alt="200x200" src="http://www.imore.com/sites/imore.com/files/styles/large/public/topic_images/2014/topic_ipad_air_ipad_mini_0.png?itok=053pCsJ2" data-holder-rendered="true" style="width: 400px; height: 400px;">
+    </div>
   </div>
-  <div class="panel-body">
-    <img data-src="holder.js/200x200" class="img-thumbnail" alt="200x200" src="http://www.imore.com/sites/imore.com/files/styles/large/public/topic_images/2014/topic_ipad_air_ipad_mini_0.png?itok=053pCsJ2" data-holder-rendered="true" style="width: 400px; height: 400px;">
-  </div>
-</div>
 
+</div>
+<div class="col-sm-4">
+  <div class="panel panel-default">
+<!--     <div class="panel-heading">
+      
+    </div> -->
+    <div class="panel-body">
+      <ul style="list-style-type: none;">
+      Sold By: <%= @item.seller.name %>
+          <li>List Price: $<%= @item.price %></li>
+          <li>Condition: <%= @item.condition %></li>
+          <li>Description: <%= @item.description %></li>
+      </ul>
+    </div>
+  </div>
+
+</div>

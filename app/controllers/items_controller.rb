@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(:id => params[:id])
-    binding.pry
+    
   end
 
   private

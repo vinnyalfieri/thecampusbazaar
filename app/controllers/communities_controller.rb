@@ -26,6 +26,7 @@ class CommunitiesController < ApplicationController
   end 
 
   def search 
+    redirect_to communities_search
   end 
 
   private

@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  
   # before_filter :authorize
 
   def new
@@ -17,7 +18,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
+    @item = Item.find_by(:id => params[:id])
   end
 
   private
@@ -25,4 +26,5 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:name,:price)
     end
+
 end

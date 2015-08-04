@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'communities#index'
+  root 'communities#show'
   # resources :items
 
 

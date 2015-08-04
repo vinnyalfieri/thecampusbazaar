@@ -4,4 +4,9 @@ class Community < ActiveRecord::Base
   has_many :categories, through: :items
 
   validates :name, presence: true
+
+
+
+
+  
 end

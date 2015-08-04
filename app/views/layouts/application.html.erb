@@ -26,7 +26,7 @@
           <a href="#page-top"></a> 
           </li>
             <% if current_user %>
-             <li><a href= '#'> Signed in as <%= current_user.name %></a></li>
+             <li><a href= '/users/<%=current_user.id%>'> Signed in as <%= current_user.name %></a></li>
              <li><a href="#">|</a></li>
              <li><%= link_to "Logout", '/logout' %></li>
             <% else %>

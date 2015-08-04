@@ -1,5 +1,6 @@
 
 <h2>Hi, <%= @user.name %></h2>
+<%= image_tag @user.avatar.url(:medium) %><br>
+<%= button_to 'Edit Profile', edit_community_user_path(current_user.community, @user), class: 'btn btn-primary', method: 'get' %>
 
-<%= link_to 'Edit Profile', edit_user_path(@user) %>
 <!-- <li><%#= Item.find_by(seller_id: current_user.id) %></li> -->

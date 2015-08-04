@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  attr_accessor :delete_avatar
   belongs_to :community
   has_many :items, :foreign_key => 'seller_id'
 
@@ -13,4 +14,9 @@ class User < ActiveRecord::Base
   }
   
   has_secure_password
+
+  before_validation {avatar.clear if delete_avatar =='1'}
+
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => ActionController::Base.helpers.asset_path('placeholder-avatar.png')
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 end

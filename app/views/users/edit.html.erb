@@ -1,7 +1,9 @@
 <h1> Update your profile </h1>
 <%= form_for @user, :html => {:multipart => true} do |f| %>
+
   <%= f.label :avatar, class: 'control-label'%>  
   <%= f.file_field :avatar, class: 'form_field' %>
+
   <%= f.label :delete_avatar%>
   <%= f.check_box(:delete_avatar)%><br>
 
@@ -10,6 +12,7 @@
 
   <%= f.label :email %>:
   <%= f.text_field :email, class: 'form-control', :placeholder => @user.email %><br />
+  
   <%= f.label :password_confirmation, class: 'control-lael'%>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 

@@ -6591,5 +6591,37 @@ button.close {
   }
 }
 
+/*html, body {
+  height: 100%;
+}
 
+.footer{
+
+  width:100%;
+  position: relative;
+
+  height: 50px;
+
+  clear:both;
+
+  top:60%;
+
+}*/
+
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+.wrapper {
+  min-height: 100%;
+  height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+  height: 100%;
+  margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+  top: 90%;
+  height: 50px; /* .push must be the same height as .footer */
+}
 /*# sourceMappingURL=bootstrap.css.map */

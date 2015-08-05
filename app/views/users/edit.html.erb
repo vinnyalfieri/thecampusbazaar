@@ -13,12 +13,12 @@
   <%= f.label :email %>:
   <%= f.text_field :email, class: 'form-control', :placeholder => @user.email %><br />
 
-  <%= f.label :old_password, class: 'control-lael'%>
+  <%= f.label :old_password, class: 'control-label'%>
   <%= f.password_field :password, class: 'form-control' %>
 
-  <%= f.label :new_password, class: 'control-lael'%>
+  <%= f.label :new_password, class: 'control-label'%>
   <%= f.password_field :new_password, class: 'form-control' %>
-  <%= f.label :new_password_confirmation, class: 'control-lael'%>
+  <%= f.label :new_password_confirmation, class: 'control-label'%>
   <%= f.password_field :new_password_confirmation, class: 'form-control' %>
 
   <%= f.submit "Save Changes", class: "btn btn-primary" %>

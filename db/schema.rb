@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20150805134849) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-
   end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|

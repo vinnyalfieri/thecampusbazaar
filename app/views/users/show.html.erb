@@ -4,5 +4,26 @@
 <% if (current_user.id == @user.id)%>
 <%= button_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary', method: 'get' %><br>
 <%end%>
-<%= button_to 'My Items', user_items_path(@user), class: 'btn btn-primary', method: 'get' %>
+<%#= button_to 'My Items', user_items_path(@user), class: 'btn btn-primary', method: 'get' %>
 
+<%#binding.pry%>
+<% if @user.items %>
+<h2> Items for sale </h2>
+<%end%>
+
+<% @user.items.each do |item|%>
+<li class="col-sm-4">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3>
+      <%= link_to(item.name, user_item_path(@user, :id => item.id)) %>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <%= image_tag item.product.url(:medium)%>
+      <div class="row">Condition: <%= item.condition %></div>
+      <div class="row">Price: $<%= item.price %></div>
+    </div>
+  </div>
+</li>
+<%end%>

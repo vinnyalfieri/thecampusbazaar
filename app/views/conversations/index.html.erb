@@ -1,4 +1,4 @@
 <% @conversations.each do |conversation|%>
 <br>
-<%= conversation.subject %>
+<a href="conversations/<%= conversation.id %>"><%= conversation.subject %></a>
 <% end %>

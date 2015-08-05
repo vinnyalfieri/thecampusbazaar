@@ -5,16 +5,21 @@
  */
 
  /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
- .footer{
+.footer{
   text-align: center;
   /*background-color: #EFEFEF;*/
   padding-top: 1%;
   padding-bottom: 1%;
-  border-top: 1px solid #dee1e9;
+  border-top: 1px solid #dee1e9;;
 }
 .fa .fa-hand-peace-o{
   color: black;
 }
+
+.error_field{
+  background-color: #FFDDDD;
+}
+
 #slash{
   color: #15bdde;
 }

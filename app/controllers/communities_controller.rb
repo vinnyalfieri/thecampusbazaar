@@ -1,5 +1,5 @@
 class CommunitiesController < ApplicationController
-  before_filter :authorize
+  skip_before_action :authorize, only: :show
 
   #Index => List all different schools
   def info
@@ -23,11 +23,11 @@ class CommunitiesController < ApplicationController
   def show
     if !current_user
       render 'static_pages/home'
+    else
+      @community = current_user.community
+      #get all items for sale in a community
+      @items = @community.items.reject{|item| current_user.items.include?(item)}
     end
-
-    @community = current_user.community
-    #get all items for sale in a community
-    @items = @community.items.reject{|item| current_user.items.include?(item)}
   end
 
 

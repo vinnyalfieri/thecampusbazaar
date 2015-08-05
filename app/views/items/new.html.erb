@@ -27,16 +27,17 @@
         <%= item_form.label :description %>
         <%= item_form.text_area :description, class: 'form-control' %>
 <div class = "form-group">
-Condition
-<select class="form-control"> 
+<!-- Condition -->
+<!-- <select class="form-control"> 
   <option>New</option>
   <option>Excellent</option>
   <option>Good</option>
   <option>Acceptable</option>
-  <option disabled="disabled">restricted</option>
-</select>   
+</select>   --> 
+<%= item_form.label :condition %>
+<%= item_form.select :condition,['New','Excellent','Good','Acceptable'],:prompt => 'Select One', :class => 'form-control' %>
 </div>  
-        <%#= item_form.label :condition %>
+      
         <%#= item_form.text_field :condition, class: 'form-control' %>
 </select>
 

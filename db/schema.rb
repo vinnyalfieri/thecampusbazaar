@@ -43,14 +43,14 @@ ActiveRecord::Schema.define(version: 20150805134849) do
     t.string   "condition"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
     t.string   "product_file_name"
     t.string   "product_content_type"
     t.integer  "product_file_size"
     t.datetime "product_updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|

@@ -23,7 +23,7 @@
   <div class="panel panel-default" style="font-size: 20px;">
     <div class="panel-body">
       <p>
-        <b>Sold By: </b><%= @item.seller.name %>
+        <b>Sold By: </b><%= link_to @item.seller.name, user_path(@item.seller) %>
         <br>
           <p>
             <b>List Price: </b>$<%= @item.price %>

@@ -1,0 +1,41 @@
+<%#= conversation.subject %>
+
+<%#= render 'messages/form', conversation: @conversation %>
+
+<br \><br \>
+<div class="container">
+  <div class="well">
+    <h1>
+      <%= @conversation.subject %>
+    </h1>
+    <h2>
+      <span>A conversation with</span>
+      <% @conversation.participants.each do |participant| %>
+        <% if participant != current_user %>
+          <%= participant.name  %>
+        <% end %>
+      <% end %>
+    </h2>
+    <br/>
+    <ul>
+      <%= content_tag_for(:li, @conversation.receipts_for(current_user)) do |receipt| %>
+        <% message = receipt.message %>
+        <br/>
+        <b>
+          <%= message.sender.name %>
+        </b>
+        <p>
+          <%= simple_format h message.body %>
+        </p>
+        <span class="timestamp">Sent</span>
+        <span class="timestamp">
+          <%= time_ago_in_words(message.updated_at) %>
+        </span>
+        <span class="timestamp">ago.</span>
+        <br/>
+      <% end %>
+      <br/>
+    </ul>
+    <%= render 'messages/form', conversation: @conversation %>
+  </div>
+</div>

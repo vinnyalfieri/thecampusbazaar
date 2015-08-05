@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  acts_as_messageable
+  # devise :database_authenticatable, :registerable,
+  # :recoverable, :rememberable, :trackable, :validatable
   attr_accessor :delete_avatar
   belongs_to :community
   has_many :items, :foreign_key => 'seller_id'
@@ -20,6 +23,11 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => ActionController::Base.helpers.asset_path('placeholder-avatar.png')
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  def mailboxer_email(object)
+    
+    return email
+    
+  end
 
-  
+
 end

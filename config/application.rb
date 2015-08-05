@@ -31,5 +31,12 @@ module CampusBazaar
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    #Prevents Rails from inserting div.field_with_errors around invalid properties of forms
+    # - JTF
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
+        html_tag
+    }
+
   end
 end

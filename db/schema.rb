@@ -41,8 +41,12 @@ ActiveRecord::Schema.define(version: 20150805013049) do
     t.float    "price"
     t.text     "description"
     t.string   "condition"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "product_file_name"
+    t.string   "product_content_type"
+    t.integer  "product_file_size"
+    t.datetime "product_updated_at"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

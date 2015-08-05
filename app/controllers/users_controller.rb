@@ -25,13 +25,17 @@ class UsersController < ApplicationController
   end
 
   def update
+     binding.pry
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      flash[:notice] = "Profile successfully updated"
-      redirect_to user_path @user
-    else 
-      flash[:notice]  = "Please update again"
+    if !(params[:user][:new_password] ==  params[:user][:new_password_confirmation])
+      flash[:notice] = "Passwords did not match"
       redirect_to edit_user_path @user
+    elsif !(BCrypt::Password.new(current_user.password_digest) == params[:user][:password] )
+      flash[:notice]  = "Old Password did not match"
+      redirect_to edit_user_path @user
+    elsif (@user.update_attributes(user_params) && params[:user][:new_password] ==  params[:user][:new_password_confirmation] && (BCrypt::Password.new(current_user.password_digest) == params[:user][:password]))
+      flash[:notice] = "Profile successfully updated"
+      redirect_to user_path(@user)
     end
   end
 

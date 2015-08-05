@@ -8,7 +8,7 @@
       <div style="font-size:15px">
         <div class="row">Condition: <%= item.condition %></div>
         <div class="row">Price: $<%=  format("%.2f", item.price) %></div>
-        <div class="row">Offered by: <%= item.seller.name %></div>
+        <div class="row">Offered by: <%= link_to item.seller.name, user_path(item.seller)%></div>
       </div>
     </div>
   </div>

@@ -11,9 +11,23 @@ class ItemsController < ApplicationController
     
   end
 
+  def edit
+    @item = Item.find_by(:id => params[:id])
+  end
+
+  def update
+    @current_user = current_user
+    @item = Item.find_by(:id => params[:id])
+    if @item.update_attributes(item_params)
+      flash[:notice] = "Item successfully updated"
+      redirect_to user_item_path(@current_user, @item)
+    else 
+      flash[:notice]  = "Please update again"
+      redirect_to edit_user_item_path(@current_user, @item)
+    end
+  end
+
   def create
-    # binding.pry
-    # item = Item.new(item_params)
     current_user.items.build(item_params)
     if current_user.save
       redirect_to user_item_path(current_user, current_user.items.last)

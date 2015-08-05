@@ -1,19 +1,18 @@
-
 <div class="panel panel-info">
 <!-- <div class= "panel-heading"> -->
 <div class="panel-heading">
-  <h1>Sell an Item</h1>
+  <h1>Edit Item</h1>
 </div>
   <div class= "panel-body">
 
-    <%= form_for([current_user, Item.new]) do |item_form| %>
+    <%= form_for([current_user, @item]) do |item_form| %>
 <div class="form-group">
         <%= item_form.label :name %>
-        <%= item_form.text_field :name %>
+        <%= item_form.text_field :name, :value => @item.name%>
 </div>
 <div class="form-group">
         <%= item_form.label :price %>
-        <%= item_form.number_field :price %>
+        <%= item_form.number_field :price, :value => @item.price %>
 </div>
 <div class="form-group">
         <%= item_form.label :product %>
@@ -25,16 +24,11 @@
 </div>
 
         <%= item_form.label :description %>
-        <%= item_form.text_area :description, class: 'form-control' %><br>
+        <%= item_form.text_area :description, :value=> @item.description, class: 'form-control' %><br>
 <div class = "form-group">
 <%= item_form.label :condition %>
-<%= item_form.select :condition,['New','Excellent','Good','Acceptable'],:prompt => 'Select One', :class => 'form-control' %>
+<%= item_form.select :condition,['New','Excellent','Good','Acceptable'],:prompt => 'Select One', :value=>  @item.condition, :class => 'form-control' %>
 </div>  
-        <%= item_form.submit 'Add Item', :class => 'btn btn-info'%>
+        <%= item_form.submit 'Update Item', :class => 'btn btn-info'%>
 
     <% end %>
-</div>
-</div>
-    <div>UPLOAD PHOTOS HERE??????</div>
-
-    <div>SELECT CATEGOR{Y/IES} HERE</div>

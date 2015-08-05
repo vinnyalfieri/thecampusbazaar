@@ -3,7 +3,9 @@
 </div><br>
   
 <div align = 'right' style= 'margin-right: 2%;'>
+<% if (current_user.id == @item.seller_id)%>
 <%= link_to 'Edit Item', edit_user_item_path(current_user, @item), class: 'btn btn-info'%>
+<%end%>
 </div>
 <div class="col-sm-8">
 <h1 style="text-align: left; font-weight: bold; font-size: 45px;"> <%= @item.name %> </h1>

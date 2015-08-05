@@ -7,6 +7,7 @@
   <div class= "panel-body">
 
     <%= form_for([current_user, Item.new]) do |item_form| %>
+    <%= item_form.hidden_field :seller_id, :value => current_user.id %>
 <div class="form-group">
         <%= item_form.label :name %>
         <%= item_form.text_field :name %>

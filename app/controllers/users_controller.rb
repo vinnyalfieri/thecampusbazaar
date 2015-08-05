@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       community_valid = set_community
       if community_valid == nil 
         session[:user_id] = @user.id
-        redirect_to '/communities/new'
+        redirect_to '/communities/search'
       else 
         session[:user_id] = @user.id
         redirect_to root_path

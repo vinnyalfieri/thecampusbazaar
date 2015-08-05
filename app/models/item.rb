@@ -12,4 +12,9 @@ class Item < ActiveRecord::Base
 
   has_attached_file :product, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => ActionController::Base.helpers.asset_path('placeholder-product.gif')
   validates_attachment_content_type :product, :content_type => /\Aimage\/.*\Z/
+
+  def self.findselleritems(item)
+    user = User.find_by(:id => item.seller.id)
+    user.items
+  end
 end

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :items
   end
 
+  delete '/users/:user_id/items/:id', to: 'items#destroy', as: :delete_item
   patch '/users/:id' => 'users#update'
   get '/signup' => 'users#new'
 

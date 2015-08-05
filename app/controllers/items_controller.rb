@@ -45,8 +45,16 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    @item = Item.find_by(:id => params[:id])
     @item.product = nil
     @item.save
+    if @item.destroy 
+      flash[:notice] = "Item Successfully deleted!"
+      redirect_to user_items_path
+    else
+      flash[:notice]  = "Error in deleting"
+      redirect_to edit_user_item_path(@current_user, @item)
+    end
   end
 
   private

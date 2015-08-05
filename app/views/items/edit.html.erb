@@ -19,7 +19,7 @@
         <%= item_form.file_field :product %>
 </div>
 <div class = "check_box">
-        <%= item_form.label :delete_product%>
+        <%= item_form.label :delete_product_image%>
         <%= item_form.check_box(:delete_product)%><br>
 </div>
 
@@ -29,6 +29,7 @@
 <%= item_form.label :condition %>
 <%= item_form.select :condition,['New','Excellent','Good','Acceptable'],:prompt => 'Select One', :value=>  @item.condition, :class => 'form-control' %>
 </div>  
-        <%= item_form.submit 'Update Item', :class => 'btn btn-info'%>
+        <%= item_form.submit 'Update Item', :class => 'btn btn-info'%><br><br>
+        <%= link_to 'Delete Item', delete_item_path(current_user,@item), :method => 'delete', :confirm => 'Are you sure?', class: 'btn btn-danger'%>
 
     <% end %>

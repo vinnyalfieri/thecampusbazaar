@@ -46,11 +46,13 @@
   </div>
 </nav>
 
-<% if notice %>
+  <% if notice %>
   <div class="alert alert-success"><%= notice %></div>
   <% end %>
   <div class="container">
     <%= yield %>
   </div>
+
+  <%= render 'layouts/footer' %>
 </body>
 </html>

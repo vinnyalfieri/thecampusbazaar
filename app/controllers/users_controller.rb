@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       end 
       
     else
-      redirect_to signup_path
+      render :new
     end
   end
 

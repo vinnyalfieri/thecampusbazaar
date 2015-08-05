@@ -7,6 +7,7 @@
   <div class= "panel-body">
 
     <%= form_for([current_user, Item.new]) do |item_form| %>
+    <%= item_form.hidden_field :seller_id, :value => current_user.id %>
 <div class="form-group">
         <%= item_form.label :name %>
         <%= item_form.text_field :name %>
@@ -25,22 +26,11 @@
 </div>
 
         <%= item_form.label :description %>
-        <%= item_form.text_area :description, class: 'form-control' %>
+        <%= item_form.text_area :description, class: 'form-control' %><br>
 <div class = "form-group">
-Condition
-<select class="form-control"> 
-  <option>New</option>
-  <option>Excellent</option>
-  <option>Good</option>
-  <option>Acceptable</option>
-  <option disabled="disabled">restricted</option>
-</select>   
+<%= item_form.label :condition %>
+<%= item_form.select :condition,['New','Excellent','Good','Acceptable'],:prompt => 'Select One', :class => 'form-control' %>
 </div>  
-        <%#= item_form.label :condition %>
-        <%#= item_form.text_field :condition, class: 'form-control' %>
-</select>
-
-
         <%= item_form.submit 'Add Item', :class => 'btn btn-info'%>
 
     <% end %>

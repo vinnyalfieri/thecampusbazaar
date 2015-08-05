@@ -1,6 +1,25 @@
+
 Rails.application.routes.draw do
   root 'communities#show'
   # resources :items
+  #devise_for :users
+
+  resources :messages do
+    member do
+      post :new
+    end
+  end
+  resources :conversations do
+    member do
+      post :reply
+      post :trash
+      post :untrash
+    end
+    collection do
+      get :trashbin
+      post :empty_trash
+    end
+  end
 
   get '/communities/search', as: :search
   get '/communities/info', as: :info
@@ -14,6 +33,7 @@ Rails.application.routes.draw do
     resources :items
   end
 
+  delete '/users/:user_id/items/:id', to: 'items#destroy', as: :delete_item
   patch '/users/:id' => 'users#update'
   get '/signup' => 'users#new'
 

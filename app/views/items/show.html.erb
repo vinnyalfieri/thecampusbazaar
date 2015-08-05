@@ -1,7 +1,12 @@
 <div style="padding-left: 2%">
 <%= link_to @item.community.name, root_path(@item.community) %> &#9830; &#9830; <%#= link_to @category.name, root_path(@item.community) %>
+</div><br>
+  
+<div align = 'right' style= 'margin-right: 2%;'>
+<% if (current_user.id == @item.seller_id)%>
+<%= link_to 'Edit Item', edit_user_item_path(current_user, @item), class: 'btn btn-info'%>
+<%end%>
 </div>
-
 <div class="col-sm-8">
 <h1 style="text-align: left; font-weight: bold; font-size: 45px;"> <%= @item.name %> </h1>
   <div class="panel panel-default">
@@ -31,9 +36,9 @@
             </p>
       </p>
       <br>
-      <%= link_to "Buy Now", root_path, {class: 'btn btn-primary'}  %>
+      <%= link_to "Buy Now", root_path, {class: 'btn btn-danger'}  %>
       <br><br>
-      <%= link_to "Contact Seller", root_path, {class: 'btn btn-info'}  %>
+      <%= link_to "Contact Seller", new_message_path({user: @item.seller_id, item: @item.id}), {class: 'btn btn-success'}  %>
     </div>
   </div>
 </div>

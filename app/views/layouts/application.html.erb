@@ -2,6 +2,7 @@
 <html>
   <head>
     <%= render partial: 'layouts/header'%>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
 
   <body>
@@ -15,7 +16,8 @@
     <div class="container">
       <%= yield %>
     </div>
-
+    <div class = 'footer'>
     <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

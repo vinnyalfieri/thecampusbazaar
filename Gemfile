@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem "paperclip", "~> 4.3"
 
 gem 'pg'
-
+gem 'mailboxer'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use SCSS for stylesheets
@@ -68,5 +68,5 @@ group :production do
 end
 
 gem 'bootstrap-sass', '~> 3.1.1'
-gem 'devise'
+#gem 'devise'
 gem 'airbrake'

@@ -4,3 +4,4 @@
 <%= button_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary', method: 'get' %>
 
 <!-- <li><%#= Item.find_by(seller_id: current_user.id) %></li> -->
+<%= render current_user.mailbox.inbox %>;

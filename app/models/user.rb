@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  acts_as_messageable
+  # devise :database_authenticatable, :registerable,
+  # :recoverable, :rememberable, :trackable, :validatable
   attr_accessor :delete_avatar
   belongs_to :community
   has_many :items, :foreign_key => 'seller_id'

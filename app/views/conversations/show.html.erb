@@ -1,0 +1,17 @@
+<%= conversation.subject %>
+ 
+A conversation with
+<% @conversation.participants.each do |participant| %>
+ <% if participant != current_user %>
+  <%= participant.name %>
+ <% end %>
+<% end %>
+<%= content_tag_for(:li, @conversation.receipts_for(current_user)) do |receipt| %>
+ <% message = receipt.message %>
+ <%= message.sender.name %>
+ <%= simple_format h message.body %>
+ Sent <%= time_ago_in_words(message.updated_at) %> ago
+ 
+<% end %>
+ 
+<%= render 'messages/form', conversation: @conversation %>

@@ -1,0 +1,10 @@
+Send a message to <%= @user.name %>
+ 
+<%= form_tag({controller: &quot;messages&quot;, action: &quot;create&quot;}, method: :post) do %>
+ <%= label_tag :subject %>
+ <%= text_field_tag :subject %>
+ <%= label :body, &quot;Message text&quot; %>
+ <%= text_area_tag :body %>
+ <%= hidden_field_tag(:user, &quot;#{@user.id}&quot;) %>
+ <%= submit_tag 'Send message', class: &quot;btn btn-primary&quot; %>
+<% end %>

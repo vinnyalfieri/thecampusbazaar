@@ -1,9 +1,7 @@
 <li class="col-sm-4">
   <div class="panel panel-success">
     <div class="panel-heading">
-      <h3>
       <%= image_tag item.product.url(:medium), :class => "img-responsive center-block"%>
-      </h3>
     </div>
     <div class="panel-body">
       <div class="row" style="font-size:23px"> <%= link_to(item.name, user_item_path(current_user, :id => item.id)) %></div>

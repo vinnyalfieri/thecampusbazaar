@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   end
 
   def update
-     binding.pry
     @user = User.find(params[:id])
     if !(params[:user][:new_password] ==  params[:user][:new_password_confirmation])
       flash[:notice] = "Passwords did not match"

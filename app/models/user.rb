@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => ActionController::Base.helpers.asset_path('placeholder-avatar.png')
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  validates_confirmation_of :user_name, :password
+  validates_confirmation_of :email_address,
+                              message: 'should match confirmation'
+  validates_presence_of :password_confirmation, :if => :password_changed?
 
   
 end

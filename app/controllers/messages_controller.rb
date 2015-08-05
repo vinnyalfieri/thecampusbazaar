@@ -28,6 +28,7 @@ class MessagesController < ApplicationController
 # GET /message/new
   def new
   @user = User.find(params[:user])
+  @item = Item.find(params[:item])
   @message = current_user.messages.new
     # display form
   end

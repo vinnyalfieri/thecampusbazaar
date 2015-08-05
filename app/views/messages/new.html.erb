@@ -2,7 +2,7 @@ Send a message to <%= @user.name %>
  
 <%= form_tag({controller: "messages", action: "create"}, method: :post) do %>
  <%= label_tag :subject %>
- <%= text_field_tag :subject %>
+ <%= text_field_tag :subject, "#{@item.name} - #{current_user.name}"%>
  <%= label :body, "Message text" %>
  <%= text_area_tag :body %>
  <%= hidden_field_tag(:user, "#{@user.id}") %>

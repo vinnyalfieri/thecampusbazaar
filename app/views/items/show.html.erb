@@ -38,7 +38,7 @@
       <br>
       <%= link_to "Buy Now", root_path, {class: 'btn btn-danger'}  %>
       <br><br>
-      <%= link_to "Contact Seller", new_message_path(user: @item.seller_id), {class: 'btn btn-success'}  %>
+      <%= link_to "Contact Seller", new_message_path({user: @item.seller_id, item: @item.id}), {class: 'btn btn-success'}  %>
     </div>
   </div>
 </div>

@@ -1,10 +1,21 @@
-<%= render partial: 'layouts/header'%>
-<%= render partial: 'layouts/navbar'%>
-<% if notice %>
-  <div class="alert alert-success"><%= notice %></div>
-  <% end %>
-  <div class="container">
-    <%= yield %>
-  </div>
-</body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render partial: 'layouts/header'%>
+  </head>
+
+  <body>
+
+    <%= render partial: 'layouts/navbar'%>
+
+    <% if notice %>
+      <div class="alert alert-success"><%= notice %></div>
+    <% end %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
+    <%= render 'layouts/footer' %>
+  </body>
 </html>

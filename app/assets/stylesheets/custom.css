@@ -5,7 +5,7 @@
  */
 
  /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
- .footer{
+.footer{
   text-align: center;
   /*background-color: #EFEFEF;*/
   padding-top: 1%;
@@ -15,6 +15,11 @@
 .fa .fa-hand-peace-o{
   color: black;
 }
+
+.error_field{
+  background-color: #FFDDDD;
+}
+
 #slash{
   color: #15bdde;
 }

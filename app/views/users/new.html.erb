@@ -1,11 +1,51 @@
 <h1>Signup!</h1>
+<div class="container">
+<%= form_for :user do |f| %>
 
-<%= form_for :user, url: '/users' do |f| %>
+  <% if @user && @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-  Name: <%= f.text_field :name %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group <%= "error_field" if @user && @user.errors[:name] %>">
+    <%= f.label :name %>
+    <% if @user && @user.errors[:name] %>
+      <span><%= @user.errors[:name].first %></span>
+    <% end %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="form-group <%= "error_field" if @user && @user.errors[:email] %>">
+    <%= f.label :email %> 
+    <% if @user && @user.errors[:email] %>
+      <span><%= @user.errors[:email].first %></span>
+    <% end %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="form-group <%= "error_field" if @user && @user.errors[:password] %>">
+    <%= f.label :password %>
+    <% if @user && @user.errors[:password] %>
+      <span><%= @user.errors[:password].first %></span>
+    <% end %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="form-group <%= "error_field" if @user && @user.errors[:password] %>">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Submit" %>
+  </div>
 
 <% end %>
+</div>

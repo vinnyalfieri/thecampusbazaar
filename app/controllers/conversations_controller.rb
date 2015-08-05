@@ -14,6 +14,7 @@ class ConversationsController < ApplicationController
     @conversations ||= @mailbox.inbox #.page(params[:page]).per_page(25)
     @conversationscount ||= current_user.mailbox.inbox.all
     @trash ||= current_user.mailbox.trash.all
+    @unread = @conversations.select{ |c| c.is_unread?(current_user) }.count
   end
 
 
@@ -58,6 +59,6 @@ class ConversationsController < ApplicationController
   end
 
   def conversation
-    @conversation ||= mailbox.conversations.find(params[:id])
+    @conversation ||= mailbox.conversations.find(@current_user.id)
   end
 end

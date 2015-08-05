@@ -18,9 +18,16 @@
       <%= link_to 'CampusBazaar', root_path, {class: "navbar-brand page-scroll"} %>
     </div>
 
+
+<!-- Sell a new item onto NavBar. OnlY when logged in. -->
+
             <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
       <ul class="nav navbar-nav">
+      <!-- Adds Sell a New Item Link to NAVBAR ONLY when a user is logged in. -->
+      <% if current_user %>
+      <li ><%= link_to('Sell a New Item', new_user_item_path(:user_id => current_user.id), {class: "navbar-brand page-scroll"} ) %> </li>
+      <% end %>
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
         <li class="hidden">
           <a href="#page-top"></a> 

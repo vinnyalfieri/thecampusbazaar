@@ -10,9 +10,11 @@
     /*background-color: #EFEFEF;*/
     padding-top: 1%;
     padding-bottom: 1%;
-    border-top: 1px solid #dee1e9;;
+    border-top: 1px solid #dee1e9;
 }
-
+.fa .fa-hand-peace-o{
+  color: black;
+}
 #slash{
     color: #15bdde;
 }

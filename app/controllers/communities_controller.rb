@@ -24,13 +24,19 @@ class CommunitiesController < ApplicationController
     if !current_user
       render 'static_pages/home'
     end
-
     @community = current_user.community
     #get all items for sale in a community
     @items = @community.items.reject{|item| current_user.items.include?(item)}
+    @categories = @community.categories.distinct
+    if params[:category_id]
+      case params[:category_id]
+      when "all"
+        @items = @community.items.reject{|item| current_user.items.include?(item)}
+      else
+        @items = Item.get_items_of_specific_category(@items, params[:category_id])
+      end
+    end
   end
-
-
 
   def create
     @community = Community.new(community_params)

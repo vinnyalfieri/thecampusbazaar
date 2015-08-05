@@ -1,0 +1,11 @@
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Categories <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><%= link_to "All", community_path(@community.id, :category_id => 'all' ), :category_id => "all" %></li>
+      <% @categories.each do |category| %>
+        <li> <%= link_to category.name, community_path(@community.id, :category_id => category.id), :category_id => category.id %> </li>
+      <% end %>
+  </ul>
+</div>

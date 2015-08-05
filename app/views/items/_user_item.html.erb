@@ -9,7 +9,7 @@
     <div class="panel-body">
       <%= image_tag item.product.url(:medium)%>
       <div class="row">Condition: <%= item.condition %></div>
-      <div class="row">Price: $<%= item.price %></div>
+      <div class="row">Price: $<%= format("%.2f", item.price) %></div>
     </div>
   </div>
 </li>

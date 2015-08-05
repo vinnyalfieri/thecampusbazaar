@@ -1,3 +1,5 @@
+<center>
 <h1><%= @community.name %></h1>
-<h2><%= User.where(:community => @community).count %> members</h2>
-<h2><%= @community.items.count %> items for sale</h2>
+<h3><%= User.where(:community => @community).count %> members</h2>
+<h3><%= @community.items.count %> items for sale</h2>
+</center>

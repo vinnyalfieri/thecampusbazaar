@@ -26,7 +26,7 @@
         <b>Sold By: </b><%= link_to @item.seller.name, user_path(@item.seller) %>
         <br>
           <p>
-            <b>List Price: </b>$<%= @item.price %>
+            <b>List Price: </b>$<%=  format("%.2f", @item.price) %>
           </p>
           <p>
             <b>Condition: </b><%= @item.condition %>

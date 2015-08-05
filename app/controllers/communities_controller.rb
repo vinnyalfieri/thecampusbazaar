@@ -27,11 +27,9 @@ class CommunitiesController < ApplicationController
       @community = current_user.community
       #get all items for sale in a community
       @items = @community.items.reject{|item| current_user.items.include?(item)}
+       @categories = @community.categories.distinct
     end
-    @community = current_user.community
-    #get all items for sale in a community
-    @items = @community.items.reject{|item| current_user.items.include?(item)}
-    @categories = @community.categories.distinct
+    
     if params[:category_id]
       case params[:category_id]
       when "all"

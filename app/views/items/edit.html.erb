@@ -1,0 +1,35 @@
+<div class="panel panel-info">
+<!-- <div class= "panel-heading"> -->
+<div class="panel-heading">
+  <h1>Edit Item</h1>
+</div>
+  <div class= "panel-body">
+
+    <%= form_for([current_user, @item]) do |item_form| %>
+<div class="form-group">
+        <%= item_form.label :name %>
+        <%= item_form.text_field :name, :value => @item.name%>
+</div>
+<div class="form-group">
+        <%= item_form.label :price %>
+        <%= item_form.number_field :price, :value => @item.price %>
+</div>
+<div class="form-group">
+        <%= item_form.label :product %>
+        <%= item_form.file_field :product %>
+</div>
+<div class = "check_box">
+        <%= item_form.label :delete_product_image%>
+        <%= item_form.check_box(:delete_product)%><br>
+</div>
+
+        <%= item_form.label :description %>
+        <%= item_form.text_area :description, :value=> @item.description, class: 'form-control' %><br>
+<div class = "form-group">
+<%= item_form.label :condition %>
+<%= item_form.select :condition,['New','Excellent','Good','Acceptable'],:prompt => 'Select One', :value=>  @item.condition, :class => 'form-control' %>
+</div>  
+        <%= link_to 'Delete Item', delete_item_path(current_user,@item), :method => 'delete', data: {:confirm => 'Are you sure?'}, class: 'btn btn-danger'%><br><br>
+        <%= item_form.submit 'Update Item', :class => 'btn btn-info'%>
+
+    <% end %>

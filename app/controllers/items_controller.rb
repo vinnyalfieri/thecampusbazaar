@@ -11,9 +11,23 @@ class ItemsController < ApplicationController
     
   end
 
+  def edit
+    @item = Item.find_by(:id => params[:id])
+  end
+
+  def update
+    @current_user = current_user
+    @item = Item.find_by(:id => params[:id])
+    if @item.update_attributes(item_params)
+      flash[:notice] = "Item successfully updated"
+      redirect_to user_item_path(@current_user, @item)
+    else 
+      flash[:notice]  = "Please update again"
+      redirect_to edit_user_item_path(@current_user, @item)
+    end
+  end
+
   def create
-    # binding.pry
-    # item = Item.new(item_params)
     current_user.items.build(item_params)
     if current_user.save
       redirect_to user_item_path(current_user, current_user.items.last)
@@ -31,8 +45,16 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    @item = Item.find_by(:id => params[:id])
     @item.product = nil
     @item.save
+    if @item.destroy 
+      flash[:notice] = "Item Successfully deleted!"
+      redirect_to user_items_path
+    else
+      flash[:notice]  = "Error in deleting"
+      redirect_to edit_user_item_path(@current_user, @item)
+    end
   end
 
   private

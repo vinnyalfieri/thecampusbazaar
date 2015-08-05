@@ -6595,38 +6595,27 @@ button.close {
     display: none !important;
   }
 }
-
-/*html, body {
-  height: 100%;
+html,
+body {
+  margin:0;
+  padding:0;
+  height:100%;
 }
-
-.footer{
-
+#wrapper {
+  min-height:100%;
+  position:relative;
+}
+#header {
+  background:#ededed;
+  padding:10px;
+}
+#content {
+  padding-bottom:100px; /* Height of the footer element */
+}
+#footer {
+  background:#ffffff;
   width:100%;
-  position: relative;
-
-  height: 50px;
-
-  clear:both;
-
-  top:60%;
-
-}*/
-
-* {
-  margin: 0;
+  height:50px;
+  position:absolute;
+  bottom:0;
 }
-html, body {
-  height: 100%;
-}
-.wrapper {
-  min-height: 100%;
-  height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
-  height: 100%;
-  margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
-}
-.footer, .push {
-  top: 90%;
-  height: 50px; /* .push must be the same height as .footer */
-}
-/*# sourceMappingURL=bootstrap.css.map */

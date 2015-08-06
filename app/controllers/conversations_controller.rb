@@ -1,7 +1,6 @@
 class ConversationsController < ApplicationController
   helper_method :mailbox, :conversation
-
-   before_action :mailbox
+  before_action :mailbox
 
   def create
     recipient_emails = conversation_params(:recipients).split(',')
@@ -59,6 +58,6 @@ class ConversationsController < ApplicationController
   end
 
   def conversation
-    @conversation ||= mailbox.conversations.find(@current_user.id)
+    @conversation ||= mailbox.conversations.find(params[:id])
   end
 end

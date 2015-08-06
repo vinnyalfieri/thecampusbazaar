@@ -62,7 +62,44 @@ describe Item do
       it 'is invalid' do
         expect(item).to be_invalid
       end
+    end 
+  end
+
+  describe '#status' do 
+    let(:item){Item.new(name: 'eraser')}
+    let(:offer){Offer.new(offer_price: '1.50', status: status)}
+    
+    context 'when offer has been accepted' do
+      let(:status){'accepted'}
+
+      it 'offer is accepted and item is sold' do 
+        item.offers << offer 
+        expect(item.status).to eq('sold')
+      end
     end
 
+    context 'when offer has been rejected' do 
+      let(:status){'rejected'}
+
+      it 'offer is rejected and item is available' do 
+        item.offers << offer 
+        expect(item.status).to eq('available')
+      end
+    end
+
+    context 'when there are no offers' do 
+      it 'no offers, item is available' do 
+        expect(item.status).to eq('available')
+      end
+    end
+
+    context 'when there is a pending offer' do 
+      let(:status){'pending'}
+      it 'offer is pending and item is still available' do 
+        expect(item.status).to eq('available')
+      end
+    end
   end
+
 end
+

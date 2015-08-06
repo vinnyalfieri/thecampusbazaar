@@ -40,7 +40,7 @@ class ConversationsController < ApplicationController
    def trashbin
     @conversations ||= @mailbox.inbox #.page(params[:page]).per_page(25)
     @conversationscount ||= current_user.mailbox.inbox.all
-    @trash ||=  current_user.mailbox #.trash.page(params[:page]).per_page(25)
+    @trash ||=  current_user.mailbox.trash#.page(params[:page]).per_page(25)
     @trashcount ||= @mailbox.trash.all
   end
 

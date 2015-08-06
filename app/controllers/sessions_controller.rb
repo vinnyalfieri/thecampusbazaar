@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       # Save the user id inside the browser cookie. This is how we keep the user 
       # logged in when they navigate around our website.
       session[:user_id] = @user.id
-      if @user.items.any? {|item| item.offers}
+      if @user.items.any? {|item| item.offers.any? {|offer| offer.status == 'pending'}}
         flash[:notice] = "You have pending offers!"
       end
       redirect_to root_path

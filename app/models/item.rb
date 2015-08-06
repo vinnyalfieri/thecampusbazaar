@@ -28,6 +28,7 @@ class Item < ActiveRecord::Base
     end.compact
   end
 
+
   def status
     if self.offers.any?{|offer| offer.status == 'accepted'}
       'sold'
@@ -39,5 +40,6 @@ class Item < ActiveRecord::Base
   def available?
     self.status == 'available'
   end
+
 
 end

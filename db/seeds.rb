@@ -141,18 +141,75 @@ users.each do |user|
   user.save 
 end 
 
+PaymentOption.create(:name => 'venmo')
+PaymentOption.create(:name => 'cash')
+paymentoptions = PaymentOption.all
 
+@offer = Offer.new(offer_price: '1.50', status: 'rejected')
+@offer.item = @cello
+@offer.buyer = users[1]
+@offer.payment_options << paymentoptions[0]
+@offer.save
 
+@offer = Offer.new(offer_price: '3.50', status: 'rejected')
+@offer.item = @cello
 
+@offer.buyer = users[13]
+@offer.payment_options << paymentoptions[1]
+@offer.save
 
+@offer = Offer.new(offer_price: '5.50', status: 'accepted')
+@offer.item = @cello
 
+@offer.buyer = users[2]
+@offer.payment_options << paymentoptions[0]
+@offer.payment_options << paymentoptions[1]
+@offer.save
 
+@offer = Offer.new(offer_price: '155.50', status: 'accepted')
+@offer.item = @ipad
 
+@offer.buyer = users[1]
+@offer.payment_options << paymentoptions[1]
+@offer.save
 
+@offer = Offer.new(offer_price: '55.50', status: 'rejected')
+@offer.item = @ipad
 
+@offer.buyer = users[10]
+@offer.payment_options << paymentoptions[1]
+@offer.save
 
+@offer = Offer.new(offer_price: '95.50', status: 'rejected')
+@offer.item = @ipad
 
+@offer.buyer = users[3]
+@offer.payment_options << paymentoptions[0]
+@offer.payment_options << paymentoptions[1]
+@offer.save
 
+@offer = Offer.new(offer_price: '55.00', status: 'pending')
+@offer.item = @tuba
+
+@offer.buyer = users[7]
+@offer.payment_options << paymentoptions[0]
+@offer.save
+
+@offer = Offer.new(offer_price: '22.00', status: 'pending')
+@offer.item = @tuba
+
+@offer.buyer = users[1]
+@offer.payment_options << paymentoptions[0]
+@offer.payment_options << paymentoptions[1]
+@offer.save
+
+@offer = Offer.new(offer_price: '155.50', status: 'pending')
+@offer.item = @tuba
+
+@offer.buyer = users[6]
+@offer.payment_options << paymentoptions[0]
+@offer.payment_options << paymentoptions[1]
+@offer.save
 
 
 

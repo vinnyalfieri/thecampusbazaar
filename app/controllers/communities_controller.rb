@@ -26,7 +26,7 @@ class CommunitiesController < ApplicationController
     else
       @community = current_user.community
       #get all items for sale in a community
-      @items = @community.items.reject{|item| current_user.items.include?(item)}
+      @items = @community.items.reject{|item| current_user.items.include?(item)}#.select{|item| item.status == 'available'}
        @categories = @community.categories.distinct
     end
     

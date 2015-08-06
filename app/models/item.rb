@@ -29,13 +29,15 @@ class Item < ActiveRecord::Base
   end
 
   def status
-    #check status of all offers for this item 
-    #binding.pry
     if self.offers.any?{|offer| offer.status == 'accepted'}
       'sold'
     else 
       'available'
     end
+  end
+
+  def available?
+    self.status == 'available'
   end
 
 end

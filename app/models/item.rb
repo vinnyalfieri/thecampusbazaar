@@ -26,4 +26,6 @@ class Item < ActiveRecord::Base
       end
     end.compact
   end
+
+  
 end

@@ -5,6 +5,7 @@ class Item < ActiveRecord::Base
   delegate :community, to: :seller
   has_many :item_categories
   has_many :categories, through: :item_categories
+  has_many :offers
 
   validates :name, presence: true
 
@@ -26,4 +27,15 @@ class Item < ActiveRecord::Base
       end
     end.compact
   end
+
+  def status
+    #check status of all offers for this item 
+    #binding.pry
+    if self.offers.any?{|offer| offer.status == 'accepted'}
+      'sold'
+    else 
+      'available'
+    end
+  end
+
 end

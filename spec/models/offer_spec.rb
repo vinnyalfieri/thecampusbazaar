@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Offer, type: :model do
+
+
   # pending "add some examples to (or delete) #{__FILE__}"
   describe 'associations' do 
     let(:seller){User.new(name: 'Katie', email: "jake@jake.com", password: "abc", password_confirmation: "abc")}
@@ -51,5 +53,6 @@ RSpec.describe Offer, type: :model do
       end
     end
   end
+
 
 end

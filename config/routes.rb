@@ -1,5 +1,7 @@
 
 Rails.application.routes.draw do
+  resources :offers
+
   root 'communities#show'
   # resources :items
   #devise_for :users

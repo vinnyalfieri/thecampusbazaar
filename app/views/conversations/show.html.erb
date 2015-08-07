@@ -12,7 +12,7 @@
     </h2>
     <br/>
     <ul>
-      <%= content_tag_for(:li, @conversation.receipts_for(current_user)) do |receipt| %>
+      <%= content_tag_for(:li, @conversation.receipts_for(current_user).reverse) do |receipt| %>
         <% message = receipt.message %>
         <br/>
         <b>

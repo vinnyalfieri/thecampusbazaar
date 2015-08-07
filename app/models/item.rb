@@ -22,12 +22,11 @@ class Item < ActiveRecord::Base
   def self.get_items_of_specific_category(items, category_id)
     category = Category.find_by(:id => category_id.to_i)
     items.map do |item| 
-      if item.categories[0] == category 
+      if item.categories[0] == category && item.status == 'available'
          item
       end
     end.compact
   end
-
 
   def status
     if self.offers.any?{|offer| offer.status == 'accepted'}

@@ -1,0 +1,13 @@
+<% current_user.items.select do |item| %>
+  <% item.offers.select do |offer|%>
+  <ul>
+  <li>Offer From: <%= User.find(offer.buyer_id).name %></li>
+  <li>For Item: <%= Item.find(offer.item_id).name %></li>
+  <li>Your Selling Price: <%= Item.find(offer.item_id).price %></li>
+  <li>Offer Price: <%= offer.offer_price %></li>
+  <li>Comments: <%= offer.comment if offer.comment %></li>
+  <li>Offer Status: <%= offer.status %>
+  <li>Offer Sent At: <%= time_ago_in_words(offer.updated_at) %></li>
+  </ul>
+  <%end%>
+  <%end%>

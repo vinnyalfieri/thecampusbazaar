@@ -36,9 +36,11 @@ class User < ActiveRecord::Base
   end
 
   def offers_received
-
     self.items.map{|item| item.offers}.flatten
-    
   end
+
+  def seller?
+    !(self.items == [])
+  end 
 
 end

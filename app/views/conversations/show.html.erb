@@ -1,5 +1,7 @@
-  <div class="well">
+  <center>
   <div class="messages">
+    <div class="well">
+
     <header class="top-bar">
       <h1>
         <%= @conversation.subject %>
@@ -13,7 +15,6 @@
       <% end %>
       <% end %>
     </h2>
-    <br/>
     <!-- <ul class="conversation"> -->
       <%= content_tag_for(:br, @conversation.receipts_for(current_user).reverse) do |receipt| %>
       <% message = receipt.message %>
@@ -42,3 +43,4 @@
       <%= render 'messages/form', conversation: @conversation %>
       </div>
     </div>
+<center>

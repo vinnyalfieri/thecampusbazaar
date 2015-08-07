@@ -6878,3 +6878,7 @@ body {
     float:right;
     margin-left:10%
 }
+
+.messages {
+  width: 70%;
+}

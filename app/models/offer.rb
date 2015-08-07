@@ -6,4 +6,15 @@ class Offer < ActiveRecord::Base
   has_many :payment_options, through: :offer_payment_options
 
   validates :status, inclusion: { in: %w(accepted rejected pending), message: "%{value} is not valid"}
+
+  validate :not_own_item
+
+
+
+  private
+    def not_own_item
+      if seller.id == buyer.id
+        errors.add(:base, "Seller cannot purchase their own listing.")
+      end
+    end
 end

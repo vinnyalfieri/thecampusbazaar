@@ -32,7 +32,7 @@
     <%end%>
   <%end%>
 
-<h2> Your Pending Offers</h2>
+<h2> Your Rejected Offers</h2>
   <% current_user.items.select do |item| %>
     <% item.offers.select do |offer|%>
       <% if offer.status == 'rejected'%>

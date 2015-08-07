@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <%= render partial: 'layouts/header'%>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  </head>
+<head>
+  <%= render partial: 'layouts/header'%>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
-  <body>
+<body>
+<div id="wrapper">
+  <div id="content">
 
     <%= render partial: 'layouts/navbar'%>
 
     <% if notice %>
-      <div class="alert alert-success"><%= notice %></div>
+    <div class="alert alert-success"><%= notice %></div>
     <% end %>
 
-    <div class="container">
+    <div class="container container-fluid">
       <%= yield %>
     </div>
-    <div class = 'footer'>
-    <%= render 'layouts/footer' %>
-    </div>
-  </body>
+  </div>
+  <div id="footer">
+  <%= render 'layouts/footer' %>
+  </div>
+  </div>
+</body>
+  
 </html>

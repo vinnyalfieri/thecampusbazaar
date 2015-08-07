@@ -1,14 +1,12 @@
 class Item < ActiveRecord::Base
-  attr_accessor :delete_product
+  attr_accessor :delete_product, :delete_avatar
 
   belongs_to :seller, :class_name => 'User'
   delegate :community, to: :seller
   has_many :item_categories
   has_many :categories, through: :item_categories
-  attr_accessor :delete_avatar
 
   validates :name, presence: true
-
 
   before_validation {product.clear if delete_product =='1'}
 
@@ -18,5 +16,14 @@ class Item < ActiveRecord::Base
   def self.findselleritems(item)
     user = User.find_by(:id => item.seller.id)
     user.items
+  end
+
+  def self.get_items_of_specific_category(items, category_id)
+    category = Category.find_by(:id => category_id.to_i)
+    items.map do |item| 
+      if item.categories[0] == category 
+         item
+      end
+    end.compact
   end
 end

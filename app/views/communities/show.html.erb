@@ -1,15 +1,16 @@
 <div class="container">
-  <div class="row">
-    <h1 class="col-md-6 col-md-offset-4">Welcome, <%= current_user.name %>.</h1>
+<!-- drop down list of all categories -->
+<%= render partial: 'categories/dropdown' %>
+  <div class="row"  style="text-align: center">
+    <h1>Welcome, <%= current_user.name %>.</h1>
   </div>
-  <!-- <div class="text-right"><%= link_to("Sell a new item", new_user_item_path(current_user)) %> </div>  -->
-
-  <div class="row col-md-4 col-md-offset-4 text-center">Here's what people are selling at <a href="/communities/info"><%= @community.name %></a>.</div> 
+  <div  style="text-align: center">Here's what people are selling at <a href="/communities/info"><%= @community.name %></a>.</div> 
 </div>
+<br>
 
 
 <ul style="list-style-type: none">
-<% @items.each do |item| %>
-  <%= render partial: 'items/community_item', locals: {item: item} %>
-<% end %>
+  <% @items.each do |item| %>
+    <%= render partial: 'items/community_item', locals: {item: item} %>
+  <% end %>
 </ul>

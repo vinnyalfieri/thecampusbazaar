@@ -3,8 +3,8 @@ class ItemsController < ApplicationController
   before_filter :authorize
 
   def index
-    # binding.pry
-    @items = current_user.items
+    @user = params[:user_id]
+    @items = User.find(@user).items
   end
 
   def new

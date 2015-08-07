@@ -15,6 +15,11 @@
 .fa .fa-hand-peace-o{
   color: black;
 }
+
+.error_field{
+  background-color: #FFDDDD;
+}
+
 #slash{
   color: #15bdde;
 }
@@ -6590,6 +6595,30 @@ button.close {
     display: none !important;
   }
 }
-
-
-/*# sourceMappingURL=bootstrap.css.map */
+html,
+body {
+  margin:0;
+  padding: 0;
+  padding-bottom:0;
+  height:100%;
+}
+#wrapper {
+  min-height:100%;
+  position:relative;
+}
+#header {
+  background:#ededed;
+  padding:10px;
+}
+#content {
+  padding-bottom:100px; /* Height of the footer element */
+}
+#footer {
+  padding-top: 10px;
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  width:100%;
+  height:50px;
+  position:absolute;
+  bottom:0;
+}

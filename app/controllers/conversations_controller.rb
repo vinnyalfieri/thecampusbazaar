@@ -1,7 +1,6 @@
 class ConversationsController < ApplicationController
   helper_method :mailbox, :conversation
-
-   before_action :mailbox
+  before_action :mailbox
 
   def create
     recipient_emails = conversation_params(:recipients).split(',')
@@ -41,7 +40,7 @@ class ConversationsController < ApplicationController
    def trashbin
     @conversations ||= @mailbox.inbox #.page(params[:page]).per_page(25)
     @conversationscount ||= current_user.mailbox.inbox.all
-    @trash ||=  current_user.mailbox #.trash.page(params[:page]).per_page(25)
+    @trash ||=  current_user.mailbox.trash#.page(params[:page]).per_page(25)
     @trashcount ||= @mailbox.trash.all
   end
 
@@ -59,6 +58,6 @@ class ConversationsController < ApplicationController
   end
 
   def conversation
-    @conversation ||= mailbox.conversations.find(@current_user.id)
+    @conversation ||= mailbox.conversations.find(params[:id])
   end
 end

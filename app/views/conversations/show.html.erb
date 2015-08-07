@@ -1,34 +1,46 @@
-  <div class="well">
-    <h1>
-      <%= @conversation.subject %>
-    </h1>
+  <center>
+  <div class="messages">
+    <div class="well">
+
+    <header class="top-bar">
+      <h1>
+        <%= @conversation.subject %>
+      </h1>
+    </header>
     <h2>
       <span>A conversation with</span>
       <% @conversation.participants.each do |participant| %>
-        <% if participant != current_user %>
-          <%= participant.name  %>
-        <% end %>
+      <% if participant != current_user %>
+      <%= participant.name  %>
+      <% end %>
       <% end %>
     </h2>
-    <br/>
-    <ul>
-      <%= content_tag_for(:li, @conversation.receipts_for(current_user)) do |receipt| %>
-        <% message = receipt.message %>
-        <br/>
-        <b>
-          <%= message.sender.name %>
-        </b>
-        <p>
-          <%= simple_format h message.body %>
-        </p>
-        <span class="timestamp">Sent</span>
-        <span class="timestamp">
-          <%= time_ago_in_words(message.updated_at) %>
-        </span>
-        <span class="timestamp">ago.</span>
-        <br/>
-      <% end %>
-      <br/>
-    </ul>
-    <%= render 'messages/form', conversation: @conversation %>
-  </div>
+    <!-- <ul class="conversation"> -->
+      <%= content_tag_for(:br, @conversation.receipts_for(current_user).reverse) do |receipt| %>
+      <% message = receipt.message %>
+      <b>
+        <% if message.sender_id == current_user.id %>
+          <div class="talk-bubble tri-right left-top">
+          <% else %>
+          <div class="talk-bubble tri-right right-top">
+            <% end %>
+             <div class="talktext">
+            <%= message.sender.name %>
+          </b>
+          <p>
+            <%= simple_format h message.body %>
+          </p>
+          <span class="timestamp">Sent</span>
+          <span class="timestamp">
+            <%= time_ago_in_words(message.updated_at) %>
+          </span>
+          <span class="timestamp">ago.</span>
+          </div>
+        </div>
+
+        <% end %>
+      <!-- </ul> -->
+      <%= render 'messages/form', conversation: @conversation %>
+      </div>
+    </div>
+<center>

@@ -1,9 +1,13 @@
+<div class = 'offers-index'>
+
 <div class= 'offers-sent'>
-<a href="http://imgur.com/Bkt0lXA"><img src="http://i.imgur.com/Bkt0lXA.jpg" title="source: imgur.com" /></a>
+<a href="http://imgur.com/Bkt0lXA"><img src="http://i.imgur.com/Bkt0lXA.jpg" title="source: imgur.com" /></a><br><br>
 <%= link_to('Your Sent Offers', offers_sent_path(current_user), class: 'btn btn-info') %>
 </div>
 
 <div class = 'offers-received'>
-<a href="http://imgur.com/gCEgJYz"><img src="http://i.imgur.com/gCEgJYz.jpg" title="source: imgur.com" /></a>
+<a href="http://imgur.com/gCEgJYz"><img src="http://i.imgur.com/gCEgJYz.jpg" title="source: imgur.com" /></a><br><br>
 <%= link_to('Your Received Offers', offers_received_path(current_user), class: 'btn btn-info') %>
+</div>
+
 </div>

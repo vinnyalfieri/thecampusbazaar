@@ -5,6 +5,16 @@
  */
 
  /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+ .offers-received img{
+  max-width: 30%;
+  max-height: 30%;
+ }
+
+ .offers-sent img{
+  max-width: 30%;
+  max-height: 30%;
+ }
+ 
  .footer{
   text-align: center;
   /*background-color: #EFEFEF;*/

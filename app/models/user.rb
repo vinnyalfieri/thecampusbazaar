@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   attr_accessor :delete_avatar
   belongs_to :community
   has_many :items, :foreign_key => 'seller_id'
+  has_many :offers, :foreign_key => 'seller_id'
+  has_many :offers, :foreign_key => 'buyer_id'
 
   validates :name, presence: true, format: { 
     with: /\A[a-zA-Z\s]+\z/,

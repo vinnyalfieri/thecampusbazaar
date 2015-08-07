@@ -47,11 +47,17 @@ RSpec.describe Offer, type: :model do
     let(:item){Item.new}
     let(:offer){Offer.new(offer_price: '1.50', status: status)}
 
+    let(:status){}
+
     before(:each) do
       item.seller = seller
       offer.item = item
       offer.buyer = buyer
       offer.save
+    end
+
+    it 'has a default status of "pending"' do 
+      expect(Offer.new.status).to eq("pending")
     end
     
     context 'when user does not have a valid status' do 

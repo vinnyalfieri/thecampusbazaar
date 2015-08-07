@@ -26,15 +26,24 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if !(params[:user][:new_password] ==  params[:user][:new_password_confirmation])
-      flash[:notice] = "Passwords did not match"
-      redirect_to edit_user_path @user
-    elsif !(BCrypt::Password.new(current_user.password_digest) == params[:user][:password] )
-      flash[:notice]  = "Old Password did not match"
-      redirect_to edit_user_path @user
-    elsif (@user.update_attributes(user_params) && params[:user][:new_password] ==  params[:user][:new_password_confirmation] && (BCrypt::Password.new(current_user.password_digest) == params[:user][:password]))
-      flash[:notice] = "Profile successfully updated"
-      redirect_to user_path(@user)
+
+      if ((params[:user][:password]== '')&&(params[:user][:new_password]== ''))
+        @user.update_attributes(user_params)
+        @user.save
+        flash[:notice] = "Profile successfully updated"
+        redirect_to user_path(@user)
+      elsif !(params[:user][:new_password] ==  params[:user][:new_password_confirmation])
+        flash[:notice] = "Passwords did not match"
+        redirect_to edit_user_path @user
+      elsif !(BCrypt::Password.new(current_user.password_digest) == params[:user][:password] )
+        flash[:notice]  = "Old Password did not match"
+        redirect_to edit_user_path @user
+      elsif ((params[:user][:new_password] ==  params[:user][:new_password_confirmation]) && (BCrypt::Password.new(current_user.password_digest) == params[:user][:password]))
+        @user.update_attributes(user_params)
+        @user.password_digest = BCrypt::Password.create(params[:user][:new_password])
+        @user.save
+        flash[:notice] = "Profile successfully updated"
+        redirect_to user_path(@user)
     end
   end
 

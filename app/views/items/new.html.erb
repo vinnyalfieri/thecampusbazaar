@@ -14,13 +14,14 @@
 </div>
 <div class="form-group">
         <%= item_form.label :price %>
-        <%= item_form.number_field :price %>
+        <%= item_form.number_field :price%>
 </div>
-<div class="upload-preview">
+
+<div class = 'upload-preview'>
 <div class="form-group">
  <img />
         <%= item_form.label :product %>
-        <%= item_form.file_field :product %>
+        <%= item_form.file_field :product, class: 'file'%>
 </div>
 <div class = "check_box">
         <%= item_form.label :delete_product%>
@@ -38,19 +39,4 @@
     <% end %>
 </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function(){
-    var preview = $(".upload-preview img");
-    
-    $(".file").change(function(event){
-       var input = $(event.currentTarget);
-       var file = input[0].files[0];
-       var reader = new FileReader();
-       reader.onload = function(e){
-           image_base64 = e.target.result;
-           preview.attr("src", image_base64);
-       };
-       reader.readAsDataURL(file);
-    });
-});
-</script>
+

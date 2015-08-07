@@ -1,0 +1,50 @@
+<h2> Your Pending Offers</h2>
+  <% current_user.items.select do |item| %>
+    <% item.offers.select do |offer|%>
+      <% if offer.status == 'pending'%>
+      <ul>
+        <li>Offer From: <%= User.find(offer.buyer_id).name %></li>
+        <li>For Item: <%= Item.find(offer.item_id).name %></li>
+        <li>Your Selling Price: <%= Item.find(offer.item_id).price %></li>
+        <li>Offer Price: <%= offer.offer_price %></li>
+        <li>Comments: <%= offer.comment if offer.comment %></li>
+        <li>Offer Status: <%= offer.status %>
+        <li>Offer Sent At: <%= time_ago_in_words(offer.updated_at) %></li>
+      </ul>
+      <%end%>
+    <%end%>
+  <%end%>
+
+<h2> Your Accepted Offers</h2>
+  <% current_user.items.select do |item| %>
+    <% item.offers.select do |offer|%>
+      <% if offer.status == 'accepted'%>
+      <ul>
+        <li>Offer From: <%= User.find(offer.buyer_id).name %></li>
+        <li>For Item: <%= Item.find(offer.item_id).name %></li>
+        <li>Your Selling Price: <%= Item.find(offer.item_id).price %></li>
+        <li>Offer Price: <%= offer.offer_price %></li>
+        <li>Comments: <%= offer.comment if offer.comment %></li>
+        <li>Offer Status: <%= offer.status %>
+        <li>Offer Sent At: <%= time_ago_in_words(offer.updated_at) %></li>
+      </ul>
+      <%end%>
+    <%end%>
+  <%end%>
+
+<h2> Your Rejected Offers</h2>
+  <% current_user.items.select do |item| %>
+    <% item.offers.select do |offer|%>
+      <% if offer.status == 'rejected'%>
+      <ul>
+        <li>Offer From: <%= User.find(offer.buyer_id).name %></li>
+        <li>For Item: <%= Item.find(offer.item_id).name %></li>
+        <li>Your Selling Price: <%= Item.find(offer.item_id).price %></li>
+        <li>Offer Price: <%= offer.offer_price %></li>
+        <li>Comments: <%= offer.comment if offer.comment %></li>
+        <li>Offer Status: <%= offer.status %>
+        <li>Offer Sent At: <%= time_ago_in_words(offer.updated_at) %></li>
+      </ul>
+      <%end%>
+    <%end%>
+  <%end%>

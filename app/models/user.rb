@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   attr_accessor :delete_avatar
   belongs_to :community
   has_many :items, :foreign_key => 'seller_id'
+  has_many :offers_sent, :class_name => "Offer", :foreign_key => 'buyer_id'
 
   validates :name, presence: true, format: { 
     with: /\A[a-zA-Z\s]+\z/,
@@ -33,5 +34,13 @@ class User < ActiveRecord::Base
     return email
     
   end
+
+  def offers_received
+    self.items.map{|item| item.offers}.flatten
+  end
+
+  def seller?
+    !(self.items == [])
+  end 
 
 end

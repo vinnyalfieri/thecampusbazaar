@@ -8,13 +8,31 @@
  .offers-received img{
   max-width: 30%;
   max-height: 30%;
+
+ }
+
+ .offers-received{
+  float: left;
+  display: inline-block;
+  width: 50%;
+  margin-right: 0;
+ }
+
+.offers-sent{
+  float: left;
+  display: inline-block;
+  width: 50%;
  }
 
  .offers-sent img{
+
   max-width: 30%;
   max-height: 30%;
  }
- 
+
+ .offers-index{
+  
+ }
  .footer{
   text-align: center;
   /*background-color: #EFEFEF;*/

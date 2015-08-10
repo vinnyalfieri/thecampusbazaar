@@ -20,8 +20,8 @@
       </td>
       <% if offer.status == 'accepted' || offer.status == 'rejected'%>
       <% else %>
-        <td><a href="#" class="accept-button btn btn-success btn-xs" id="accept-<%=offer.id%>">ACCEPT</a></td>
-        <td><a href="#" class="reject-button btn btn-danger btn-xs" id="reject-<%=offer.id%>">REJECT</a></td>
+        <td><a href="/offers/<%= offer.id %>/accepted" class="accept-button btn btn-success btn-xs" id="accept-<%=offer.id%>">ACCEPT</a></td>
+        <td><a href="/offers/<%= offer.id %>/rejected" class="reject-button btn btn-danger btn-xs" id="reject-<%=offer.id%>">REJECT</a></td>
       <% end %>
     </tr>
 

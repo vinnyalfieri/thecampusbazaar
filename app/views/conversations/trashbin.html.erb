@@ -1,11 +1,11 @@
   <div class="well">
     <div class="title">
       <h1>Conversations</h1></div>
-      <p><h2> <a href="<%= conversations_path %>"><%= @conversations.count %> Inbox </a> | <a href="<%= trashbin_conversations_path %>"> <%= @trashcount.count %> Trash </a> </h2></p>
+      <p><h2> <a href="<%= conversations_path %>"><%= @conversation_count %> Inbox </a> | <a href="<%= trashbin_conversations_path %>"> <%= @trash_count %> Trash </a> </h2></p>
       <br>
-      <h3>Trash</h3> &nbsp; &nbsp;<% if @trashcount.count > 0 %><%= button_to 'Empty Trash', 'empty_trash', :confirm => 'Empty trash?', :class => 'btn btn-primary btn-danger' %><%end%>
+      <h3>Trash</h3> &nbsp; &nbsp;<% if @trash_count > 0 %><%= button_to 'Empty Trash', 'empty_trash', :confirm => 'Empty trash?', :class => 'btn btn-primary btn-danger' %><%end%>
       <br \>
-      <% if @trashcount == 0 %>
+      <% if @trash_count == 0 %>
       <i>Your Trash folder is currently empty</i>
       <% else %>
       <table width="900" border="0" cellspacing="0" cellpadding="0" style="background-color:#9FC; border-radius:10px;" align="center">

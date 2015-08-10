@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   resources :offers
 
   root 'communities#show'
-  # resources :items
-  #devise_for :users
+
+  get '/offers/:id/rejected', :to => 'offers#rejected', as: :offer_rejected
+  get '/offers/:id/accepted', :to => 'offers#accepted', as: :offer_accepted
 
   resources :messages do
     member do

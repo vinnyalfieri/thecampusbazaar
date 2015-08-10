@@ -2,10 +2,12 @@ source 'https://rubygems.org'
 
 gem "paperclip", "~> 4.3"
 
-gem'omniauth'
+gem'omniauth' 
 gem 'omniauth-venmo'
+gem 'attr_encrypted'
+gem 'faraday'
 
-gem 'pg'
+
 gem 'mailboxer'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'

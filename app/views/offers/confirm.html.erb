@@ -1,0 +1,5 @@
+Are you sure you want to sell <%= @offer.item.name %>  to <%= @buyer.name %>?
+
+<%= link_to 'Confirm', offer_accepted_path(@offer) , class: 'btn btn-success'%>
+<%= link_to 'Go back', offer_path(@offer), class: 'btn btn-danger' %>
+

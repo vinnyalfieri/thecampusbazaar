@@ -5,7 +5,7 @@
     <h2><%= link_to item.name, user_item_path(item.community, item)%> </h2>
        <%= render :partial => "table_of_received", locals: {item: item}%>
       
-      <% item.offers.select do |offer|%>
+        <% item.offers.select do |offer|%>
       
       <%= render :partial => "tableofoffers", locals: {item: item, offer: offer}%>
 
@@ -21,6 +21,7 @@
     <% @sold_items.each do |item| %>
        <%= render :partial => "table_of_received", locals: {item: item}%>
       
+
       <% item.offers.select do |offer|%>
       <%= render :partial => "tableofoffers", locals: {item: item, offer: offer}%>
       <% end %>

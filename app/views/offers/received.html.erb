@@ -4,57 +4,15 @@
     <% @available_items.each do |item| %>
       <% if item.offers.count > 0 %>
     <h2><%= link_to item.name, user_item_path(item.community, item)%> </h2>
-      <div class="item_table" id="offer<%=item.id%>">
-        <table class="table table-striped table-hover ">
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>From</th>
-            <th>Offer Price</th>
-            <th>Comments</th>
-            <th>Offer Sent</th>
-            <th>Status</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-      <% item.offers.select do |offer|%>
-      
-      <%= render :partial => "tableofoffers", locals: {item: item, offer: offer}%>
 
-      <% end %>
-        </tbody>
-        </table> 
-        </div>
-      <% end %>
+       <%= render :partial => "table_of_received", locals: {item: item}%>
     <% end %>
     </div>
 
   <h1>Sold Items:</h1>
     <div class="all_sold_item_tables">
     <% @sold_items.each do |item| %>
-      <div class="item_table" id="offer<%=item.id%>">
-        <table class="table table-striped table-hover ">
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>From</th>
-            <th>Offer Price</th>
-            <th>Comments</th>
-            <th>Offer Sent</th>
-            <th>Status</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-      <% item.offers.select do |offer|%>
-      <%= render :partial => "tableofoffers", locals: {item: item, offer: offer}%>
-      <% end %>
-        </tbody>
-        </table> 
-        </div>
+       <%= render :partial => "table_of_received", locals: {item: item}%>
     <% end %>
     </div>
 </div>

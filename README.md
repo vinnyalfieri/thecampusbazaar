@@ -31,10 +31,13 @@ We are currently working on incorporating payments through Venmo!
 
 ## Author
 
-Jake Faris 
-Minling Zhao 
-Vinny Alfieri
-Sara Tibbetts
+<a href="http://github.com/minling" target="_blank">Jake Faris</a>
+
+<a href="http://github.com/tibsar" target="_blank">Minling Zhao</a>
+
+<a href="http://github.com/makafis" target="_blank">Vinny Alfieri</a>
+
+<a href="http://github.com/tibsar" target="_blank">Sara Tibbetts</a>
 
 ## License
 

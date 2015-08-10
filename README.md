@@ -2,38 +2,39 @@
 
 ## Description
 
-Add a short description of your app.
+Campus Bazaar is a web application made to replace your campus Free and For Sale page.  This application allows its users to join their school's community and post their items to the page.  Users can then sort the items listed by category to find the item they're looking for.
 
 ## Screenshots
 
-Add some spiffy screenshots of your app here.
+Spiffy screenshots on their way!
 
 ## Background
 
-Why did you want to make this app? What was your development process
-like?
+This application was made during The Flatiron School's Web 0615 Project Mode.
 
 ## Features
 
-Bullet point some of the key features of your app here.
+- Easy item posting 
+- Messaging completely done through the application 
 
 ## Usage
 
-How do users use your app?
+Simply go to http://thisisaplaceholder.com/ and sign up to get started! 
 
 ## Development/Contribution
 
-Explain how people can contribute to your app. How should they write tests?
-Any things in particular you'd like to see in pull requests?
+Think something can be improved?  Let us know!
 
 ## Future
 
-What features are you currently working on? Only mention things that you
-actually are implementing. No pie-in-the-sky-never-gonna-happen stuff.
+We are currently working on incorporating payments through Venmo!
 
 ## Author
 
-Link to your blog, twitter, etc!
+Jake Faris 
+Minling Zhao 
+Vinny Alfieri
+Sara Tibbetts
 
 ## License
 

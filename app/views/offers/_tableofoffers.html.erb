@@ -1,21 +1,21 @@
 
     <tr  id="item<%=offer.id%>">
-      <td>
+      <td id="item_name">
         <%= link_to item.name, offer_path(offer)%> 
       </td>
-      <td>
+      <td id="buyer_name">
         <%= offer.buyer.name %>
       </td>
-      <td>
+      <td id="offer_price">
         $<%= offer.offer_price %>
       </td>
-      <td>
+      <td id="comment">
         <%= offer.comment %>
       </td>
-      <td>
-        <%= time_ago_in_words(offer.updated_at) %>
+      <td id="time">
+        <%= time_ago_in_words(offer.created_at) %>
       </td>
-      <td>
+      <td id="status">
         <%= offer.status.upcase %>
       </td>
       <% if offer.status == 'accepted' || offer.status == 'rejected'%>

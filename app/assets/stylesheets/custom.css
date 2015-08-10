@@ -4303,6 +4303,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     background-image: none;
   }
 }
+
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 @media (min-width: 768px) {
   .navbar-nav {
     float: left;

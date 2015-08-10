@@ -36,6 +36,7 @@ class OffersController < ApplicationController
     offer = Offer.find(params[:id])
     offer.status = 'accepted'
     offer.save
+    reject_offers(offer.item_id)
     redirect_to offers_received_path 
   end 
 
@@ -44,6 +45,16 @@ class OffersController < ApplicationController
     offer.status = 'rejected'
     offer.save
     redirect_to offers_received_path
+  end 
+
+  private
+  def reject_offers(item_id)
+    #go through all pending offers with that item id and reject
+    offers = Offer.pending_offers(item_id)
+    offers.each do |offer|
+      offer.status = 'rejected'
+      offer.save
+    end 
   end 
 
 end

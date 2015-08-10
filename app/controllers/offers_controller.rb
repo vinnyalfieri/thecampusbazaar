@@ -15,6 +15,7 @@ class OffersController < ApplicationController
   end
 
   def sent
+
   end
 
   def received

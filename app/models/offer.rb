@@ -9,7 +9,9 @@ class Offer < ActiveRecord::Base
 
   validate :not_own_item
 
-
+  def self.pending_offers(item_id)
+    Item.find(item_id).offers.select{ |offer| offer.status == 'pending'}
+  end 
 
   private
     def not_own_item
@@ -17,4 +19,5 @@ class Offer < ActiveRecord::Base
         errors.add(:base, "Seller cannot purchase their own listing.")
       end
     end
+
 end

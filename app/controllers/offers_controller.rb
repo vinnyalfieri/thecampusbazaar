@@ -15,21 +15,11 @@ class OffersController < ApplicationController
   end
 
   def sent
-
   end
 
   def received
-    @available_items = current_user.items.select{|item| item.status == 'available'}
-    @sold_items = current_user.items.select{|item| item.status == 'sold'}
-    
-    # get the received offers for the current user
-    # organize the show page to show ALL offers per product. Group by a specific product. SO each item will have a list of Pending, Rejected, and Accepted offers.
-    # add an ACCEPT and REJECT button to the PENDING offers ONLY if there is NO accepted offers for that item.
-    # When offer is accepted. ALL other offers for that item are REJECTED.
-
-    #show a table. ACCEPTED offer on TOP highlighted in GREEN
-    #the REJECTED offer will drop to the bottom of the table.
-    #
+    @available_items = current_user.items.select{|item| item.available?}
+    @sold_items = current_user.items.reject{|item| item.available?}
   end
 
   def accepted
@@ -49,7 +39,6 @@ class OffersController < ApplicationController
 
   private
   def reject_offers(item_id)
-    #go through all pending offers with that item id and reject
     offers = Offer.pending_offers(item_id)
     offers.each do |offer|
       offer.status = 'rejected'

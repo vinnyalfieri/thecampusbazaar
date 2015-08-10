@@ -12,14 +12,19 @@ class OffersController < ApplicationController
   end 
 
   def show
-    
   end
 
   def sent
-    
   end
 
   def received
   end
+
+  def accepted 
+  end 
+
+  def rejected
+    binding.pry
+  end 
 
 end

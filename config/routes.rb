@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # resources :items
   #devise_for :users
 
+  get '/auth/venmo' => 'venmo#login', as: :venmo_login
+
   resources :messages do
     member do
       post :new

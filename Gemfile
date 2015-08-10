@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem "paperclip", "~> 4.3"
 
+gem'omniauth'
+gem 'omniauth-venmo'
+
 gem 'pg'
 gem 'mailboxer'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -27,7 +30,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
 
-
+gem 'figaro'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

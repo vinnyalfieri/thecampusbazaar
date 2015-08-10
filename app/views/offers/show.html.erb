@@ -1,11 +1,3 @@
 
-<ul>
-<li><h3>Item name: <%= @offer.item.name%></h3></li>
-<li>Buyer name: <%= @offer.buyer.name%></li>
-<li>Item description: <%= @offer.item.description%></li>
-<li>Condition: <%= @offer.item.condition%></li>
-<li>Listing Price: <%= @offer.item.price%></li><br>
-<li>Offered Price: <%= @offer.offer_price%></li>
-</ul>
 <%= link_to "Accept", offer_confirm_path , class: 'btn btn-success'%>
 <%= link_to "Reject", offer_rejected_path , class: 'btn btn-danger' %>

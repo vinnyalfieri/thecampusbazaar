@@ -1,54 +1,12 @@
   <div class="well">
     <div class="title">
-      <h1>Messages</h1></div>
-      <p><h2> <a href="<%= conversations_path %>"> <%= @conversation_count %> Inbox </a> | <a href="<%= trashbin_conversations_path %>"> <%= @trash_count %> Trash </a> </h2></p>
-      <h3> Inbox </h3>
-      <br \>
-
+      <%= render partial: 'conversations/conversations_header' %>
+    <h3> Inbox </h3>
       <% if @conversations == nil || @conversations.empty? %>
       <i>Your Inbox folder is currently empty</i>
       <% else %>
-      <table width="900" border="0" cellspacing="0" cellpadding="0" style="background-color:#9FC; border-radius:10px;" align="center">
-        <tr>
-          <th scope="col" class="emailTH">SENDER</th>
-          <th scope="col" class="emailTH">SUBJECT</th>
-          <th scope="col" class="emailTH">DATE</th>
-          <th scope="col" class="emailTH"></th>
-        </tr>
-        <% @conversations.each do |conversation| %>
-        <tr>
-          <td class="emailsenderTD">
-            <% conversation.participants.each do |participant| %>
-              <% if participant != current_user %>
-                <% if conversation.is_read?(current_user) %>
-                  <%= participant.name %>
-                <% else %> 
-                  <b> <%= participant.name %> </b> 
-                <% end %> 
-              <% end %>
-            <% end %>
-          </td>
-          <td class="emailsubjectTD"> 
-           <% if conversation.is_read?(current_user) %> 
-            <%= link_to conversation.subject, conversation_path(conversation) %> </td>
-           <% else %>
-            <b><%= link_to conversation.subject, conversation_path(conversation) %></b> </td>
-           <% end %>
-           <td class="emailTD">
-            <% if conversation.is_read?(current_user) %> <%= conversation.updated_at.strftime("%a, %m/%e/%Y %I:%M %p") %></td>  
-            <% else %> 
-            <b> <%= conversation.updated_at.strftime("%a, %m/%e/%Y %I:%M %p") %> </b> 
-          </td> 
-          <% end %>
-          <td class="emailtrashTD">
-            <%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, {:controller => "conversations", :action => "trash", :id => conversation.id}, :title=> "Move to Trash", :method=>'post' %> &nbsp; &nbsp;
-          </td>
-        </tr>
-        <% end %>
-
-        <%end%>
-
-      </table>
+        <%= render partial: 'conversations/messages_index' %>
+      <% end %>
     </span>
   </div>
 </div>

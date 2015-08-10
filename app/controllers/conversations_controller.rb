@@ -11,7 +11,7 @@ class ConversationsController < ApplicationController
 
   def index
     @conversations ||= @mailbox.inbox
-    @conversation_count ||= @conversations.all.count
+    @inbox_count ||= @conversations.all.count
     @trash ||= @mailbox.trash.all
     @trash_count ||= @trash.all.count
     @unread = @conversations.select{ |c| c.is_unread?(current_user) }.count
@@ -41,10 +41,10 @@ class ConversationsController < ApplicationController
   end
 
   def trashbin
-    @conversations ||= @mailbox.inbox
-    @conversation_count ||= @conversations.all.count
-    @trash ||= @mailbox.trash
-    @trash_count ||= @trash.all.count
+    @inbox ||= @mailbox.inbox
+    @inbox_count ||= @inbox.all.count
+    @conversations ||= @mailbox.trash
+    @trash_count ||= @conversations.all.count
   end
 
   def empty_trash

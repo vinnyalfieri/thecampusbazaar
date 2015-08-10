@@ -1,37 +1,34 @@
-<h2> Pending Offers Sent</h2>
-  <% Offer.all.select{ |offer| offer.buyer == current_user && offer.status == 'pending'}.each do |offer| %>
-      <ul>
-        <li>Offer To: <%= offer.seller.name %></li>
-        <li>For Item: <%= offer.item.name %></li>
-        <li>Selling Price: <%= offer.item.price %></li>
-        <li>Your Offer Price: <%= offer.offer_price %></li>
-        <li>Comments: <%= offer.comment if offer.comment %></li>
-        <li>Offer Sent At: <%= time_ago_in_words(offer.updated_at) %></li>
-      </ul>
-  <%end%>
+<% if @pending_offers.count > 0 %>
+  <h2>Pending Offers Sent</h2>
+    <%= render 'offercontenthead' %>
+      <tbody>
+    <% @pending_offers.each do |offer| %>
+      <tr id='offer_<%= offer.id %>'><%= render :partial => "offercontent", locals: {offer: offer} %></tr>
+    <% end %>
+      </tbody>
+    </table> 
+  <% else %>
+    <h2> You have no PENDING offers</h2><br><br><br>
+<% end %>
 
-<h2>Accepted Offers Sent</h2>
-  <% Offer.all.select{ |offer| offer.buyer == current_user && offer.status == 'accepted'}.each do |offer| %>
-      <ul>
-        <li>Offer To: <%= offer.seller.name %></li>
-        <li>For Item: <%= offer.item.name %></li>
-        <li>Selling Price: <%= offer.item.price %></li>
-        <li>Your Offer Price: <%= offer.offer_price %></li>
-        <li>Comments: <%= offer.comment if offer.comment %></li>
-        <li>Offer Sent At: <%= time_ago_in_words(offer.updated_at) %></li>
-      </ul>
-  <%end%>
+<% if @accepted_offers.count > 0 %>
+  <h2>Accepted Offers Sent</h2>
+    <%= render 'offercontenthead' %>
+      <tbody>
+    <% @accepted_offers.each do |offer| %>
+      <tr id='offer_<%= offer.id %>'><%= render :partial => "offercontent", locals: {offer: offer} %></tr>
+    <% end %>
+      </tbody>
+    </table> 
+<% end %>
 
-
-<h2>Rejected Offers Sent</h2>
-  <% Offer.all.select{ |offer| offer.buyer == current_user && offer.status == 'rejected'}.each do |offer| %>
-      <ul>
-        <li>Offer To: <%= offer.seller.name %></li>
-        <li>For Item: <%= offer.item.name %></li>
-        <li>Selling Price: <%= offer.item.price %></li>
-        <li>Your Offer Price: <%= offer.offer_price %></li>
-        <li>Comments: <%= offer.comment if offer.comment %></li>
-        <li>Offer Sent At: <%= time_ago_in_words(offer.updated_at) %></li>
-      </ul>
-  <%end%>
-
+<% if @rejected_offers.count > 0 %>
+  <h2>Rejected Offers Sent</h2>
+    <%= render 'offercontenthead' %>
+      <tbody>
+    <% @rejected_offers.each do |offer| %>
+      <tr id='offer_<%= offer.id %>'><%= render :partial => "offercontent", locals: {offer: offer} %></tr>
+    <% end %>
+      </tbody>
+    </table> 
+<% end %>

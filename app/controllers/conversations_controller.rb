@@ -29,6 +29,8 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation ||= @mailbox.conversations.find(params[:id])
+    @participants = @conversation.participants
+    @receipts = @conversation.receipts_for(current_user).reverse
     conversation.mark_as_read(current_user)
   end
 

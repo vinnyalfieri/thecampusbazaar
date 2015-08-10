@@ -19,19 +19,20 @@
         <tr>
           <td class="emailsenderTD">
             <% conversation.participants.each do |participant| %>
-            <% if participant != current_user %>
-            <% if conversation.is_read?(current_user) %> <%= participant.name %>
-            <% else %> 
-            <b> <%= participant.name %> </b> 
-            <% end %> 
-            <% end %>
+              <% if participant != current_user %>
+                <% if conversation.is_read?(current_user) %>
+                  <%= participant.name %>
+                <% else %> 
+                  <b> <%= participant.name %> </b> 
+                <% end %> 
+              <% end %>
             <% end %>
           </td>
           <td class="emailsubjectTD"> 
            <% if conversation.is_read?(current_user) %> 
-           <%= link_to conversation.subject, conversation_path(conversation) %> </td>
+            <%= link_to conversation.subject, conversation_path(conversation) %> </td>
            <% else %>
-           <b><%= link_to conversation.subject, conversation_path(conversation) %></b> </td>
+            <b><%= link_to conversation.subject, conversation_path(conversation) %></b> </td>
            <% end %>
            <td class="emailTD">
             <% if conversation.is_read?(current_user) %> <%= conversation.updated_at.strftime("%a, %m/%e/%Y %I:%M %p") %></td>  
@@ -49,6 +50,5 @@
 
       </table>
     </span>
-    <%#= will_paginate @conversations %>
   </div>
 </div>

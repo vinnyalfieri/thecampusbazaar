@@ -1,50 +1,58 @@
-<h2> Your Pending Offers</h2>
-  <% current_user.items.select do |item| %>
-    <% item.offers.select do |offer|%>
-      <% if offer.status == 'pending'%>
-      <ul>
-        <li>Offer From: <%= User.find(offer.buyer_id).name %></li>
-        <li>For Item: <%= Item.find(offer.item_id).name %></li>
-        <li>Your Selling Price: <%= Item.find(offer.item_id).price %></li>
-        <li>Offer Price: <%= offer.offer_price %></li>
-        <li>Comments: <%= offer.comment if offer.comment %></li>
-        <li>Offer Status: <%= offer.status %>
-        <li>Offer Sent At: <%= time_ago_in_words(offer.updated_at) %></li>
-      </ul>
-      <%end%>
-    <%end%>
-  <%end%>
+<div class="tables_of_items">
+  <h1>Open Items:</h1>
+    <div class="all_offered_item_tables">
+    <% @available_items.each do |item| %>
+    <h2><%= link_to item.name, user_item_path(item.community, item)%> </h2>
+      <div class="item_table" id="offer<%=item.id%>">
+        <table class="table table-striped table-hover ">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>From</th>
+            <th>Offer Price</th>
+            <th>Comments</th>
+            <th>Offer Sent</th>
+            <th>Status</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+      <% item.offers.select do |offer|%>
+      
+      <%= render :partial => "tableofoffers", locals: {item: item, offer: offer}%>
 
-<h2> Your Accepted Offers</h2>
-  <% current_user.items.select do |item| %>
-    <% item.offers.select do |offer|%>
-      <% if offer.status == 'accepted'%>
-      <ul>
-        <li>Offer From: <%= User.find(offer.buyer_id).name %></li>
-        <li>For Item: <%= Item.find(offer.item_id).name %></li>
-        <li>Your Selling Price: <%= Item.find(offer.item_id).price %></li>
-        <li>Offer Price: <%= offer.offer_price %></li>
-        <li>Comments: <%= offer.comment if offer.comment %></li>
-        <li>Offer Status: <%= offer.status %>
-        <li>Offer Sent At: <%= time_ago_in_words(offer.updated_at) %></li>
-      </ul>
-      <%end%>
-    <%end%>
-  <%end%>
+      <% end %>
+        </tbody>
+        </table> 
+        </div>
+    <% end %>
+    </div>
 
-<h2> Your Rejected Offers</h2>
-  <% current_user.items.select do |item| %>
-    <% item.offers.select do |offer|%>
-      <% if offer.status == 'rejected'%>
-      <ul>
-        <li>Offer From: <%= User.find(offer.buyer_id).name %></li>
-        <li>For Item: <%= Item.find(offer.item_id).name %></li>
-        <li>Your Selling Price: <%= Item.find(offer.item_id).price %></li>
-        <li>Offer Price: <%= offer.offer_price %></li>
-        <li>Comments: <%= offer.comment if offer.comment %></li>
-        <li>Offer Status: <%= offer.status %>
-        <li>Offer Sent At: <%= time_ago_in_words(offer.updated_at) %></li>
-      </ul>
-      <%end%>
-    <%end%>
-  <%end%>
+  <h1>Sold Items:</h1>
+    <div class="all_sold_item_tables">
+    <% @sold_items.each do |item| %>
+      <div class="item_table" id="offer<%=item.id%>">
+        <table class="table table-striped table-hover ">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>From</th>
+            <th>Offer Price</th>
+            <th>Comments</th>
+            <th>Offer Sent</th>
+            <th>Status</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+      <% item.offers.select do |offer|%>
+      <%= render :partial => "tableofoffers", locals: {item: item, offer: offer}%>
+      <% end %>
+        </tbody>
+        </table> 
+        </div>
+    <% end %>
+    </div>
+</div>

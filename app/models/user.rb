@@ -26,6 +26,22 @@ class User < ActiveRecord::Base
     return email
   end
 
+  def offers_sent
+    Offer.all.select{ |offer| offer.buyer == self }
+  end
+
+  def pending_offers_sent
+    Offer.all.select{ |offer| offer.buyer == self && offer.status == 'pending'}
+  end
+
+  def rejected_offers_sent
+    Offer.all.select{ |offer| offer.buyer == self && offer.status == 'rejected'}
+  end
+
+  def accepted_offers_sent
+    Offer.all.select{ |offer| offer.buyer == self && offer.status == 'accepted'}
+  end
+  
   def offers_received
     self.items.select{|item| item.offers}
   end

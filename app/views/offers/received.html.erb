@@ -2,7 +2,9 @@
   <h1>Open Items:</h1>
     <div class="all_offered_item_tables">
     <% @available_items.each do |item| %>
+      <% if item.offers.count > 0 %>
     <h2><%= link_to item.name, user_item_path(item.community, item)%> </h2>
+
        <%= render :partial => "table_of_received", locals: {item: item}%>
     <% end %>
     </div>

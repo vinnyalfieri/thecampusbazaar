@@ -11,10 +11,18 @@ class OffersController < ApplicationController
     redirect_to root_path
   end 
 
-  def show
+  def show    
+    @offer = Offer.find(params[:id])
+    @item = @offer.item
   end
 
   def sent
+    @pending_offers = current_user.pending_offers_sent
+    # get all pending offers of the current user
+    @rejected_offers = current_user.rejected_offers_sent
+    # get all rejected offers of the current user
+    @accepted_offers = current_user.accepted_offers_sent
+    # get all accepted offers of the current user
   end
 
   def received
@@ -36,6 +44,11 @@ class OffersController < ApplicationController
     offer.save
     redirect_to offers_received_path
   end 
+
+  def destroy
+    Offer.destroy(params[:id])
+    redirect_to offers_sent_path
+  end
 
   private
   def reject_offers(item_id)

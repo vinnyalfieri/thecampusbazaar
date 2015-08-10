@@ -4,15 +4,6 @@
     <% @available_items.each do |item| %>
     <h2><%= link_to item.name, user_item_path(item.community, item)%> </h2>
        <%= render :partial => "table_of_received", locals: {item: item}%>
-      
-        <% item.offers.select do |offer|%>
-      
-      <%= render :partial => "tableofoffers", locals: {item: item, offer: offer}%>
-
-      <% end %>
-        </tbody>
-        </table> 
-        </div>
     <% end %>
     </div>
 
@@ -20,14 +11,6 @@
     <div class="all_sold_item_tables">
     <% @sold_items.each do |item| %>
        <%= render :partial => "table_of_received", locals: {item: item}%>
-      
-
-      <% item.offers.select do |offer|%>
-      <%= render :partial => "tableofoffers", locals: {item: item, offer: offer}%>
-      <% end %>
-        </tbody>
-        </table> 
-        </div>
     <% end %>
     </div>
 </div>

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   acts_as_messageable
   attr_accessor :delete_avatar
+  attr_encrypted :token, :key => ENV['encrypt_key']
   belongs_to :community
   has_many :items, :foreign_key => 'seller_id'
   has_many :offers_sent, :class_name => "Offer", :foreign_key => 'buyer_id'
@@ -21,8 +22,12 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => ActionController::Base.helpers.asset_path('placeholder-avatar.png')
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  def has_venmo?
+    self.venmo_id && self.encrypted_token
+  end
+
   def mailboxer_email(object)
-    return email
+    email
   end
 
   def offers_sent

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/offers/:id/accepted', :to => 'offers#accepted', as: :offer_accepted
   get '/offers/:id/confirm', :to => 'offers#confirm', as: :offer_confirm
 
-  get '/auth/:provider/callback' => 'sessions#venmo', as: :venmo_login
+  get '/auth/:provider/callback' => 'users#venmo', as: :venmo_login
 
   resources :messages do
     member do

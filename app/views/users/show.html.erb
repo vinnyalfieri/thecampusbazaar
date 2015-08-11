@@ -5,7 +5,10 @@
 <%= button_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary', method: 'get' %><br>
 <%end%>
 
-<%= link_to 'Log in with Venmo', 'https://api.venmo.com/v1/oauth/authorize?client_id=CLIENT_ID&scope=make_payments%20access_profile'%>
+<% unless @user.has_venmo? %>
+  <%= link_to 'Log in with Venmo', 'https://api.venmo.com/v1/oauth/authorize?client_id=CLIENT_ID&scope=make_payments%20access_profile'%>
+<% end %>
+
 <% if @user.items %>
 <h2> Items for sale </h2>
 <%end%>

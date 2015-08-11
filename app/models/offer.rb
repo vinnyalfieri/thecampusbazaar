@@ -10,17 +10,17 @@ class Offer < ActiveRecord::Base
   validate :not_own_item
 
   def charge_venmo
-    token = ENV['venmo_access_token'] #buyer.token
-    seller_id = '1646418611666944551' #seller.venmo_id
+
+    buyer.venmo_id = "12341234" #fake
+    buyer.token = ENV['venmo_access_token'] #buyer.token
+    seller.venmo_id = '1646418611666944551' #seller.venmo_id
+    seller.token = "723814" #fake
     note =  "Just bought #{self.item.name} from CampusBazaar"
     amount = '0.10' #self.offer_price
-    conn = Faraday.new(:url => 'https://api.venmo.com') do |faraday|
-           faraday.request  :url_encoded 
-           faraday.response :logger
-           faraday.adapter  Faraday.default_adapter
-           end
-
-      response = conn.post '/v1/payments', { user_id: seller_id, amount: amount, note: note, access_token: token}
+    a = VenmoWrapper.new.transfer_money_from(buyer,seller,amount,note)
+    buyer.venmo_id = nil
+    seller.token = nil
+    a
   end
 
   def self.pending_offers(item_id)

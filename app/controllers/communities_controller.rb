@@ -1,6 +1,6 @@
 class CommunitiesController < ApplicationController
   skip_before_action :authorize, only: :show
-
+  before_action :check_community, only: [:search, :create]
   #Index => List all different schools
   def info
     @user = User.find(session[:user_id]) 
@@ -27,7 +27,7 @@ class CommunitiesController < ApplicationController
       @community = current_user.community
       #get all items for sale in a community
       @items = @community.items.reject{|item| current_user.items.include?(item)}.select{|item| item.status == 'available'}
-       @categories = @community.categories.distinct
+      @categories = @community.categories.distinct
     end
     
     if params[:category_id]
@@ -53,4 +53,11 @@ class CommunitiesController < ApplicationController
   def community_params
     params.require(:community).permit(:name)
   end
+
+  def check_community 
+    unless current_user.community == nil
+      flash[:error] = "You already have a community!"
+      redirect_to root_path # halts request cycle
+    end
+  end 
 end

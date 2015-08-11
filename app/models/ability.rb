@@ -2,6 +2,12 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    binding.pry 
+    if user.community == nil
+        cannot :read, :community
+    else 
+        cannot :edit, :community
+    end 
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

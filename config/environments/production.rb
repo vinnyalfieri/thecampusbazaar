@@ -3,6 +3,14 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: Rails.application.secrets.host }
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => ENV['campusbazaar'],
+    :access_key_id => ENV['amazon_access_key'],
+    :secret_access_key => ENV['amazon_secret']
+  }
+}
   # Code is not reloaded between requests.
   config.cache_classes = true
 

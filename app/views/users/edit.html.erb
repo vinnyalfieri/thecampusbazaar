@@ -1,9 +1,12 @@
 <h1> Update your profile </h1>
 <%= form_for @user, :html => {:multipart => true} do |f| %>
 
-  <%= f.label :avatar, class: 'control-label'%>  
-  <%= f.file_field :avatar, class: 'form_field' %>
 
+<div class="upload-preview">
+<img/>
+  <%= f.label :avatar, class: 'control-label'%>  
+  <%= f.file_field :avatar, class: 'form_field file' %>
+</div>
   <%= f.label :delete_avatar%>
   <%= f.check_box(:delete_avatar)%><br>
 

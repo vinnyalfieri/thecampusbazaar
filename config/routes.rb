@@ -1,8 +1,14 @@
 
 Rails.application.routes.draw do
+  resources :offers
+
   root 'communities#show'
-  # resources :items
-  #devise_for :users
+
+  get '/offers/:id/rejected', :to => 'offers#rejected', as: :offer_rejected
+  get '/offers/:id/accepted', :to => 'offers#accepted', as: :offer_accepted
+  get '/offers/:id/confirm', :to => 'offers#confirm', as: :offer_confirm
+
+  get '/auth/:provider/callback' => 'users#venmo', as: :venmo_login
 
   resources :messages do
     member do
@@ -30,8 +36,14 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :items
+    resources :offers, only: [:index]
+    resources :items do 
+      resources :offers, only: [:new]
+    end
   end
+
+  get '/users/:id/offers/sent' => 'offers#sent', as: :offers_sent
+  get '/users/:id/offers/received' => 'offers#received', as: :offers_received
 
   delete '/users/:user_id/items/:id', to: 'items#destroy', as: :delete_item
   patch '/users/:id' => 'users#update'

@@ -10,9 +10,10 @@ class ConversationsController < ApplicationController
   end
 
   def index
-    @conversations ||= @mailbox.inbox #.page(params[:page]).per_page(25)
-    @conversationscount ||= current_user.mailbox.inbox.all
-    @trash ||= current_user.mailbox.trash.all
+    @conversations ||= @mailbox.inbox
+    @inbox_count ||= @conversations.all.count
+    @trash ||= @mailbox.trash.all
+    @trash_count ||= @trash.all.count
     @unread = @conversations.select{ |c| c.is_unread?(current_user) }.count
   end
 
@@ -29,6 +30,8 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation ||= @mailbox.conversations.find(params[:id])
+    @participants = @conversation.participants
+    @receipts = @conversation.receipts_for(current_user).reverse
     conversation.mark_as_read(current_user)
   end
 
@@ -37,18 +40,18 @@ class ConversationsController < ApplicationController
     redirect_to :back
   end
 
-   def trashbin
-    @conversations ||= @mailbox.inbox #.page(params[:page]).per_page(25)
-    @conversationscount ||= current_user.mailbox.inbox.all
-    @trash ||=  current_user.mailbox.trash#.page(params[:page]).per_page(25)
-    @trashcount ||= @mailbox.trash.all
+  def trashbin
+    @inbox ||= @mailbox.inbox
+    @inbox_count ||= @inbox.all.count
+    @conversations ||= @mailbox.trash
+    @trash_count ||= @conversations.all.count
   end
 
   def empty_trash
     current_user.mailbox.trash.each do |conversation|
       conversation.receipts_for(current_user).update_all(:deleted => true)
     end
-   redirect_to :conversations
+    redirect_to :conversations
   end
 
   private

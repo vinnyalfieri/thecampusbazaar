@@ -1,0 +1,48 @@
+
+<div class="col-sm-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2><%= @item.name %></h2>
+    </div>
+    <div class="panel-body">
+      <%= image_tag @item.product.url(:medium), :class => "img-responsive center-block"%>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2> Item Details </h2>
+    </div>
+    <div class="panel-body">
+     <p><h4>List Price: $<%= format("%.2f",@item.price) %></h4></p>
+     <p><h4>Condition: <%= @item.condition %></p></h4>
+     <p><h4><%= @item.description %></p></h4> 
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2>Offer:</h2>
+    </div>
+    <div class="panel-body">
+      <p> <h4>From: <%= link_to @offer.buyer.name, user_path(@offer.buyer) %></h4></p>
+      <p><h4>Offer Price: $<%= format("%.2f",@offer.offer_price) %></h4></p>
+      <p><h4>Status: <%= @offer.status.capitalize %></h4></p>
+      <% if @offer.comment %>
+      <p><h4>Comments: </h4><%= @offer.comment %></p>  
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% if @offer.status == "pending" %>
+  <div class="btn-group btn-group-justified">
+    <%= link_to "Accept", offer_confirm_path, {:class => "btn btn-success"}  %>
+    <%= link_to "Contact Buyer", new_message_path(user: @offer.buyer.id, item: @offer.item_id), {:class => "btn btn-warning"}  %>
+    <%= link_to "Reject", offer_rejected_path, {:class => "btn btn-danger"} %>
+  </div>
+<% end %>

@@ -1,0 +1,26 @@
+// # Place all the behaviors and hooks related to the matching controller here.
+// # All this logic will automatically be available in application.js.
+// # You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).ready(function () {
+  //ON PAGE LOAD
+  var rows = $('.item_table tr[id*="item"]');
+  for (var i = 0; i < rows.size(); i++){
+    var row = rows[i]
+    var status = row.children.status.textContent.replace(/\s/g, '');
+    if(status == 'ACCEPTED'){
+      $(row).addClass("success");
+    }else if(status == 'REJECTED'){
+      $(row).addClass("danger");
+    }
+  }
+  
+  //ON BUTTON PRESS
+  $(".accept-button").click(function() {             
+          $(this.parentElement.parentElement).addClass("success"); 
+  });
+  $(".reject-button").click(function() {
+          $(this.parentElement.parentElement).addClass("danger");
+  });
+
+});
+

@@ -15,3 +15,10 @@
 /log/*
 !/log/.keep
 /tmp
+
+#Ignore public photos that we upload for testing (for now)
+/public/system/*
+
+/erd.pdf
+# Ignore application configuration
+/config/application.yml

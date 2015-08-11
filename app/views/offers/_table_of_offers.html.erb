@@ -1,0 +1,34 @@
+ <% item.offers.select do |offer|%>
+
+ <tr  id="item<%=offer.id%>">
+  <td id="item_name">
+    <%= link_to item.name, offer_path(offer)%> 
+  </td>
+  <td id="buyer_name">
+    <%= offer.buyer.name %>
+  </td>
+  <td id="offer_price">
+    $<%= offer.offer_price %>
+  </td>
+  <td id="comment">
+    <%= offer.comment %>
+  </td>
+  <td id="time">
+    <%= time_ago_in_words(offer.created_at) %>
+  </td>
+  <td id="status">
+    <%= offer.status.upcase %>
+  </td>
+  <% if !(offer.status == 'accepted' || offer.status == 'rejected')%>
+  <td><%= link_to("ACCEPT", offer_confirm_path(offer) , class: "accept-button btn btn-success btn-xs", id: "accept-#{offer.id}") %></td>
+  <td><a href="/offers/<%= offer.id %>/rejected" class="reject-button btn btn-danger btn-xs" id="reject-<%=offer.id%>">REJECT</a></td>
+  <% elsif offer.status == "rejected" && offer.item.available? %>
+  <td><%= link_to "MESSAGE", new_message_path({user: offer.buyer_id, item: offer.item_id}), {class: 'btn btn-xs', id:'message-button'}  %></td>
+  <td></td>
+  <% else %>
+  <td></td>
+  <td></td>
+  <% end %>
+</tr>
+<% end %>
+

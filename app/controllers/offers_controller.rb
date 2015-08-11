@@ -11,6 +11,7 @@ class OffersController < ApplicationController
     redirect_to root_path
   end 
 
+
   def show    
     @offer = Offer.find(params[:id])
     @item = @offer.item
@@ -33,9 +34,11 @@ class OffersController < ApplicationController
   def accepted
     offer = Offer.find(params[:id])
     offer.status = 'accepted'
+    offer.charge_venmo
+    flash[:notice] = "venmo charged!"
     offer.save
     reject_offers(offer.item_id)
-    redirect_to offers_received_path 
+    redirect_to offers_received_path
   end 
 
   def rejected
@@ -43,6 +46,11 @@ class OffersController < ApplicationController
     offer.status = 'rejected'
     offer.save
     redirect_to offers_received_path
+  end 
+
+  def confirm
+    @buyer = Offer.find(params[:id]).buyer
+    @offer = Offer.find(params[:id])
   end 
 
   def destroy

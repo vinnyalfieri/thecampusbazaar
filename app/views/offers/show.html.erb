@@ -1,3 +1,4 @@
+
 <div class="col-sm-4">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -40,9 +41,8 @@
 
 <% if @offer.status == "pending" %>
   <div class="btn-group btn-group-justified">
-    <%= link_to "Accept", offer_accepted_path, {:class => "btn btn-success"}  %>
+    <%= link_to "Accept", offer_confirm_path, {:class => "btn btn-success"}  %>
     <%= link_to "Contact Buyer", new_message_path(user: @offer.buyer.id, item: @offer.item_id), {:class => "btn btn-warning"}  %>
     <%= link_to "Reject", offer_rejected_path, {:class => "btn btn-danger"} %>
   </div>
 <% end %>
-

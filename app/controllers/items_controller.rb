@@ -28,7 +28,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
     current_user.items.build(item_params)
     if current_user.save
       redirect_to user_item_path(current_user, current_user.items.last)

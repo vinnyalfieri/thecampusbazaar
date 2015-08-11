@@ -1,6 +1,6 @@
 class CommunitiesController < ApplicationController
   skip_before_action :authorize, only: :show
-  before_action :check_community, only: [:search, :create]
+  before_action :check_community, only: [:search, :create, :new]
   #Index => List all different schools
   def info
     @user = User.find(session[:user_id]) 

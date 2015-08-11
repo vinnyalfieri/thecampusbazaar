@@ -1,7 +1,7 @@
 <h1>Create an Offer for <%= @item.name %></h1>
 <p><%= form_tag({controller: "offers", action: "create"}, method: :post) do %></p>
 <%= label_tag :offer_price %>
-<p><%= number_field_tag :offer_price, "#{@item.price}"%></p>
+<p><%= number_field_tag :offer_price, "#{@item.price}", :step => 0.01 %></p>
 <%= label_tag :comment %>
 <p><%= text_area_tag :comment %></p>
 <%= hidden_field_tag(:buyer, "#{current_user.id}") %>

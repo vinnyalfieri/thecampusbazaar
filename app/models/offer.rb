@@ -33,5 +33,4 @@ class Offer < ActiveRecord::Base
         errors.add(:base, "Seller cannot purchase their own listing.")
       end
     end
-
 end

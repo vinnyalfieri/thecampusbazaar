@@ -20,25 +20,20 @@ class Item < ActiveRecord::Base
   end
 
   def self.get_items_of_specific_category(items, category_id)
-    category = Category.find_by(:id => category_id.to_i)
-    items.map do |item| 
-      if item.categories[0] == category && item.status == 'available'
-         item
-      end
-    end.compact
+    category = Category.find_by(:id => category_id)
+    items.select{ |item| item.categories.include?(category) && item.available? }
   end
 
   def status
-    if self.offers.any?{|offer| offer.status == 'accepted'}
-      'sold'
-    else 
-      'available'
-    end
+    any_accepted? ? 'sold' : 'available'
   end
 
   def available?
     self.status == 'available'
   end
 
+  def any_accepted?
+    self.offers.any?{|offer| offer.status == 'accepted'}
+  end 
 
 end

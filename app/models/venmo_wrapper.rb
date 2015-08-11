@@ -22,10 +22,10 @@ class VenmoWrapper
 
   def authenticate_venmo(user, auth_hash)
     if auth_hash[:provider] == "venmo"
-      current_user.venmo_id = auth_hash[:uid]
-      current_user.token = auth_hash[:credentials][:token]
-      current_user.save
-      redirect_to user_path(current_user)
+      user.venmo_id = auth_hash[:uid]
+      user.token = auth_hash[:credentials][:token]
+      user.save
+      redirect_to user_path(user)
     end
   end
 

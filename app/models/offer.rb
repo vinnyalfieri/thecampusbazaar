@@ -11,16 +11,9 @@ class Offer < ActiveRecord::Base
 
   def charge_venmo
 
-    buyer.venmo_id = "12341234" #fake
-    buyer.token = ENV['venmo_access_token'] #buyer.token
-    seller.venmo_id = '1646418611666944551' #seller.venmo_id
-    seller.token = "723814" #fake
     note =  "Just bought #{self.item.name} from CampusBazaar"
     amount = '0.10' #self.offer_price
-    a = VenmoWrapper.new.transfer_money_from(buyer,seller,amount,note)
-    buyer.venmo_id = nil
-    seller.token = nil
-    a
+    VenmoWrapper.new.transfer_money_from(buyer,seller,amount,note)
   end
 
   def self.pending_offers(item_id)

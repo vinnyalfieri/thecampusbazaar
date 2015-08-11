@@ -8,7 +8,6 @@ class VenmoWrapper
 
     if buyer.has_venmo? && seller.has_venmo?
     
-      binding.pry
       conn = Faraday.new(:url => 'https://api.venmo.com') do |faraday|
              faraday.request  :url_encoded 
              faraday.response :logger

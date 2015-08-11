@@ -6,11 +6,18 @@ Rails.application.configure do
   config.paperclip_defaults = {
   :storage => :s3,
   :s3_credentials => {
-    :bucket => ENV['campusbazaar'],
+    :bucket => ENV['amazon_bucket'],
     :access_key_id => ENV['amazon_access_key'],
     :secret_access_key => ENV['amazon_secret']
   }
 }
+
+# config.paperclip_defaults = {
+#   :storage => :s3,
+#   :s3_credentials => {
+#     :bucket => 'campusbazaar'
+#   }
+# }
   # Code is not reloaded between requests.
   config.cache_classes = true
 

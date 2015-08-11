@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  before_action :check_community, only: :show
+  
   def new
   end
 
@@ -87,5 +88,11 @@ private
       end 
     end 
     return nil
+  end 
+
+  def check_community 
+    unless current_user.community_id == User.find(params[:id]).community_id
+      redirect_to root_path # halts request cycle
+    end
   end 
 end

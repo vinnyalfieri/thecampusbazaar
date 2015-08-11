@@ -56,8 +56,7 @@ class CommunitiesController < ApplicationController
 
   def check_community 
     unless current_user.community == nil
-      flash[:error] = "You already have a community!"
-      redirect_to root_path # halts request cycle
+      redirect_to root_path # halts request cycle      
     end
   end 
 end

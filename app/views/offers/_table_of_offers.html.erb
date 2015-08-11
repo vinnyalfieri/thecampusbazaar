@@ -23,7 +23,7 @@
   <td><%= link_to("ACCEPT", offer_confirm_path(offer) , class: "accept-button btn btn-success btn-xs", id: "accept-#{offer.id}") %></td>
   <td><a href="/offers/<%= offer.id %>/rejected" class="reject-button btn btn-danger btn-xs" id="reject-<%=offer.id%>">REJECT</a></td>
   <% elsif offer.status == "rejected" && offer.item.available? %>
-  <td><%= link_to "MESSAGE", new_message_path({user: offer.seller_id, item: offer.item_id}), {class: 'btn btn-xs', id:'message-button'}  %></td>
+  <td><%= link_to "MESSAGE", new_message_path({user: offer.buyer_id, item: offer.item_id}), {class: 'btn btn-xs', id:'message-button'}  %></td>
   <td></td>
   <% else %>
   <td></td>

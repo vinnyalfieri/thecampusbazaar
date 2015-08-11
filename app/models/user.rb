@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   belongs_to :community
   has_many :items, :foreign_key => 'seller_id'
   has_many :offers_sent, :class_name => "Offer", :foreign_key => 'buyer_id'
-
   validates :name, presence: true, format: { 
     with: /\A[a-zA-Z\s]+\z/,
     message: "only allows letters and spaces"

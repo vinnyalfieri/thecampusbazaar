@@ -25,6 +25,8 @@ class CommunitiesController < ApplicationController
   def show
     if !current_user
       render 'static_pages/home'
+    elsif !current_user.community
+      redirect_to 'community/search'
     else
       @community = current_user.community
       #get all items for sale in a community

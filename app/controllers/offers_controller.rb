@@ -33,13 +33,18 @@ class OffersController < ApplicationController
 
   def accepted
     offer = Offer.find(params[:id])
-    offer.status = 'accepted'
-    if offer.charge_venmo
-      flash[:notice] = "venmo charged!"
+    case offer.charge_venmo
+    when "settled"
+      flash[:notice] = "You have successfully charged #{offer.buyer.name} for #{offer.offer_price}!"
+      offer.status = 'accepted'
       offer.save
       reject_offers(offer.item_id)
-    else
-      flash[:notice] = "One of you needs to get Venmo"
+    when "pending"
+      flash[:notice] = "A charge request has been sent to #{offer.buyer.name}. They will need to accept your Venmo charge manually."
+    when "failed"
+      flash[:notice] = "Charging #{offer.buyer.name} was unsuccessful. Contact them for more info."
+    when false
+      flash[:notice] = "Either you or #{offer.buyer.name} has yet to login to Campus Bazaar with Venmo, and we are unable to make this transaction."
     end
     redirect_to offers_received_path
   end 

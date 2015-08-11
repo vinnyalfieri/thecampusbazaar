@@ -9,6 +9,8 @@
         <div class="row">Condition: <%= item.condition %></div>
         <div class="row">Price: $<%=  format("%.2f", item.price) %></div>
         <div class="row">Offered by: <%= item.seller.name %></div>
+        <br>
+        <div class="row"><%= link_to 'Edit Item', edit_user_item_path(current_user, item), class: 'btn btn-info'%></div>
       </div>
     </div>
   </div>

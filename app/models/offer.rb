@@ -11,8 +11,9 @@ class Offer < ActiveRecord::Base
 
   def charge_venmo
 
-    note =  "Just bought #{self.item.name} from CampusBazaar"
-    amount = '0.10' #self.offer_price
+
+    note =  "Just bought #{self.item.name} from #{self.seller.name} on CampusBazaar"
+    amount = self.offer_price# '-0.20'#
     VenmoWrapper.new.transfer_money_from(buyer,seller,amount,note)
   end
 

@@ -1,11 +1,10 @@
 <center>
 <h1><%= @community.name %></h1>
-<h3><%= @community.items.count %> items being sold to <%= User.where(:community => @community).count %> members</h3>
+<h3><%= @item_count %> items being sold to <%= @member_count %> members</h3>
 
 <ul style="list-style-type: none">
 <% @community.users.each do |user| %>
   <%= render partial: 'users/community_user', locals: {user: user} %>
 <% end %>
-
 </ul>
 </center>

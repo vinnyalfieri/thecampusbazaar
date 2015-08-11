@@ -20,3 +20,5 @@
 /public/system/*
 
 /erd.pdf
+# Ignore application configuration
+/config/application.yml

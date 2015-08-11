@@ -1,0 +1,12 @@
+<td><%= offer.seller.name %></td>
+<td><%= offer.item.name %></td>
+<td><%= offer.item.price %></td>
+<td><%= offer.offer_price %></td>
+<td><% if offer.comment %>
+  <%= offer.comment %>
+<% end %></td>
+<td><%= time_ago_in_words(offer.created_at) %></td>
+
+<td> <% if offer.status == 'pending' %>
+<%= link_to "Cancel", offer_path(offer), {:method => 'delete', :class => 'btn btn-danger btn-xs' } %>
+<% end %> </td>

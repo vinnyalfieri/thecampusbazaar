@@ -5,6 +5,8 @@ class CommunitiesController < ApplicationController
   def info
     @user = User.find(session[:user_id]) 
     @community = Community.find(@user.community_id)
+    @item_count = @community.items.count
+    @member_count = User.where(:community => @community).count
   end 
 
   def search

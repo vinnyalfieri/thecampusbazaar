@@ -4,9 +4,8 @@
 <% if (current_user.id == @user.id)%>
 <%= button_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary', method: 'get' %><br>
 <%end%>
-<%#= button_to 'My Items', user_items_path(@user), class: 'btn btn-primary', method: 'get' %>
 
-<%#binding.pry%>
+<%= link_to 'Log in with Venmo', 'https://api.venmo.com/v1/oauth/authorize?client_id=CLIENT_ID&scope=make_payments%20access_profile'%>
 <% if @user.items %>
 <h2> Items for sale </h2>
 <%end%>

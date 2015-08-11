@@ -19,8 +19,13 @@ class User < ActiveRecord::Base
 
   before_validation {avatar.clear if delete_avatar =='1'}
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => ActionController::Base.helpers.asset_path('placeholder-avatar.png')
+  has_attached_file :avatar, 
+                    :styles => { :medium => "300x300>", 
+                                 :thumb => "100x100>" },
+                    :default_url => ActionController::Base.helpers.asset_path('placeholder-avatar.png')
+
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
 
   def has_venmo?
     self.venmo_id && self.encrypted_token

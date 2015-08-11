@@ -25,7 +25,6 @@ class VenmoWrapper
       user.venmo_id = auth_hash[:uid]
       user.token = auth_hash[:credentials][:token]
       user.save
-      redirect_to user_path(user)
     end
   end
 

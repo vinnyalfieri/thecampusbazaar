@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
                     :styles => { :medium => "300x300>", 
                                  :thumb => "100x100>" },
                     :default_url => ActionController::Base.helpers.asset_path('placeholder-avatar.png')
+                  #   :s3_permissions => "public-read",
+                  # :path => ":filename",
+                  # :bucket => ENV['amazon_bucket']
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 

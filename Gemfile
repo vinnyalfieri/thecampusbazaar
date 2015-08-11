@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem "paperclip", "~> 4.3"
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 gem'omniauth' 
 gem 'omniauth-venmo'

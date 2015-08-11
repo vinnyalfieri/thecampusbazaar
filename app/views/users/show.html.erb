@@ -6,7 +6,7 @@
 <%end%>
 
 <% unless @user.has_venmo? %>
-  <%= link_to 'Log in with Venmo', 'https://api.venmo.com/v1/oauth/authorize?client_id=CLIENT_ID&scope=make_payments%20access_profile'%>
+  <%= link_to 'Log in with Venmo', venmo_login_path %>
 <% end %>
 
 <% if @user.items %>

@@ -34,10 +34,13 @@ class OffersController < ApplicationController
   def accepted
     offer = Offer.find(params[:id])
     offer.status = 'accepted'
-    offer.charge_venmo
-    flash[:notice] = "venmo charged!"
-    offer.save
-    reject_offers(offer.item_id)
+    if offer.charge_venmo
+      flash[:notice] = "venmo charged!"
+      offer.save
+      reject_offers(offer.item_id)
+    else
+      flash[:notice] = "One of you needs to get Venmo"
+    end
     redirect_to offers_received_path
   end 
 

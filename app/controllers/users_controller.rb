@@ -56,36 +56,45 @@ class UsersController < ApplicationController
     @user.save
   end
 
-private
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :delete_avatar)
+  def venmo
+    VenmoWrapper.new.authenticate_venmo(current_user,auth_hash)
+    redirect_to user_path(current_user)
   end
 
-  def set_community
-    domain = @user.email.split("@")[1]
-    community = find_community(domain)
-    if community != nil
-      @user.community = find_community(domain)
-      @user.save
-    else
-      return nil 
-    end 
-  end 
+  private
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :delete_avatar)
+    end
 
-  def find_community(domain)
-    base_url = "https://raw.githubusercontent.com/Hipo/university-domains-list/master/world_universities_and_domains.json"
-    response = Net::HTTP.get_response(URI.parse(base_url))
-    data = response.body
-    result = JSON.parse(data)
-    result.each do |school|
-      if school["domain"] == domain
-        community = Community.find_by(name: school["name"])
-        if community == nil 
-          community = Community.create(name: school["name"])
-        end 
-        return community
+    def set_community
+      domain = @user.email.split("@")[1]
+      community = find_community(domain)
+      if community != nil
+        @user.community = find_community(domain)
+        @user.save
+      else
+        return nil 
       end 
     end 
-    return nil
-  end 
+
+    def find_community(domain)
+      base_url = "https://raw.githubusercontent.com/Hipo/university-domains-list/master/world_universities_and_domains.json"
+      response = Net::HTTP.get_response(URI.parse(base_url))
+      data = response.body
+      result = JSON.parse(data)
+      result.each do |school|
+        if school["domain"] == domain
+          community = Community.find_by(name: school["name"])
+          if community == nil 
+            community = Community.create(name: school["name"])
+          end 
+          return community
+        end 
+      end 
+      return nil
+    end 
+
+    def auth_hash
+      request.env['omniauth.auth']
+    end
 end

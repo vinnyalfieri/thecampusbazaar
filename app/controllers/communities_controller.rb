@@ -29,7 +29,9 @@ class CommunitiesController < ApplicationController
       @community = current_user.community
       #get all items for sale in a community
       @items = @community.items.reject{|item| current_user.items.include?(item)}.select{|item| item.status == 'available'}
-      @categories = @community.categories.distinct
+      @categories = @items.map do |item|
+        item.categories
+      end.flatten.uniq{|c| c.id}
     end
     
     if params[:category_id]

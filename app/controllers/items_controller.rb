@@ -28,6 +28,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    binding.pry
     current_user.items.build(item_params)
     if current_user.save
       redirect_to user_item_path(current_user, current_user.items.last)
@@ -60,7 +61,7 @@ class ItemsController < ApplicationController
   private
 
     def item_params
-      params.require(:item).permit(:name,:price,:description,:condition,:product, :delete_product)
+      params.require(:item).permit(:name,:price,:description,:condition,:product, :delete_product, :category_ids => [])
     end
 
 end

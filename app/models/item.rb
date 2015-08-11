@@ -7,6 +7,8 @@ class Item < ActiveRecord::Base
   has_many :categories, through: :item_categories
   has_many :offers
 
+  accepts_nested_attributes_for :categories
+
   validates :name, presence: true
 
   before_validation {product.clear if delete_product =='1'}

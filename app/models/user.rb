@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
 
+  def name
+    self.name
+  end
+
   def has_venmo?
     self.venmo_id && self.encrypted_token
   end

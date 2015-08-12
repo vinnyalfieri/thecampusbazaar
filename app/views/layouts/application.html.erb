@@ -6,24 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>
-<div id="wrapper">
-  <div id="content">
-
+<body style="PADDING-TOP: 1px">
+<div class="outer">
     <%= render partial: 'layouts/navbar'%>
+  <div class="main-block">
+    <div id="content">
+      <% if notice %>
+       <div class="alert alert-success"><%= notice %></div>
+      <% end %>
 
-    <% if notice %>
-     <div class="alert alert-success"><%= notice %></div>
-    <% end %>
-
-    <div class="container container-fluid">
-      <%= yield %>
+      <div class="container container-fluid">
+        <%= yield %>
+      </div>
     </div>
   </div>
-  <div id="footer">
-  <%= render 'layouts/footer' %>
-  </div>
-  </div>
+</div>
+<div id="footer">
+      <%= render 'layouts/footer' %>
+    </div>
 </body>
   
 </html>

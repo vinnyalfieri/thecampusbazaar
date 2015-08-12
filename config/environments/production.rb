@@ -1,6 +1,6 @@
 Rails.application.configure do
   GA.tracker = Rails.application.secrets.google_analytics_code
-  # config.action_mailer.default_url_options = { host: Rails.application.secrets.host }
+   config.action_mailer.default_url_options = { host: Rails.application.secrets.host }
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.paperclip_defaults = {
@@ -94,7 +94,7 @@ config.i18n.fallbacks = true
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # config.action_mailer.default_url_options = { :host => 'http://www.campusbazaar.herokuapp.com' }
+   config.action_mailer.default_url_options = { :host => 'http://www.campusbazaar.herokuapp.com' }
 
 end
 

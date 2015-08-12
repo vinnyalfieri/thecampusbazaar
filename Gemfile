@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 
 gem 'sidekiq'
+gem 'redis'
+
 gem "paperclip", "~> 4.3"
 gem 'aws-sdk', '< 2.0'
 

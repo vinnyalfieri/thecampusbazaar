@@ -1,10 +1,11 @@
 <h1>Create an Offer for <%= @item.name %></h1>
-<p><%= form_tag({controller: "offers", action: "create"}, method: :post) do %></p>
-<%= label_tag :offer_price %>
-<p><%= number_field_tag :offer_price, "#{@item.price}", :step => 0.01 %></p>
-<%= label_tag :comment %>
-<p><%= text_area_tag :comment %></p>
-<%= hidden_field_tag(:buyer, "#{current_user.id}") %>
-<%= hidden_field_tag(:item, "#{@item.id}") %>
-<%= submit_tag 'Submit Offer', class: "btn btn-primary" %>
+<p><%= form_for(Offer.new) do |f|%></p>
+  <%= f.label :offer_price %>
+  <p><%= f.number_field :offer_price, :value => "#{@item.price}", :step => 0.01 %></p>
+  <%= f.label :comment %>
+  <p><%= f.text_area :comment %></p>
+  <%= f.hidden_field(:buyer_id, value: "#{current_user.id}") %>
+  <%= f.hidden_field(:item_id, value: "#{@item.id}") %>
+  <%= f.collection_check_boxes :payment_option_ids, PaymentOption.all, :id, :name %>
+  <%= f.submit 'Submit Offer', class: "btn btn-primary" %>
 <% end %>

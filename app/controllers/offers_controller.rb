@@ -6,8 +6,12 @@ class OffersController < ApplicationController
   end 
 
   def create
-    offer = Offer.create(seller_id: Item.find(params[:item]).seller_id, buyer: current_user, item_id: params[:item], offer_price: params[:offer_price], comment: params[:comment], status: 'pending')
-    flash[:notice] = "Offer has been submitted!"
+    offer = Offer.new(offer_params)
+    if offer.save
+      flash[:notice] = "Offer has been submitted!"
+    else
+      flash[:notice] = "There was an error with your form"
+    end
     redirect_to root_path
   end 
 
@@ -68,12 +72,16 @@ class OffersController < ApplicationController
   end
 
   private
-  def reject_offers(item_id)
-    offers = Offer.pending_offers(item_id)
-    offers.each do |offer|
-      offer.status = 'rejected'
-      offer.save
-    end 
-  end 
+    def reject_offers(item_id)
+      offers = Offer.pending_offers(item_id)
+      offers.each do |offer|
+        offer.status = 'rejected'
+        offer.save
+      end 
+    end
+
+    def offer_params
+      params.require(:offer).permit(:buyer_id, :item_id, :offer_price, :comment, :payment_option_ids => [])
+    end
 
 end

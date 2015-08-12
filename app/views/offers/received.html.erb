@@ -1,6 +1,6 @@
 <div class="tables_of_items">
   
-  <% if current_user.offers_received.count > 0 %>
+  <% if @count > 0 %>
   <h1>Open Items:</h1>
     <div class="all_offered_item_tables">
     <% @available_items.each do |item| %>

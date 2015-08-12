@@ -24,4 +24,5 @@ class MessagesController < ApplicationController
     else
     redirect_to :conversations
   end
+  end
 end

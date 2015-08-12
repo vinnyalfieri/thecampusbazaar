@@ -71,4 +71,8 @@ class User < ActiveRecord::Base
     !(self.items == [])
   end 
 
+  def buyer?
+    !(self.offers_sent == [])
+  end 
+
 end

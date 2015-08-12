@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   end
   
   def offers_received
-    self.items.select{|item| item.offers}
+    self.items.collect{|item| item.offers}.flatten
   end
 
   def seller?

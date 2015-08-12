@@ -29,6 +29,7 @@ class OffersController < ApplicationController
   def received
     @available_items = current_user.items.select{|item| item.available?}
     @sold_items = current_user.items.reject{|item| item.available?}
+    @count = current_user.offers_received.count
   end
 
   def accepted

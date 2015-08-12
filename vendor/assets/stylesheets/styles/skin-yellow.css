@@ -24,33 +24,33 @@ a:hover {
 /* Default Theme Color Class */
 /*****************************/
 .color {
-  color: #fcd419 !important;
+  color: #FF7B7B !important;
 }
 a.color {
-  color: #fcd419 !important;
+  color: #FF7B7B !important;
 }
 a.color:hover,
 a.color:focus {
   color: #dfb803;
 }
 .bg-color {
-  background-color: #fcd419 !important;
+  background-color: #FF7B7B !important;
 }
 .br-color {
-  border: 1px solid #fcd419;
+  border: 1px solid #FF7B7B;
 }
 .dropcap-1 {
-  color: #fcd419;
+  color: #FF7B7B;
 }
 .dropcap-2,
 .dropcap-3 {
-  background: #fcd419;
+  background: #FF7B7B;
 }
 blockquote {
-  border-color: #fcd419;
+  border-color: #FF7B7B;
 }
 blockquote.blockquote-reverse {
-  border-color: #fcd419;
+  border-color: #FF7B7B;
 }
 /***************/
 /* List styles */

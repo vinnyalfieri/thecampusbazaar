@@ -15,7 +15,7 @@
       <div class="row">
         <div class="col-md-9 col-sm-8 col-md-push-3 col-sm-push-4">
           <div class="shopping-content">
-            <h4><i class="fa fa-user blue"></i>&nbsp; Profile&nbsp;<small>Campus Bazaar</small></h4>
+            <h4><i class="fa fa-user color"></i>&nbsp; Profile&nbsp;<small>Campus Bazaar</small></h4>
             <hr>
             <div class="shopping-account">
               <div class="row"> 
@@ -28,9 +28,9 @@
                   <h4><%= @user.name %></h4>
                   <div class="address">
                     <!-- Email Address -->
-                    <span><i class="fa fa-envelope blue"></i>&nbsp; <%= @user.email %></span><br>
-                    <span><i class="fa fa-cubes blue"></i>&nbsp; <%= @user.items.count%> items for sale</span><br>
-                    <span><i class="fa fa-money blue"></i>&nbsp; <%= @user.pending_offers_received.count %> offers pending</span>
+                    <span><i class="fa fa-envelope color"></i>&nbsp; <%= @user.email %></span><br>
+                    <span><i class="fa fa-cubes color"></i>&nbsp; <%= @user.items.count%> items for sale</span><br>
+                    <span><i class="fa fa-money color"></i>&nbsp; <%= @user.pending_offers_received.count %> offers pending</span>
                   </div>
                 </div> 
               </div>
@@ -56,7 +56,7 @@
           
         <!-- Owl carousel block starts -->
         <!-- Change values of data-items, data-auto-play, data-pagination & data-single-item based on your needs -->
-          <div class="owl-carousel owl-theme" data-items=<%= @user.items.count %> data-auto-play="true" data-pagination="false" data-single-item="false" style="opacity: 1; display: block;">
+          <div class="owl-carousel owl-theme" data-items=<%= @user.items.count %> data-auto-play="false" data-pagination="false" data-single-item="false" style="opacity: 1; display: block;">
             <!-- Carousel item -->
             <div class="owl-wrapper-outer">
               <div class="owl-wrapper" style="width: 4480px; left: 0px; display: block; transition: all 800ms ease; transform: translate3d(-1120px, 0px, 0px);">
@@ -67,7 +67,7 @@
                   <div class="owl-content"> 
                     <div class="padd-15">
                       <a href=<%= user_item_path(item.seller, :id => item.id)%>><img src="/assets/<%= item.product.url(:medium)  %>" alt=<%= item.name %> class="img-responsive"></a>
-                      <h4><a href="#"> <%= item.name %> <span class="color pull-right">$25</span></a></h4>
+                      <h4><a href=<%= user_item_path(item.seller, :id => item.id)%>> <%= item.name %> <span class="color pull-right">$<%= item.price %></span></a></h4>
                       <div class="clearfix"></div>
                     </div>
                   </div>
@@ -78,7 +78,8 @@
 
 
               </div>
-            </div>    
+            </div>   
+            <div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div> 
           </div> <!--OWL CAROUSEL-->  
         </div> <!--RECENT ITEMS -->
 

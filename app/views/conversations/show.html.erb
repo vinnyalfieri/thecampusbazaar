@@ -19,9 +19,9 @@
         <% message = receipt.message %>
         <b>
         <% if message.sender_id == current_user.id %>
-          <div class="talk-bubble tri-right left-top">
-        <% else %>
           <div class="talk-bubble tri-right right-top">
+        <% else %>
+          <div class="talk-bubble tri-right left-top">
         <% end %>
         <div class="talktext">
         <%= message.sender.name %>

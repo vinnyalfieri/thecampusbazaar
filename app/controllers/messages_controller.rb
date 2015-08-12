@@ -19,6 +19,7 @@ class MessagesController < ApplicationController
   def create
     @recipient = User.find(params[:user])
     current_user.send_message(@recipient, params[:body], params[:subject])
+    sleep(10)
     flash[:notice] = "Message has been sent!"
     redirect_to root_path
   end

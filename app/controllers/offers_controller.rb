@@ -41,9 +41,9 @@ class OffersController < ApplicationController
     offer = Offer.find(params[:id])
 
     case params[:payment_method]
-    when "venmo"
+    when "Venmo"
       transaction_status = offer.charge_venmo
-    when "cash"
+    when "Cash"
       transaction_status = "cash"
     else
       transaction_status = nil

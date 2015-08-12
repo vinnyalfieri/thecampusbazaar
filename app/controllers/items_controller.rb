@@ -28,7 +28,10 @@ class ItemsController < ApplicationController
   end
 
   def create
-    current_user.items.build(item_params)
+    item = current_user.items.build(item_params)
+    if item.categories.empty?
+      item.categories << Category.find_by(name: "Misc")
+    end 
     if current_user.save
       redirect_to user_item_path(current_user, current_user.items.last)
       flash[:notice] = "Item created!"

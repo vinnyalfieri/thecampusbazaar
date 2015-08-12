@@ -32,53 +32,46 @@
       </div>
       <div class="col-md-8">  
               <!-- Navigation starts.  -->
-              <% if current_user %>
-              <div class="navy">    
-                <ul>
-                  <!-- Main menu -->
-                  <li class="has-sub"><span class="submenu-button"></span><a href="#">Your Account</a>
-                    <!-- Submenu -->
-                    <ul>
-                      <li><%= link_to  "Edit Your Account", user_path(current_user) %></li>
-                      <li ><%= link_to("Messages #{current_user.mailbox.inbox(:unread => true).count(:id, :distinct => true)}", conversations_path) %></li>
-                      <li ><%= link_to('Sell an Item', new_user_item_path(:user_id => current_user.id)) %> </li>
-                      <li ><%= link_to('Manage Your Items', user_items_path(:user_id => current_user.id)) %> </li>
-                      <!-- 2nd Level sub menu -->
-                       <% if current_user.seller? %>
-                      <li class="has-sub"><span class="submenu-button"></span>
-                        <a href="#">Offers</a>
-                        <ul>
-                          <li><%= link_to('Offers you made', offers_sent_path(current_user))%></li>
-                          <li><%= link_to('Offers for your items', offers_received_path(current_user))%></li>
-                        </ul>
-                      </li>
-                      <% else %>
-                        <li ><%= link_to('Offers Sent', offers_sent_path(current_user)) %> </li>
-                      <% end %>
-                    </ul>
-                  </li>              
-                  <li><a href="about-us-one.html">About Us</a></li>
-                  <li><a href="contact-us-one.html">Contact Us</a></li>
-                  <% end %>
-              <% if current_user %>
-                <li><%= link_to "Signed in as #{current_user.name}", '/' %></li>
-                <li><%= link_to "|", '/' %></li>
-                <li><%= link_to "Logout", '/logout' %></li>
-                <% else %>
-                <li><%= link_to 'Login', '/login' %></li>
-                <li><%= link_to "|", '/' %></li>
-                <li><%= link_to 'Signup', '/signup' %></li>
-              <% end %>
-
-                </ul>
-              </div>              
-              
-
-
-
-               <!-- Navigation ends -->        
+        <div class="navy">    
+          <ul>
+          <% if current_user %>
+            <!-- Main menu -->
+            <li class="has-sub"><span class="submenu-button"></span><a href="#">Your Account</a>
+              <!-- Submenu -->
+              <ul>
+                <li><%= link_to  "Edit Your Account", user_path(current_user) %></li>
+                <li ><%= link_to("Messages #{current_user.mailbox.inbox(:unread => true).count(:id, :distinct => true)}", conversations_path) %></li>
+                <li ><%= link_to('Sell an Item', new_user_item_path(:user_id => current_user.id)) %> </li>
+                <li ><%= link_to('Manage Your Items', user_items_path(:user_id => current_user.id)) %> </li>
+                <!-- 2nd Level sub menu -->
+                 <% if current_user.seller? %>
+                <li class="has-sub"><span class="submenu-button"></span>
+                  <a href="#">Offers</a>
+                  <ul>
+                    <li><%= link_to('Offers Sent', offers_sent_path(current_user))%></li>
+                    <li><%= link_to('Offers Received', offers_received_path(current_user))%></li>
+                  </ul>
+                </li>
+                <% elsif current_user.buyer? %>
+                  <li ><%= link_to('Offers Sent', offers_sent_path(current_user)) %> </li>
+                <% end %>
+              </ul>
+            </li>              
+            <li><%= link_to(" About this Project", about_path) %></li>
+            <% end %>
+        <% if current_user %>
+          <li class="pull-right"><%= link_to "Logout", '/logout' %></li>
+          <li class="pull-right"><%= link_to "|", '/' %></li>
+          <li class="pull-right"><%= link_to "Signed in as #{current_user.name}", '/' %></li>
+          <% else %>
+          <li class="pull-right"><%= link_to 'Login', '/login' %></li>
+          <li class="pull-right"><%= link_to "|", '/' %></li>
+          <li class="pull-right"><%= link_to 'Signup', '/signup' %></li>
+        <% end %>
+          </ul>
+        </div>              
+         <!-- Navigation ends -->        
       </div>
-
       <div class="col-md-1">
               <!-- Search section -->
               <div class="head-search pull-right">

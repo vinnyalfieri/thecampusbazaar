@@ -1,9 +1,9 @@
 <li class="col-sm-4">
-  <div class="panel panel-rose">
+  <div class="panel panel-black">
     <div class="panel-heading">
       <%= image_tag item.product.url(:medium), :class => "img-responsive center-block"%>
     </div>
-    <div class="panel-body">
+    <div class="panel-body bg-whitev br-red">
       <div class="row" style="font-size:23px"> <%= link_to(item.name, user_item_path(item.seller, :id => item.id)) %></div>
       <div style="font-size:15px">
         <div class="row">Condition: <%= item.condition %></div>

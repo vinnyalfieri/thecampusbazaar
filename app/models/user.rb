@@ -22,7 +22,16 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, 
                     :styles => { :medium => "300x300>", 
                                  :thumb => "100x100>" },
-                    :default_url => ActionController::Base.helpers.asset_path('placeholder-avatar.png')
+                    :default_url => 'placeholder-avatar.png'
+                    # :storage => :s3,
+                    # :s3_permissions => "public-read",
+                  # :path => ":filename",
+                    #   :bucket => ENV['amazon_bucket'],
+                    # :s3_credentials => {
+                    #   :access_key_id => ENV['amazon_access_key'],
+                    #   :secret_access_key => ENV['amazon_secret'],
+                    # }
+
                   #   :s3_permissions => "public-read",
                   # :path => ":filename",
                   # :bucket => ENV['amazon_bucket']

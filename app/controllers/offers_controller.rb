@@ -6,8 +6,13 @@ class OffersController < ApplicationController
   end 
 
   def create
-    offer = Offer.create(seller_id: Item.find(params[:item]).seller_id, buyer: current_user, item_id: params[:item], offer_price: params[:offer_price], comment: params[:comment], status: 'pending')
-    flash[:notice] = "Offer has been submitted!"
+    params["offer"]["payment_option_ids"] = ["2"] if params["offer"]["payment_option_ids"] == [""]
+    offer = Offer.new(offer_params)
+    if offer.save
+      flash[:notice] = "Offer has been submitted!"
+    else
+      flash[:notice] = "There was an error with your form"
+    end
     redirect_to root_path
   end 
 
@@ -34,19 +39,21 @@ class OffersController < ApplicationController
 
   def accepted
     offer = Offer.find(params[:id])
-    case offer.charge_venmo
-    when "settled"
-      flash[:notice] = "You have successfully charged #{offer.buyer.name} for #{offer.offer_price}!"
-      offer.status = 'accepted'
-      offer.save
-      reject_offers(offer.item_id)
-    when "pending"
-      flash[:notice] = "A charge request has been sent to #{offer.buyer.name}. They will need to accept your Venmo charge manually."
-    when "failed"
-      flash[:notice] = "Charging #{offer.buyer.name} was unsuccessful. Contact them for more info."
-    when false
-      flash[:notice] = "Either you or #{offer.buyer.name} has yet to login to Campus Bazaar with Venmo, and we are unable to make this transaction."
+
+    case params[:payment_method]
+    when "venmo"
+      transaction_status = offer.charge_venmo
+    when "cash"
+      transaction_status = "cash"
+    else
+      transaction_status = nil
     end
+
+    if transaction_status == "settled" || transaction_status == "cash"
+      offer.settle
+    end
+    
+    flash[:notice] = offer_flash_message(transaction_status, offer)
     redirect_to offers_received_path
   end 
 
@@ -68,12 +75,20 @@ class OffersController < ApplicationController
   end
 
   private
-  def reject_offers(item_id)
-    offers = Offer.pending_offers(item_id)
-    offers.each do |offer|
-      offer.status = 'rejected'
-      offer.save
-    end 
-  end 
+
+    def offer_params
+      params.require(:offer).permit(:buyer_id, :item_id, :offer_price, :comment, :payment_option_ids => [])
+    end
+
+    def offer_flash_message(flag = nil,offer)
+      messages = {
+        settled: "You have successfully charged #{offer.buyer.name} for #{offer.offer_price}!", 
+        pending: "A charge request has been sent to #{offer.buyer.name}. They will need to accept your Venmo charge manually.",
+        failed: "Charging #{offer.buyer.name} was unsuccessful. Contact them for more info.",
+        cash: "You have agreed to transact with cash. Please contact the buyer to establish a meeting time, etc.",
+        error: "Either this offer hasn't specified any payment options, or another error occurred."
+      }
+      messages[flag.to_sym] || "Either you or #{offer.buyer.name} has yet to login to Campus Bazaar with Venmo, and we are unable to make this transaction."
+    end
 
 end

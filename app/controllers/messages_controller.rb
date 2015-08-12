@@ -10,7 +10,11 @@ class MessagesController < ApplicationController
 # GET /message/new
   def new
   @user = User.find(params[:user])  #user the person wishes to contact
-  @item = Item.find(params[:item])  #itme the person wishes to inquire about
+  if params[:item] != ""
+    @item_name = Item.find(params[:item]).name  #item the person wishes to inquire about
+  else 
+    @item_name = ""
+  end 
   @message = current_user.messages.new
     # display form
   end

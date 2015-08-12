@@ -2,7 +2,7 @@
 
   <div class="page-heading-two">
     <div class="container">
-      <h2>My Account <span>Campus Bazaar</span></h2>
+      <h2>Profile <span>Campus Bazaar</span></h2>
       <div class="breads">
         Home / <a href="#">Page</a> / <a href="#">Sub Page</a>
       </div>
@@ -10,21 +10,17 @@
     </div>
   </div>
 
-
-
-
   <div class="container"> 
     <div class="ecommerce">
       <div class="row">
         <div class="col-md-9 col-sm-8 col-md-push-3 col-sm-push-4">
           <div class="shopping-content">
-            <h4><i class="fa fa-user blue"></i>&nbsp; My Account&nbsp;<small>Campus Bazaar</small></h4>
+            <h4><i class="fa fa-user blue"></i>&nbsp; Profile&nbsp;<small>Campus Bazaar</small></h4>
             <hr>
             <div class="shopping-account">
               <div class="row"> 
                 <div class="col-md-3 col-sm-4 col-xs-4">
                   <!-- Image -->
-                  <%#= image_tag @user.avatar.url(:medium) %>
                   <img src="<%= @user.avatar.url(:medium) %>" class="img-responsive img-thumbnail" alt="<%= @user.name%> profile picture">
                 </div>
                 <div class="col-md-9 col-sm-8 col-xs-8">
@@ -45,9 +41,8 @@
           <div class="sidebar">
             <h2>Navigation</h2>
             <ul class="account-nav">
-              <li><%= link_to  "Your Account", user_path(current_user) %></li>
-              <li><%= link_to "Edit Account", edit_user_path(current_user)%></li>
-              <li><%= link_to "Manage Items", user_items_path(current_user)%></li>
+              <li><%= link_to  "Profile", user_path(@user) %></li>
+              <li><%= link_to "Message User", new_message_path(user: @user.id, item: "")%></li>
             </ul>
           </div>
         </div> <!--PULL-8-->

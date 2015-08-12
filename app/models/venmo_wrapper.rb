@@ -8,7 +8,7 @@ class VenmoWrapper
 
     if buyer.has_venmo? && seller.has_venmo?
     
-      conn = Faraday.new(:url => 'https://sandbox-api.venmo.com') do |faraday|
+      conn = Faraday.new(:url => 'https://api.venmo.com') do |faraday|
              faraday.request  :url_encoded 
              faraday.response :logger
              faraday.adapter  Faraday.default_adapter
@@ -17,7 +17,7 @@ class VenmoWrapper
       response = conn.post '/v1/payments', { user_id: seller.venmo_id, amount: amount, note: note, access_token: buyer.token}
       response_json = JSON.parse(response.body)
       #response_json['data']['payment']['status'] => %w(settled pending failed)
-
+      puts response_json
       response_json['data']['payment']['status']# == "failed" ? false : true
     end
 

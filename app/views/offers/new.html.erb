@@ -7,5 +7,6 @@
   <%= f.hidden_field(:buyer_id, value: "#{current_user.id}") %>
   <%= f.hidden_field(:item_id, value: "#{@item.id}") %>
   <%= f.collection_check_boxes :payment_option_ids, PaymentOption.all, :id, :name %>
+  <p>(If no payment option selected, cash will be the default.)</p>
   <%= f.submit 'Submit Offer', class: "btn btn-primary" %>
 <% end %>

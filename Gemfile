@@ -8,7 +8,6 @@ gem 'omniauth-venmo'
 gem 'attr_encrypted'
 gem 'faraday'
 
-
 gem 'mailboxer'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'

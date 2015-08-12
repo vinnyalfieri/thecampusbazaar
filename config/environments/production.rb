@@ -98,4 +98,4 @@ config.i18n.fallbacks = true
 
 end
 
-Rails.application.routes.default_url_options[:host] = 'http://www.campusbazaar.herokuapp.com'
+#Rails.application.routes.default_url_options[:host] = 'http://www.campusbazaar.herokuapp.com'

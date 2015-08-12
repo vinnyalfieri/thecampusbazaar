@@ -23,7 +23,9 @@
   <div class="panel panel-default" style="font-size: 20px;">
     <div class="panel-body">
       <p>
-        <b>Sold By: </b><%= link_to @item.seller.name, user_path(@item.seller) %>
+        <% unless @item.seller == current_user %>
+          <b>Sold By: </b><%= link_to @item.seller.name, user_path(@item.seller) %>
+        <% end %>
         <br>
           <p>
             <b>List Price: </b>$<%=  format("%.2f", @item.price) %>
@@ -36,11 +38,12 @@
             </p>
       </p>
       <br>
-
-      <%= link_to "Make Offer", new_offer_path({user: @item.seller_id, item: @item.id}), {class: 'btn btn-danger'}  %>
-
-      <br><br>
-      <%= link_to "Contact Seller", new_message_path({user: @item.seller_id, item: @item.id}), {class: 'btn btn-success'}  %>
+      
+      <% unless @item.seller == current_user %>
+        <%= link_to "Make Offer", new_offer_path({user: @item.seller_id, item: @item.id}), {class: 'btn btn-danger'}  %>
+        <br><br>
+        <%= link_to "Contact Seller", new_message_path({user: @item.seller_id, item: @item.id}), {class: 'btn btn-success'}  %>
+      <% end %>
     </div>
   </div>
 </div>

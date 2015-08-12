@@ -6,6 +6,7 @@ class OffersController < ApplicationController
   end 
 
   def create
+    params["offer"]["payment_option_ids"] = ["2"] if params["offer"]["payment_option_ids"] == [""]
     offer = Offer.new(offer_params)
     if offer.save
       flash[:notice] = "Offer has been submitted!"

@@ -1,4 +1,6 @@
 <div class="tables_of_items">
+  
+  <% if @count > 0 %>
   <h1>Open Items:</h1>
     <div class="all_offered_item_tables">
     <% @available_items.each do |item| %>
@@ -15,4 +17,7 @@
        <%= render :partial => "table_of_received", locals: {item: item}%>
     <% end %>
     </div>
+    <% else %>
+      You do not currently have any offers on your items.
+    <% end %> 
 </div>

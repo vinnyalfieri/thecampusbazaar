@@ -3,8 +3,8 @@ class ItemsController < ApplicationController
   before_filter :authorize
 
   def index
-    @user = params[:user_id]
-    @items = User.find(@user).items
+    @user = User.find(params[:user_id])
+    @items = @user.items
   end
 
   def new
@@ -28,7 +28,10 @@ class ItemsController < ApplicationController
   end
 
   def create
-    current_user.items.build(item_params)
+    item = current_user.items.build(item_params)
+    if item.categories.empty?
+      item.categories << Category.find_by(name: "Misc")
+    end 
     if current_user.save
       redirect_to user_item_path(current_user, current_user.items.last)
       flash[:notice] = "Item created!"

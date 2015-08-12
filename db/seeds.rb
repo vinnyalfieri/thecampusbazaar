@@ -58,7 +58,7 @@ end
 
 categories = Category.create([{name: 'Furniture'}, {name: 'Textbooks'}, 
   {name: 'Food'}, {name: 'Electronics'}, {name: 'Clothing'}, {name: 'Pets'}, 
-  {name: 'Musical Instruments'}, {name: 'Apliances'}, {name: 'Toys'}, 
+  {name: 'Musical Instruments'}, {name: 'Appliances'}, {name: 'Toys'}, 
   {name: 'Jewelry'}, {name: 'Shoes'}, {name: 'Automotive'}, {name: 'Tools'}])
 
 @car1 = Item.create(name: 'Chrysler 200', price: '22000.00', description: '2011 Chrysler 200 in Ruby Red', condition: 'Excellent')

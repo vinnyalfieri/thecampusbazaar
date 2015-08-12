@@ -2,9 +2,11 @@ Rails.application.configure do
   config.assets.raise_production_errors = true
   # Settings specified here will take precedence over those in config/application.rb.
   config.paperclip_defaults = {
-  :storage => :s3,
-  :s3_credentials => {
-    :bucket => 'campusbazaar'
+    :storage => :s3,
+    :s3_credentials => {
+    :bucket => ENV['amazon_bucket'],
+    :access_key_id => ENV['amazon_access_key'], 
+    :secret_access_key => ENV['amazon_secret']
   }
 }
   # In the development environment your application's code is reloaded on

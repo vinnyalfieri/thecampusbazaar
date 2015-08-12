@@ -1,5 +1,8 @@
 Are you sure you want to sell <%= @offer.item.name %>  to <%= @buyer.name %>?
 
-<%= link_to 'Confirm', offer_accepted_path(@offer) , class: 'btn btn-success'%>
+<% @offer.payment_options.each do |p_o| %>
+<%= link_to "Pay with #{p_o.name.capitalize}", offer_accepted_path(@offer, payment_method: p_o.name) , class: 'btn btn-success' %>
+<% end %>
+
 <%= link_to 'Go back', offer_path(@offer), class: 'btn btn-danger' %>
 

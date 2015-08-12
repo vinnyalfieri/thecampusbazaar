@@ -94,8 +94,8 @@ config.i18n.fallbacks = true
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'http://www.campusbazaar.herokuapp.com' }
 
 end
 
-Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+Rails.application.routes.default_url_options[:host] = 'http://www.campusbazaar.herokuapp.com'

@@ -7,7 +7,12 @@
   <div  style="text-align: center">Here's what people are selling at <a href="/communities/info"><%= @community.name %></a>.</div> 
 </div>
 <br>
-
+<%= form_tag('/items') do %> 
+   <div>
+   <%= text_field_tag :keyword%>  
+   <%= submit_tag 'Search' %> 
+   </div>
+<% end -%>
 
 <ul style="list-style-type: none">
   <% @items.each do |item| %>

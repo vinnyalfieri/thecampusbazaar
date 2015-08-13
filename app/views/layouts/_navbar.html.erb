@@ -35,7 +35,7 @@
               <!-- Submenu -->
               <ul>
                 <li><%= link_to  "Edit Your Account", user_path(current_user) %></li>
-                <li ><%= link_to("Messages #{current_user.mailbox.inbox(:unread => true).count(:id, :distinct => true)}", conversations_path) %></li>
+                <li ><%= link_to("Messages", conversations_path) %></li>
                 <li ><%= link_to('Sell an Item', new_user_item_path(:user_id => current_user.id)) %> </li>
                 <li ><%= link_to('Manage Your Items', user_items_path(:user_id => current_user.id)) %> </li>
                 <!-- 2nd Level sub menu -->
@@ -50,6 +50,7 @@
                 <% elsif current_user.buyer? %>
                   <li ><%= link_to('Offers Sent', offers_sent_path(current_user)) %> </li>
                 <% end %>
+
               </ul>
             </li>              
             <li><%= link_to(" About this Project", about_path) %></li>

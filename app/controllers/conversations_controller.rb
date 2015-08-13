@@ -1,66 +1,30 @@
 class ConversationsController < ApplicationController
-  helper_method :mailbox, :conversation
-  before_action :mailbox
-
-  def create
-    recipient_emails = conversation_params(:recipients).split(',')
-    recipients = User.where(email: recipient_emails).all
-
-    conversation = current_user.send_message(recipients, *conversation_params(:body, :subject)).conversation
-  end
 
   def index
-    @conversations ||= @mailbox.inbox
-    @inbox_count ||= @conversations.all.count
-    @trash ||= @mailbox.trash.all
-    @trash_count ||= @trash.all.count
-    @unread = @conversations.select{ |c| c.is_unread?(current_user) }.count
+    @users = User.all 
+    @conversations = Conversation.all
   end
 
-
-  def reply
-    current_user.reply_to_conversation(conversation, params[:body])
-    redirect_to conversation_path(@conversation)
+  def create
+    @conversation = Conversation.new(conversation_params)
+    @conversation.save
+    @message = Message.new
+    @message.conversation_id = @conversation.id
+    @message.recipient_id = @conversation.user2_id
+    @message.sender_id = @conversation.user1_id
+    @message.content = params[:conversation][:messages][:content]
+    @message.save
+    redirect_to conversations_path
   end
 
-  def trash
-    conversation.move_to_trash(current_user)
-    redirect_to :conversations
+  def new 
+    #binding.pry
+    @item = Item.find(params[:item_id])
   end
 
-  def show
-    @conversation ||= @mailbox.conversations.find(params[:id])
-    @participants = @conversation.participants
-    @receipts = @conversation.receipts_for(current_user).reverse
-    conversation.mark_as_read(current_user)
+private
+  def conversation_params
+    params.require(:conversation).permit(:user1_id, :user2_id, :item_id, :content)
   end
 
-  def untrash
-    conversation.untrash(current_user)
-    redirect_to :back
-  end
-
-  def trashbin
-    @inbox ||= @mailbox.inbox
-    @inbox_count ||= @inbox.all.count
-    @conversations ||= @mailbox.trash
-    @trash_count ||= @conversations.all.count
-  end
-
-  def empty_trash
-    current_user.mailbox.trash.each do |conversation|
-      conversation.receipts_for(current_user).update_all(:deleted => true)
-    end
-    redirect_to :conversations
-  end
-
-  private
-
-  def mailbox
-    @mailbox ||= current_user.mailbox
-  end
-
-  def conversation
-    @conversation ||= mailbox.conversations.find(params[:id])
-  end
 end

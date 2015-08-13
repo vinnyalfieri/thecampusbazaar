@@ -1,12 +1,170 @@
-  <div class="well">
-    <div class="title">
-      <%= render partial: 'conversations/conversations_header' %>
-    <h3> Inbox </h3>
-      <% if @conversations == nil || @conversations.empty? %>
-      <i>Your Inbox folder is currently empty</i>
-      <% else %>
-        <%= render partial: 'conversations/messages_index' %>
-      <% end %>
-    </span>
+<div class="main-block">
+  <div class="container">
+<div class="ui-5">
+  <!-- Profile window -->
+  <div class="ui-window">
+    <div class="row">
+      <div class="col-md-4 col-sm-4">
+        <!-- Contact Heading -->
+        <h3><i class="fa fa-user lblue"></i>&nbsp; All Contacts</h3>
+        
+
+        <!-- Profile user chat contacts -->
+        <div class="chat-contact">
+          <% current_user.conversations.each do |conversation| %>
+          <% if current_user.id == conversation.user1.id%>
+            <% other_user = conversation.user2 %>
+          <% else %>
+            <% other_user = conversation.user1%>
+          <% end %>
+          <!-- Chat contact member -->
+          <div class="chat-member">
+            <!-- Member Image -->
+            <div class="img-container">
+              <a href="#"><img class="mg-responsive" src='<%= other_user.avatar.url(:thumb) %>' alt="" /></a>
+            </div>
+            <!-- Name -->
+            <h4><a href="#"><%= other_user.name %></a></h4>
+            <!-- Paragraph -->
+            <p><%= conversation.item.name%></p>
+            <div class="clearfix"></div>
+          </div>
+          
+          <% end %>
+
+        </div>
+      </div>
+      <div class="col-md-8 col-sm-8">
+        <h3><i class="fa fa-comments-o lblue"></i>&nbsp; Live Chat</h3>
+        <!-- Profile chat content -->
+        <div class="chat-content">
+          <!-- Chat box -->
+          <div class="chat-box chat-in">
+            <!-- image -->
+            <div class="img-container">
+              <img class="img-responsive" src="img/user/4.jpg" alt="" />
+            </div>
+            <div class="message">
+              <!-- Name -->
+              <h5><i class="fa fa-clock-o"></i>&nbsp; 4:30 AM, May 25</h5>
+              <p>Consider donating a small sum to help pay for keep the site on the for Internet, please the hosting and bandwidth bill.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chat-box chat-out">
+            <!-- image -->
+            <div class="img-container">
+              <img class="img-responsive" src="img/user/2.jpg" alt="" />
+            </div>
+            <div class="message">
+              <!-- Name -->
+              <h5><i class="fa fa-clock-o"></i>&nbsp; 4:32 AM, May 25</h5>
+              <p>Consider donating a small sum to help pay for keep the site on the for Internet, please the hosting and bandwidth bill.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chat-box chat-in">
+            <!-- image -->
+            <div class="img-container">
+              <img class="img-responsive" src="img/user/4.jpg" alt="" />
+            </div>
+            <div class="message">
+              <!-- Name -->
+              <h5><i class="fa fa-clock-o"></i>&nbsp; 4:40 AM, May 25</h5>
+              <p>Consider donating a small sum to help pay for keep the site on the for Internet, please the hosting and bandwidth bill.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chat-box chat-out">
+            <!-- image -->
+            <div class="img-container">
+              <img class="img-responsive" src="img/user/2.jpg" alt="" />
+            </div>
+            <div class="message">
+              <!-- Name -->
+              <h5><i class="fa fa-clock-o"></i>&nbsp; 4:50 AM, today</h5>
+              <p>Consider donating a small sum to help pay for keep the site on the for Internet, please the hosting and bandwidth bill.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chat-box chat-in">
+            <!-- image -->
+            <div class="img-container">
+              <img class="img-responsive" src="img/user/4.jpg" alt="" />
+            </div>
+            <div class="message">
+              <!-- Name -->
+              <h5><i class="fa fa-clock-o"></i>&nbsp; 5 min ago</h5>
+              <p>Consider donating a small sum to help pay for keep the site on the for Internet, please the hosting and bandwidth bill.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chat-box chat-out">
+            <!-- image -->
+            <div class="img-container">
+              <img class="img-responsive" src="img/user/2.jpg" alt="" />
+            </div>
+            <div class="message">
+              <!-- Name -->
+              <h5><i class="fa fa-clock-o"></i>&nbsp; 10 second ago</h5>
+              <p>Consider donating a small sum to help pay for keep the site on the for Internet, please the hosting and bandwidth bill.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <!-- Chatting message input box -->
+        <div class="chat-input-box">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Type your message">
+            <span class="input-group-btn">
+              <button class="btn btn-lblue" type="button">Send</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Javascript files -->
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+<!-- jQuery nice scroll (For smooth scrolling and scrollbar) -->
+<script src="js/jquery.nicescroll.min.js"></script>
+<!-- Respond JS for IE8 -->
+<script src="js/respond.min.js"></script>
+<!-- HTML5 Support for IE -->
+<script src="js/html5shiv.js"></script>
+<script>
+  /* Scroll bar JS */
+
+  $(".chat-contact").niceScroll({
+    cursorcolor:"#999",
+    cursoropacitymin:0,
+    cursoropacitymax:0.3,
+    cursorwidth:5,
+    cursorborder:"0px",
+    cursorborderradius:"0px",
+    cursorminheight:50,
+    zindex:1,
+    mousescrollstep:20
+  });
+
+  $(".chat-content").niceScroll({
+    cursorcolor:"#999",
+    cursoropacitymin:0,
+    cursoropacitymax:0.3,
+    cursorwidth:5,
+    cursorborder:"0px",
+    cursorborderradius:"0px",
+    cursorminheight:50,
+    zindex:1,
+    mousescrollstep:20
+  });
+
+</script>
   </div>
 </div>

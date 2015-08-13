@@ -45,6 +45,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search 
+    @keyword = params[:keyword]
+    @results = Search.for(@keyword)
+  end 
+
   def show
     @item = Item.find_by(:id => params[:id])
     @category = @item.categories.first

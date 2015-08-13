@@ -35,6 +35,12 @@
       <% if @offer.comment %>
       <p><h4>Comments: </h4><%= @offer.comment %></p>  
       <% end %>
+      <p>Payment Options:</p>
+      <ul>
+        <% @offer.payment_options.each do |p_o| %>
+          <li><%= p_o.name %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>

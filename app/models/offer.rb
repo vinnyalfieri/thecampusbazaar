@@ -10,8 +10,6 @@ class Offer < ActiveRecord::Base
   validate :not_own_item
 
   def charge_venmo
-
-
     note =  "Just bought #{self.item.name} from #{self.seller.name} on CampusBazaar"
     amount = self.offer_price# '-0.20'#
     VenmoWrapper.new.transfer_money_from(buyer,seller,amount,note)
@@ -21,10 +19,24 @@ class Offer < ActiveRecord::Base
     Item.find(item_id).offers.select{ |offer| offer.status == 'pending'}
   end 
 
+  def settle
+    self.status = 'accepted'
+    save
+    reject_offers(item_id)
+  end
+
   private
     def not_own_item
       if seller.id == buyer.id
         errors.add(:base, "Seller cannot purchase their own listing.")
       end
+    end
+
+    def reject_offers(item_id)
+      offers = Offer.pending_offers(item_id)
+      offers.each do |offer|
+        offer.status = 'rejected'
+        offer.save
+      end 
     end
 end

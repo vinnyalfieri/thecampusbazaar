@@ -1,5 +1,11 @@
-Reply:
-<%= form_tag reply_conversation_path(conversation), method: :post do %>
-<%= text_area_tag 'body', nil, cols: 2, class: 'form-control', placeholder: 'Type your message here!', required: true %>
-<%= submit_tag "Send Message", class: 'btn btn-primary' %>
+<%#binding.pry%>
+<%= form_for [@conversation, Message.new] do |f| %>
+
+  <%= f.hidden_field :recipient_id, :value => @conversation.recipient(current_user)%>
+  <%= f.hidden_field :sender_id, :value => current_user.id%>
+  <%= f.hidden_field :conversation_id, :value => @conversation.id %>
+
+  <%= f.text_area :content, placeholder: 'Type your message'%><br />
+
+  <%= f.submit 'Send Message' %>
 <% end %>

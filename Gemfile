@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+
+gem 'sidekiq'
+gem 'redis'
+
 gem "paperclip", "~> 4.3"
 gem 'aws-sdk', '< 2.0'
 
@@ -8,7 +12,8 @@ gem 'omniauth-venmo'
 gem 'attr_encrypted'
 gem 'faraday'
 
-gem 'mailboxer'
+
+#gem 'mailboxer'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use SCSS for stylesheets

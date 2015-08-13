@@ -7,6 +7,8 @@
 </head>
 
 <body style="PADDING-TOP: 1px">
+<div id="wrapper">
+<div id="content">
 <div class="outer">
   <%= render partial: 'layouts/navbar'%>
   <% if notice %>
@@ -15,10 +17,17 @@
   <div class="main-block">
     <%= yield %>
   </div>
-  <footer>
-  <%= render 'layouts/footer' %>
-  </footer>
+
 </div>
+
   <span class="totop" style="display: block;"><a href="#"><i class="fa fa-angle-up bg-blue"></i></a></span>
+  </div>
+  <div id="footer">
+  <%= render 'layouts/footer' %>
+  </div>
+</div>
 </body>
 </html>
+
+
+<!--  -->

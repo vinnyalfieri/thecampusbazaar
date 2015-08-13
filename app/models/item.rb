@@ -39,4 +39,26 @@ class Item < ActiveRecord::Base
     self.offers.any?{|offer| offer.status == 'accepted'}
   end 
 
+  def conversation_exist?(current_user)
+    self.conversations.each do |convo|
+      if between_seller_and_buyer?(convo, current_user)
+        return true 
+      end 
+    end 
+    return false
+  end 
+
+  def convo_id(current_user)
+    self.conversations.each do |convo|
+      if between_seller_and_buyer?(convo, current_user)
+        return convo.id
+      end 
+    end 
+  end 
+
+  private 
+  def between_seller_and_buyer?(convo, current_user)
+    (convo.user1 == current_user && convo.user2 == self.seller) || (convo.user2 == current_user && convo.user1 == self.seller)
+  end 
+
 end

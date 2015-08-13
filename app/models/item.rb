@@ -38,4 +38,19 @@ class Item < ActiveRecord::Base
     self.offers.any?{|offer| offer.status == 'accepted'}
   end 
 
+  def prop
+    case 
+    when self.price < 50.0
+      return "p1"
+    when self.price < 100.0
+      return "p2"
+    when self.price < 500.0
+      return "p3"
+    when self.price < 1000.0
+      return "p4"
+    else
+      return "p5"
+    end
+  end
+
 end

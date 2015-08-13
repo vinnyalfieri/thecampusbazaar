@@ -1,11 +1,9 @@
 <%#binding.pry%>
 <%= form_for Message.new do |f| %>
-  <%= f.label :Recipient %>:
-  <%= f.text_field :Recipient, value: @item.seller.name %><br />
+Recipient: @item.seller.name
  
-  <%= f.label :sender %>:
-  <%= f.text_field :sender, value: current_user.name %><br />
-   
+Sender: current_user.name 
+
   <%= f.label :item_name, 'Message for item'%>:
   <%= f.text_field :item_name, value: @item.name %><br />
 

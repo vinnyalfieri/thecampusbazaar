@@ -6,6 +6,7 @@ class Item < ActiveRecord::Base
   has_many :item_categories
   has_many :categories, through: :item_categories
   has_many :offers
+  has_many :conversations
 
   accepts_nested_attributes_for :categories
 

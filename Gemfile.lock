@@ -65,11 +65,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
+    celluloid (0.16.0)
+      timers (~> 4.0.0)
     childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.0.3)
@@ -85,6 +82,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     columnize (0.9.0)
+    connection_pool (2.2.0)
     daemons (1.2.3)
     database_cleaner (1.4.1)
     debug_inspector (0.0.2)
@@ -104,8 +102,6 @@ GEM
     ffi (1.9.10)
     figaro (1.1.1)
       thor (~> 0.14)
-    foreigner (1.7.4)
-      activerecord (>= 3.0.0)
     formatador (0.2.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -125,6 +121,7 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     hashie (3.4.2)
+    hitimes (1.2.2)
     i18n (0.7.0)
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
@@ -143,10 +140,6 @@ GEM
     lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    mailboxer (0.13.0)
-      carrierwave (>= 0.5.8)
-      foreigner (>= 0.9.1)
-      rails (>= 3.2.0)
     method_source (0.8.2)
     mime-types (2.6.1)
     mimemagic (0.3.0)
@@ -225,6 +218,9 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     rdoc (4.2.0)
+    redis (3.2.1)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
     rspec (3.3.0)
       rspec-core (~> 3.3.0)
       rspec-expectations (~> 3.3.0)
@@ -263,6 +259,12 @@ GEM
       rubyzip (~> 1.0)
       websocket (~> 1.0)
     shellany (0.0.1)
+    sidekiq (3.4.2)
+      celluloid (~> 0.16.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      json (~> 1.0)
+      redis (~> 3.2, >= 3.2.1)
+      redis-namespace (~> 1.5, >= 1.5.2)
     simplecov (0.10.0)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -283,6 +285,8 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
+    timers (4.0.1)
+      hitimes
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.1)
@@ -320,7 +324,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   json
-  mailboxer
   omniauth
   omniauth-venmo
   paperclip (~> 4.3)
@@ -329,10 +332,12 @@ DEPENDENCIES
   prybaby
   rails (= 4.2.0)
   rails_12factor
+  redis
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   selenium-webdriver
+  sidekiq
   simplecov
   spring
   thin

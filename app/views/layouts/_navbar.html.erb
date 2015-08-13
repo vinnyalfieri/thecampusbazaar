@@ -50,6 +50,7 @@
                 <% elsif current_user.buyer? %>
                   <li ><%= link_to('Offers Sent', offers_sent_path(current_user)) %> </li>
                 <% end %>
+
               </ul>
             </li>              
             <li><%= link_to(" About this Project", about_path) %></li>

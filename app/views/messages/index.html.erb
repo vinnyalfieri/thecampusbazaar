@@ -1,0 +1,7 @@
+<% current_user.messages.each do |message| %>
+<ul>
+<li>To: <%= message.seller.name %></li>
+<li>From: <%= message.buyer.name %></li>
+<li><%= message.content %></li>
+</ul>
+<%end%>

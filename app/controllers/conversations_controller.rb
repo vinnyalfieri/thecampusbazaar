@@ -1,4 +1,4 @@
-class ConversationController < ApplicationController
+class ConversationsController < ApplicationController
 
   def index
     @users = User.all 
@@ -8,6 +8,9 @@ class ConversationController < ApplicationController
   def create
   end
 
+  def new 
+  end
+  
 private
   def conversation_params
     params.permit(:seller_id, :buyer_id)

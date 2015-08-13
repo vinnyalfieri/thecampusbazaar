@@ -5368,7 +5368,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel-body {
   padding: 15px;
-  text-align: center;
+  text-align: left;
 }
 .panel-heading {
   text-align: center;
@@ -5385,6 +5385,7 @@ a.list-group-item-danger.active:focus {
   margin-bottom: 0;
   font-size: 16px;
   color: inherit;
+  text-align: left;
 }
 .panel-title > a,
 .panel-title > small,

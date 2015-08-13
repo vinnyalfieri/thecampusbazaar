@@ -2715,7 +2715,7 @@ body.boxed.img-5 {
 /* Page heading one */
 .page-heading-one {
 	text-align:center;
-	background:url("../../img/backgrounds/heading-back.jpg");
+	background-image: image-url("heading-back.jpg");
 	background-size:cover;
 	background-position:center center;
 	padding:50px 10px;

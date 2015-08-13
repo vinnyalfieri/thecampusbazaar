@@ -1,9 +1,20 @@
-<%= form_for @person do |f| %>
-  <%= f.label :first_name %>:
-  <%= f.text_field :first_name %><br />
+<%#binding.pry%>
+<%= form_for Message.new do |f| %>
+  <%= f.label :seller %>:
+  <%= f.text_field :seller, value: @item.seller.name %><br />
 
-  <%= f.label :last_name %>:
-  <%= f.text_field :last_name %><br />
+  <%= f.label :buyer %>:
+  <%= f.text_field :buyer, value: current_user.name %><br />
+  
+  <%= f.label :item_name, 'Message for item'%>:
+  <%= f.text_field :item_name, value: @item.name %><br />
 
-  <%= f.submit %>
+  <%= f.hidden_field :item_id, :value => @item.id%>
+  <%= f.hidden_field :buyer_id, :value => current_user.id%>
+  <%= f.hidden_field :seller_id, :value => @item.seller.id%>
+
+  <%= f.label :content %>
+  <%= f.text_area :content, :rows => "5", placeholder: 'Write your message here'%><br />
+
+  <%= f.submit 'Send Message' %>
 <% end %>

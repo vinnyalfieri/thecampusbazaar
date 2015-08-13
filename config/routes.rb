@@ -1,14 +1,14 @@
 
 Rails.application.routes.draw do
-  get 'errors/file_not_found'
+  #get 'errors/file_not_found'
 
-  get 'errors/unprocessable'
+  #get 'errors/unprocessable'
 
-  get 'errors/internal_server_error'
+  #get 'errors/internal_server_error'
 
-  resources :conversations do 
-    resources :messages
-  end
+  resources :conversations  
+  resources :messages
+  
   
   resources :offers
 
@@ -53,8 +53,8 @@ Rails.application.routes.draw do
   get '/about' => 'static_pages#about', as: :about
 
 
-  match '/404', to: 'errors#file_not_found', via: :all
-  match '/422', to: 'errors#unprocessable', via: :all
-  match '/500', to: 'errors#internal_server_error', via: :all
+  #match '/404', to: 'errors#file_not_found', via: :all
+  #match '/422', to: 'errors#unprocessable', via: :all
+  #match '/500', to: 'errors#internal_server_error', via: :all
 
 end

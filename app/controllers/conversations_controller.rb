@@ -9,11 +9,13 @@ class ConversationsController < ApplicationController
   end
 
   def new 
+    #binding.pry
+    @item = Item.find(params[:item_id])
   end
-  
+
 private
   def conversation_params
-    params.permit(:seller_id, :buyer_id)
+    params.permit(:seller_id, :buyer_id, :item)
   end
 
 end

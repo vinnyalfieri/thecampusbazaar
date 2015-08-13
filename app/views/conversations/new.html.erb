@@ -1,0 +1,11 @@
+<%#binding.pry%>
+<%= form_for Conversation.new do |f| %>
+  <%= f.label :seller_id %>:
+  <%= f.text_field :seller_id, value: @item.seller.name%><br>
+
+  <%= f.label :buyer_id %>:
+  <%= f.text_field :buyer_id, value: current_user.name %><br>
+
+  <%#= f.label :content%>
+  <%= f.submit %>
+<% end %>

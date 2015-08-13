@@ -5,8 +5,7 @@
   <%= f.hidden_field :sender_id, :value => current_user.id%>
   <%= f.hidden_field :conversation_id, :value => @conversation.id %>
 
-  <%= f.label :content %>
-  <%= f.text_area :content, placeholder: 'Write your message here'%><br />
+  <%= f.text_area :content, placeholder: 'Type your message'%><br />
 
   <%= f.submit 'Send Message' %>
 <% end %>

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   #get 'errors/internal_server_error'
 
-  resources :conversations 
+  resources :conversations do 
+    resources :messages, only: [:index, :create]
+  end
   
   
   resources :offers

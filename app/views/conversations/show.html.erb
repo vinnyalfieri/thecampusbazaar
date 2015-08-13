@@ -1,45 +1,239 @@
-  <center>
-  <div class="messages">
-    <div class="well">
-
-    <header class="top-bar">
-      <h1>
-        <%= @conversation.subject %>
-      </h1>
-    </header>
-    <h2>
-      <span>A conversation with</span>
-      <% @participants.each do |participant| %>
-        <% if participant != current_user %>
-          <%= participant.name  %>
-        <% end %>
-      <% end %>
-    </h2>
-      <%= content_tag_for(:br, @receipts) do |receipt| %>
-        <% message = receipt.message %>
-        <b>
-        <% if message.sender_id == current_user.id %>
-          <div class="talk-bubble tri-right right-top">
-        <% else %>
-          <div class="talk-bubble tri-right left-top">
-        <% end %>
-        <div class="talktext">
-        <%= message.sender.name %>
-          </b>
-          <p>
-            <%= simple_format h message.body %>
-          </p>
-          <span class="timestamp">Sent</span>
-          <span class="timestamp">
-            <%= time_ago_in_words(message.updated_at) %>
-          </span>
-          <span class="timestamp">ago.</span>
+<div class="ui-5">
+  <!-- Profile window -->
+  <div class="ui-window">
+    <div class="row">
+      <div class="col-md-4 col-sm-4">
+        <!-- Contact Heading -->
+        <h3><i class="fa fa-user lblue"></i>&nbsp; All Contacts</h3>
+        <!-- Profile user chat contacts -->
+        <div class="chat-contact" tabindex="5000" style="overflow: hidden; outline: none;">
+          <!-- Chat contact member -->
+          <div class="chat-member">
+            <!-- Member Image -->
+            <div class="img-container">
+              <a href="#"><img class="mg-responsive" src="img/user/2.jpg" alt=""></a>
+              <span class="st-live status"></span>
+            </div>
+            <!-- Name -->
+            <h4><a href="#">Barbara Warts</a></h4>
+            <!-- Paragraph -->
+            <p>I am online now.</p>
+            <div class="clearfix"></div>
+          </div>
+          <!-- Chat contact member -->
+          <div class="chat-member">
+            <!-- Member Image -->
+            <div class="img-container">
+              <a href="#"><img class="mg-responsive" src="img/user/3.jpg" alt=""></a>
+              <span class="st-hide status"></span>
+            </div>
+            <!-- Name -->
+            <h4><a href="#">Medona Doe</a></h4>
+            <!-- Paragraph -->
+            <p>3 hours ago.</p>
+            <div class="clearfix"></div>
+          </div>
+          <!-- Chat contact member -->
+          <div class="chat-member">
+            <!-- Member Image -->
+            <div class="img-container">
+              <a href="#"><img class="mg-responsive" src="img/user/4.jpg" alt=""></a>
+              <span class="st-off status"></span>
+            </div>
+            <!-- Name -->
+            <h4><a href="#">July Doe</a></h4>
+            <!-- Paragraph -->
+            <p>8 hours ago.</p>
+            <div class="clearfix"></div>
+          </div>
+          <!-- Chat contact member -->
+          <div class="chat-member">
+            <!-- Member Image -->
+            <div class="img-container">
+              <a href="#"><img class="mg-responsive" src="img/user/5.jpg" alt=""></a>
+              <span class="st-live status"></span>
+            </div>
+            <!-- Name -->
+            <h4><a href="#">Henry Gates</a></h4>
+            <!-- Paragraph -->
+            <p>I am online now.</p>
+            <div class="clearfix"></div>
+          </div>
+          <!-- Chat contact member -->
+          <div class="chat-member">
+            <!-- Member Image -->
+            <div class="img-container">
+              <a href="#"><img class="img-responsive" src="img/user/6.jpg" alt=""></a>
+              <span class="st-busy status"></span>
+            </div>
+            <!-- Name -->
+            <h4><a href="#">Jennifer Loren</a></h4>
+            <!-- Paragraph -->
+            <p>I am busy now. </p>
+            <div class="clearfix"></div>
+          </div>
+          <!-- Chat contact member -->
+          <div class="chat-member">
+            <!-- Member Image -->
+            <div class="img-container">
+              <a href="#"><img class="mg-responsive" src="img/user/7.jpg" alt=""></a>
+              <span class="st-live status"></span>
+            </div>
+            <!-- Name -->
+            <h4><a href="#">James Louis</a></h4>
+            <!-- Paragraph -->
+            <p>I am online now.</p>
+            <div class="clearfix"></div>
+          </div>
+          <!-- Chat contact member -->
+          <div class="chat-member">
+            <!-- Member Image -->
+            <div class="img-container">
+              <a href="#"><img class="mg-responsive" src="img/user/3.jpg" alt=""></a>
+              <span class="st-hide status"></span>
+            </div>
+            <!-- Name -->
+            <h4><a href="#">Medona Doe</a></h4>
+            <!-- Paragraph -->
+            <p>3 hours ago.</p>
+            <div class="clearfix"></div>
+          </div>
+          <!-- Chat contact member -->
+          <div class="chat-member">
+            <!-- Member Image -->
+            <div class="img-container">
+              <a href="#"><img class="mg-responsive" src="img/user/4.jpg" alt=""></a>
+              <span class="st-off status"></span>
+            </div>
+            <!-- Name -->
+            <h4><a href="#">July Doe</a></h4>
+            <!-- Paragraph -->
+            <p>8 hours ago.</p>
+            <div class="clearfix"></div>
           </div>
         </div>
-
-        <% end %>
-      <!-- </ul> -->
-      <%= render 'messages/form', conversation: @conversation %>
+      </div>
+      <div class="col-md-8 col-sm-8">
+        <h3><i class="fa fa-comments-o lblue"></i>&nbsp; Live Chat</h3>
+        <!-- Profile chat content -->
+        <div class="chat-content" tabindex="5001" style="overflow: hidden; outline: none;">
+          <!-- Chat box -->
+          <div class="chat-box chat-in">
+            <!-- image -->
+            <div class="img-container">
+              <img class="img-responsive" src="img/user/4.jpg" alt="">
+            </div>
+            <div class="message">
+              <!-- Name -->
+              <h5><i class="fa fa-clock-o"></i>&nbsp; 4:30 AM, May 25</h5>
+              <p>Consider donating a small sum to help pay for keep the site on the for Internet, please the hosting and bandwidth bill.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chat-box chat-out">
+            <!-- image -->
+            <div class="img-container">
+              <img class="img-responsive" src="img/user/2.jpg" alt="">
+            </div>
+            <div class="message">
+              <!-- Name -->
+              <h5><i class="fa fa-clock-o"></i>&nbsp; 4:32 AM, May 25</h5>
+              <p>Consider donating a small sum to help pay for keep the site on the for Internet, please the hosting and bandwidth bill.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chat-box chat-in">
+            <!-- image -->
+            <div class="img-container">
+              <img class="img-responsive" src="img/user/4.jpg" alt="">
+            </div>
+            <div class="message">
+              <!-- Name -->
+              <h5><i class="fa fa-clock-o"></i>&nbsp; 4:40 AM, May 25</h5>
+              <p>Consider donating a small sum to help pay for keep the site on the for Internet, please the hosting and bandwidth bill.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chat-box chat-out">
+            <!-- image -->
+            <div class="img-container">
+              <img class="img-responsive" src="img/user/2.jpg" alt="">
+            </div>
+            <div class="message">
+              <!-- Name -->
+              <h5><i class="fa fa-clock-o"></i>&nbsp; 4:50 AM, today</h5>
+              <p>Consider donating a small sum to help pay for keep the site on the for Internet, please the hosting and bandwidth bill.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chat-box chat-in">
+            <!-- image -->
+            <div class="img-container">
+              <img class="img-responsive" src="img/user/4.jpg" alt="">
+            </div>
+            <div class="message">
+              <!-- Name -->
+              <h5><i class="fa fa-clock-o"></i>&nbsp; 5 min ago</h5>
+              <p>Consider donating a small sum to help pay for keep the site on the for Internet, please the hosting and bandwidth bill.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chat-box chat-out">
+            <!-- image -->
+            <div class="img-container">
+              <img class="img-responsive" src="img/user/2.jpg" alt="">
+            </div>
+            <div class="message">
+              <!-- Name -->
+              <h5><i class="fa fa-clock-o"></i>&nbsp; 10 second ago</h5>
+              <p>Consider donating a small sum to help pay for keep the site on the for Internet, please the hosting and bandwidth bill.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <!-- Chatting message input box -->
+        <div class="chat-input-box">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Type your message">
+            <span class="input-group-btn">
+              <button class="btn btn-lblue" type="button">Send</button>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
-<center>
+  </div>
+</div>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

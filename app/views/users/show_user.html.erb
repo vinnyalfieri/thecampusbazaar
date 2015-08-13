@@ -1,4 +1,4 @@
-<div class="main-block">
+
 
   <div class="page-heading-two">
     <div class="container">
@@ -46,44 +46,28 @@
           </div>
         </div> <!--PULL-8-->
       </div> <!--ROW-->
-
-
       <div class="recent-items">
         <!-- Block heading two -->
         <div class="block-heading-two">
           <h3><span>Recent Items</span></h3>
         </div>
-          
         <!-- Owl carousel block starts -->
         <!-- Change values of data-items, data-auto-play, data-pagination & data-single-item based on your needs -->
-          <div class="owl-carousel owl-theme" data-items=<%= @user.items.count %> data-auto-play="false" data-pagination="false" data-single-item="false" style="opacity: 1; display: block;">
+          <div class="owl-carousel owl-theme" data-items="<%= @user.items.count %>" data-auto-play="true" data-pagination="true" data-single-item="false" style="opacity: 1; display: block;">
             <!-- Carousel item -->
             <div class="owl-wrapper-outer">
-              <div class="owl-wrapper" style="width: 4480px; left: 0px; display: block; transition: all 800ms ease; transform: translate3d(-1120px, 0px, 0px);">
-              
-
+              <div class="owl-wrapper" style="width: 5220; left: 0px; display: block; transition: all 800ms ease; transform: translate3d(-522, 0px, 0px);">
               <% @user.items.each do |item| %>
-                <div class="owl-item" style="width: 224px;">
-                  <div class="owl-content"> 
-                    <div class="padd-15">
-                      <a href=<%= user_item_path(item.seller, :id => item.id)%>><img src="/assets/<%= item.product.url(:medium)  %>" alt=<%= item.name %> class="img-responsive"></a>
-                      <h4><a href=<%= user_item_path(item.seller, :id => item.id)%>> <%= item.name %> <span class="color pull-right">$<%= item.price %></span></a></h4>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
+                <div class="owl-item" style="width: 261;">
+                  <%= render partial: 'users/carouselitem', locals: {item: item} %>
                 </div>
-
               <% end %>
-
-
-
               </div>
             </div>   
             <div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div> 
           </div> <!--OWL CAROUSEL-->  
         </div> <!--RECENT ITEMS -->
-
     </div> <!--ECOMMERCE-->
   </div>
-</div>
+
            

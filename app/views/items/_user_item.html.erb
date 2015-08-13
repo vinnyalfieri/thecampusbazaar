@@ -1,20 +1,18 @@
-<li class="col-sm-4">
-  <div class="panel panel-success">
-    <div class="panel-heading">
-      <%= image_tag item.product.url(:medium), :class => "img-responsive center-block"%>
-    </div>
-    <div class="panel-body">
-      <div class="row" style="font-size:23px"> <%= link_to(item.name, user_item_path(current_user, :id => item.id)) %></div>
-      <div style="font-size:15px">
-        <div class="row">Condition: <%= item.condition %></div>
-        <div class="row">Price: $<%=  format("%.2f", item.price) %></div>
-        <div class="row">Offered by: <%= item.seller.name %></div>
-        <br>
-        <% if @user == current_user %>
-          <div class="row"><%= link_to 'Edit Item', edit_user_item_path(current_user, item), class: 'btn btn-info'%></div>
-        <% end %>
-      </div>
+<div class="col-md-4 col-sm-6">
+  <!-- Shopping items -->
+  <div class="shopping-item">
+    <!-- Image -->
+    <a href="<%= user_item_path(item.seller, :id => item.id) %>"><%= image_tag item.product.url(:medium), :class => "img-responsive"%></a>
+    <!-- Shopping item name / Heading -->
+    <h4><%= link_to(item.name, user_item_path(item.seller, :id => item.id))%>
+      <span class="color pull-right">$<%= format("%.2f", item.price) %></span>
+    </h4>
+    <div class="clearfix"></div>
+    <!-- Shopping item hover block & link -->
+    <div class="item-hover bg-color hidden-xs">
+    <% if @user == current_user %>
+      <%= link_to 'Edit Item', edit_user_item_path(current_user, item) %>
+    <% end %>
     </div>
   </div>
-</li>
-
+</div>

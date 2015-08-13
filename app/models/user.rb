@@ -1,10 +1,14 @@
 class User < ActiveRecord::Base
-  acts_as_messageable
+  #acts_as_messageable
   attr_accessor :delete_avatar
   attr_encrypted :token, :key => ENV['encrypt_key']
   belongs_to :community
   has_many :items, :foreign_key => 'seller_id'
   has_many :offers_sent, :class_name => "Offer", :foreign_key => 'buyer_id'
+  has_many :messages, :foreign_key => 'seller_id'
+  has_many :messages, :foreign_key => 'buyer_id'
+  has_many :conversations, :foreign_key => 'seller_id'
+  has_many :conversations, :foreign_key => 'buyer_id'
   validates :name, presence: true, format: { 
     with: /\A[a-zA-Z\s]+\z/,
     message: "only allows letters and spaces"
@@ -45,9 +49,9 @@ class User < ActiveRecord::Base
     self.venmo_id && self.encrypted_token
   end
 
-  def mailboxer_email(object)
-    email
-  end
+  # def mailboxer_email(object)
+  #   email
+  # end
 
   def offers_sent
     Offer.all.select{ |offer| offer.buyer == self }

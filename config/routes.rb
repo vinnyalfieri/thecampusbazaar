@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   get 'errors/internal_server_error'
 
+  resources :conversations do 
+    resources :messages
+  end
+  
   resources :offers
 
   root 'communities#show'
@@ -17,23 +21,6 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'users#venmo'
   get '/auth/venmo', as: 'venmo_login'
 
-
-  resources :messages do
-    member do
-      post :new
-    end
-  end
-  resources :conversations do
-    member do
-      post :reply
-      post :trash
-      post :untrash
-    end
-    collection do
-      get :trashbin
-      post :empty_trash
-    end
-  end
 
   get '/communities/search', as: :search
   get '/communities/info', as: :info

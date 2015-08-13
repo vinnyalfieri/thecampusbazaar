@@ -1,11 +1,17 @@
 <%#binding.pry%>
 <%= form_for Conversation.new do |f| %>
-  <%= f.label :seller_id %>:
-  <%= f.text_field :seller_id, value: @item.seller.name%><br>
+  Seller: <%= @item.seller.name%><br>
+  Buyer: <%= current_user.name %><br>
 
-  <%= f.label :buyer_id %>:
-  <%= f.text_field :buyer_id, value: current_user.name %><br>
+  Message for item: <%= @item.name %><br />
 
-  <%#= f.label :content%>
-  <%= f.submit %>
+  <%= f.hidden_field :item_id, :value => @item.id%>
+  <%= f.hidden_field :user2_id, :value => @item.seller.id%>
+  <%= f.hidden_field :user1_id, :value => current_user.id%>
+
+  <%= f.fields_for :messages do |message_form| %>
+  <%= message_form.label :content %>
+  <%= message_form.text_area :content, :rows => "5", placeholder: 'Write your message here'%><br />
+  <% end %>
+  <%= f.submit 'Send Message' %>
 <% end %>

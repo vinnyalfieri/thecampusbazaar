@@ -40,7 +40,11 @@ class User < ActiveRecord::Base
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-
+  def conversations
+    conversation_from_me = Conversation.where(:user1_id => self.id)
+    conversation_for_me = Conversation.where(:user2_id => self.id)
+    all_conversations_with_me = conversation_from_me + conversation_for_me
+  end
   
 
   def has_venmo?

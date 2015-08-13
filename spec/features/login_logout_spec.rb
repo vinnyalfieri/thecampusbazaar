@@ -4,11 +4,6 @@ describe 'login/logout', type: :feature do
 
   include LoginHelper
 
-  before do
-    User.create(name: "Jake", email: "jfaris@conncoll.edu", password: "abc", password_confirmation: "abc")
-  end
-  let(:user){User.last}
-
   context 'logging in' do
 
     it 'is successful' do

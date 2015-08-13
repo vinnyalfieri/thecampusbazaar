@@ -1,22 +1,24 @@
 class MessagesController < ApplicationController
   def index
-    @message = Message.all
-
+    @conversation = Conversation.find(params[:conversation_id])
+    @messages = @conversation.messages
   end
 
   def create
-    binding.pry
-    #Conversation.new, if conversation contains buyer and user, then shovel in it.
-    @item = Item.find(params[:message][:item_id])
     @message = Message.new(message_params)
-    if @message.save
-      binding.pry
-      @conversation = Conversation.new
-      redirect_to messages_path
-    else
-      flash[:notice] = 'Send message again'
-      redirect_to new_message_path(@item)
-    end
+    @message.save
+    redirect_to conversation_messages_path
+    #Conversation.new, if conversation contains buyer and user, then shovel in it.
+    # @item = Item.find(params[:message][:item_id])
+    # @message = Message.new(message_params)
+    # if @message.save
+    #   binding.pry
+    #   @conversation = Conversation.new
+    #   redirect_to messages_path
+    # else
+    #   flash[:notice] = 'Send message again'
+    #   redirect_to new_message_path(@item)
+    # end
   end
 
   def new
@@ -28,7 +30,7 @@ class MessagesController < ApplicationController
 
 private
   def message_params
-    params.require(:message).permit(:sender_id, :recipient_id, :content)
+    params.require(:message).permit(:conversation_id, :recipient_id, :sender_id, :content)
   end
 
 end

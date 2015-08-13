@@ -2,8 +2,10 @@
 <%current_user.conversations.each do |conversation|%>
 <% if current_user.id == conversation.user1_id %>
 <ul>
+<%#binding.pry%>
 <li><%= User.find(conversation.user2_id).name %></li>
-<li>For Item <%= Item.find(current_user.conversations.first.item_id).name %></li>
+<li>For Item <%= conversation.item.name %></li>
+<li><%= link_to 'See conversation', conversation_messages_path(conversation) %></li>
 </ul>
 <%end%> 
 <%end%> 
@@ -12,19 +14,11 @@
 <% if current_user.id == conversation.user2_id %>
 <ul>
 <li><%= User.find(conversation.user1_id).name %></li>
-<li>For Item <%= Item.find(current_user.conversations.first.item_id).name %></li>
+<li>For Item <%= conversation.item.name %></li>
+<li><%= link_to 'See conversation', conversation_messages_path(conversation) %></li>
 </ul>
 <%end%> 
 <%end%> 
 
-<!-- These are the mesages for each conversation -->
-<% current_user.conversations.each do |conversation|%>
-<% conversation.messages.each do |message| %>
-<ul>
-<li><%= User.find(message.sender_id).name %></li>
-<li><%= message.content %></li>
-</ul>
-<%end%>
-<%end%>
 
 

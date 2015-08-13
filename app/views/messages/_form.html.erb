@@ -1,0 +1,12 @@
+<%#binding.pry%>
+<%= form_for [@conversation, Message.new] do |f| %>
+
+  <%= f.hidden_field :recipient_id, :value => @conversation.recipient(current_user)%>
+  <%= f.hidden_field :sender_id, :value => current_user.id%>
+  <%= f.hidden_field :conversation_id, :value => @conversation.id %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content, placeholder: 'Write your message here'%><br />
+
+  <%= f.submit 'Send Message' %>
+<% end %>

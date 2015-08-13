@@ -2130,7 +2130,7 @@ body.boxed.img-5 {
 }
 .outer .container {
 	width:100%;
-	max-width: 1150px;
+	/*max-width: 1150px;*/
 }
 /* Top bar */
 .top-bar {
@@ -2154,7 +2154,7 @@ body.boxed.img-5 {
 	display:none;
 }
 .top-bar .tb-search .b-dropdown-block {
-	padding: 7px;
+	padding: 0px;
 	border: 1px solid #ddd;
 	width: 250px;
 	position: absolute;

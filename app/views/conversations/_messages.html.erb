@@ -1,0 +1,12 @@
+<!-- These are the mesages for each conversation -->
+<% current_user.conversations.each do |conversation|%>
+<% conversation.messages.each do |message| %>
+<ul>
+<li><%= message.sender.name %></li>
+<li><%= message.content %></li>
+<li><%= message.recipient.name %></li>
+<li><%= message.content %></li>
+</ul>
+
+<%end%>
+<%end%>

@@ -14,11 +14,11 @@ describe 'signing up', type: :feature do
 
       it 'signs up successfully & redirects to community search path' do
         fill_in "Name", with: "Jake Faris"
-        fill_in "Email", with: "jfaris@conncoll.edu"
+        fill_in "Email", with: "jake.faris@flatironschool.com"
         fill_in "Password", with: "password"
         fill_in "Password confirmation", with: "password"
         click_on "Submit"
-        expect(current_path).to eq(root_path)
+        expect(current_path).to eq(search_path)
       end
 
     end
@@ -27,11 +27,11 @@ describe 'signing up', type: :feature do
 
       it 'signs up successfully & redirects to community search path' do
         fill_in "Name", with: "Jake Faris"
-        fill_in "Email", with: "jake.faris@flatironschool.com"
+        fill_in "Email", with: "jfaris@conncoll.edu"
         fill_in "Password", with: "password"
         fill_in "Password confirmation", with: "password"
         click_on "Submit"
-        expect(current_path).to eq(search_path)
+        expect(current_path).to eq(root_path)
       end
 
     end

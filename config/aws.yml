@@ -1,7 +1,0 @@
-development:
-  access_key_id: ENV['amazon_access_key']
-  secret_access_key: ENV['amazon_secret']
-
-production:
-  access_key_id: ENV['amazon_access_key']
-  secret_access_key: ENV['amazon_secret']

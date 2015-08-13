@@ -2,9 +2,11 @@ Rails.application.configure do
   config.assets.raise_production_errors = true
   # Settings specified here will take precedence over those in config/application.rb.
   config.paperclip_defaults = {
-  :storage => :s3,
-  :s3_credentials => {
-    :bucket => 'campusbazaar'
+    :storage => :s3,
+    :s3_credentials => {
+    :bucket => ENV['amazon_bucket'],
+    :access_key_id => ENV['amazon_access_key'], 
+    :secret_access_key => ENV['amazon_secret']
   }
 }
   # In the development environment your application's code is reloaded on
@@ -16,7 +18,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.

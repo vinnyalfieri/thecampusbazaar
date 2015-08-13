@@ -4,10 +4,15 @@ describe 'login/logout', type: :feature do
 
   include LoginHelper
 
+  before do 
+    sign_up_user(@user)
+    log_out
+  end
+
   context 'logging in' do
 
     it 'is successful' do
-      log_in_successfully
+      log_in_user(@user)
     end
 
   end
@@ -15,9 +20,8 @@ describe 'login/logout', type: :feature do
   context 'logging out' do 
 
     it 'is successful' do
-      log_in_successfully
-      click_on "Logout"
-      expect(page).to have_content("Login")
+      log_in_user(@user)
+      log_out
     end
 
   end

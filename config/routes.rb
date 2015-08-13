@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   get '/communities/info', as: :info
   post '/communities/search' => 'communities#set', as: :set
 
+  post '/items' => 'items#search'
+
   resources :communities do 
     resources :items
   end

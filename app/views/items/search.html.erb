@@ -1,0 +1,6 @@
+<h1>Search Results for <%= @keyword %></h1>
+<ul style="list-style-type: none">
+  <% @results.each do |item| %>
+    <%= render partial: 'items/community_item', locals: {item: item} %>
+  <% end %>
+</ul>

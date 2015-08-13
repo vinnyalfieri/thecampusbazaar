@@ -77,14 +77,23 @@
         <div class="head-search pull-right">
           <a href="#" class="b-dropdown"><i class="fa fa-search square-2 rounded-1 bg-color white"></i></a>
           <div class="b-dropdown-block">
-            <%= form_tag "/items", :role => "form" do %>
-              <div class="input-group">
-              <%= text_field_tag :keyword, nil, :placeholder => "Search Here", :class =>"form-control", :name =>"keyword", :id =>"keyword" %>
-              </div>
-              <span class="input-group-btn">
-              <%= submit_tag 'Search', :class => "btn btn-color btn-m", :name => "commit"%>
-              </span>
-            <% end %>
+            <%= form_tag('/items') do %> 
+               <div>
+               <%= text_field_tag :keyword%>  
+               <%= submit_tag 'Search' %> 
+               </div>
+            <% end -%>
+
+
+
+            <%#= form_tag "/items", :role => "form" do %>
+              <!-- <div class="input-group"> -->
+              <%#= text_field_tag :keyword, nil, :placeholder => "Search Here", :class =>"form-control", :name =>"keyword", :id =>"keyword" %>
+              <!-- </div>
+              <span class="input-group-btn"> -->
+              <%#= submit_tag 'Search', :class => "btn btn-color btn-m", :name => "commit"%>
+              <!-- </span> -->
+            <%# end %>
           </div>
         </div>
         <!-- Search section ends -->

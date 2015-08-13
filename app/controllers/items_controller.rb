@@ -27,6 +27,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search 
+    @keyword = params[:keyword]
+    @results = Search.for(@keyword)
+  end 
+
   def create
     item = current_user.items.build(item_params)
     if item.categories.empty?

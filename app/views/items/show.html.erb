@@ -59,7 +59,7 @@
                   <h4><%= sitem.name %></h4>
                 </a>  
                 <br>
-                <span class="sw-price">$<%= sitem.price %></span>   
+                <span class="sw-price">$<%= format("%.2f", sitem.price) %></span>   
                 <div class="clearfix"></div>           
               </div>
             <% end %>

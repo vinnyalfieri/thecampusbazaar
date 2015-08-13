@@ -12,20 +12,19 @@
         <!-- Profile user chat contacts -->
         <div class="chat-contact">
           <% current_user.conversations.each do |conversation| %>
-
+          <% if current_user.id == conversation.user1.id%>
+            <% other_user = conversation.user2 %>
+          <% else %>
+            <% other_user = conversation.user1%>
+          <% end %>
           <!-- Chat contact member -->
           <div class="chat-member">
             <!-- Member Image -->
             <div class="img-container">
-              <a href="#"><img class="mg-responsive" src='<%= image_tag conversation.user2.avatar.url(:thumb) %>' alt="" /></a>
+              <a href="#"><img class="mg-responsive" src='<%= other_user.avatar.url(:thumb) %>' alt="" /></a>
             </div>
             <!-- Name -->
-            <h4><a href="#">
-            <% if conversation.user1_id != current_user.id %>
-              <%= conversation.user1.name%>
-            <% else %>
-            <%= conversation.user2.name%>
-            <% end %></a></h4>
+            <h4><a href="#"><%= other_user.name %></a></h4>
             <!-- Paragraph -->
             <p><%= conversation.item.name%></p>
             <div class="clearfix"></div>

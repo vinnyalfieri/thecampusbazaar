@@ -29,10 +29,10 @@ ActiveRecord::Schema.define(version: 20150813003548) do
   end
 
   create_table "conversations", force: :cascade do |t|
-    t.integer  "seller_id"
-    t.integer  "buyer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "item_categories", force: :cascade do |t|
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 20150813003548) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer  "seller_id"
-    t.integer  "buyer_id"
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
     t.integer  "conversation_id"
     t.text     "content"
     t.boolean  "read",            default: false

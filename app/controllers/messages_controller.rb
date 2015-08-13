@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
   end
 
   def create
+    binding.pry
     #Conversation.new, if conversation contains buyer and user, then shovel in it.
     @item = Item.find(params[:message][:item_id])
     @message = Message.new(message_params)
@@ -27,7 +28,7 @@ class MessagesController < ApplicationController
 
 private
   def message_params
-    params.require(:message).permit(:seller_id, :buyer_id, :content)
+    params.require(:message).permit(:sender_id, :recipient_id, :content)
   end
 
 end

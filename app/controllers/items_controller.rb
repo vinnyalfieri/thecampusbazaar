@@ -44,7 +44,6 @@ class ItemsController < ApplicationController
     @item = Item.find_by(:id => params[:id])
     @category = @item.categories.first
     @selleritems = Item.findselleritems(@item)
-    
   end
 
   def destroy

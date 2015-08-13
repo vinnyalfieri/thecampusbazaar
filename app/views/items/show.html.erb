@@ -1,51 +1,71 @@
-<div style="padding-left: 2%">
-<%= link_to @item.community.name, root_path(@item.community) %> &#9830; &#9830; <%#= link_to @category.name, root_path(@item.community) %>
-</div><br>
-  
 <div align = 'right' style= 'margin-right: 2%;'>
 <% if (current_user.id == @item.seller_id)%>
 <%= link_to 'Edit Item', edit_user_item_path(current_user, @item), class: 'btn btn-info'%>
 <%end%>
 </div>
-<div class="col-sm-8">
-<h1 style="text-align: left; font-weight: bold; font-size: 45px;"> <%= @item.name %> </h1>
-  <div class="panel panel-default">
-    <div class="panel-body">
-    <%= image_tag @item.product.url(:medium) %>
+<div class="container">
+  <div class="ecommerce">
+    <div class="row">
+      <div class="col-md-9 col-sm-8 col-md-push-3 col-sm-push-4">
+        <div class="shoppoing-content">
+          <div class="shopping-single">
+            <div class="col-md-4 col-sm-6">
+              <%= image_tag @item.product.url(:medium) %>
+            </div>
+            <div class="col-md-6 col-sm-4 col-md-push-1 col-sm-push-1">
+              <h4><%= @item.name %></h4>
+              <p><%= @item.description %></p>
+              <div class="table-responsive">
+                <table class="table table-bordered sitem-table">
+                  <tbody>
+                    <% unless @item.seller == current_user %>
+                      <tr>
+                        <th>Sold By :</th>
+                        <td><%= link_to @item.seller.name, user_path(@item.seller) %></td>
+                      </tr>
+                    <% end %>
+                    <tr>
+                      <th>Name :</th>
+                      <td><%= @item.name %></td>
+                    </tr>
+                    <tr>
+                      <th>List Price :</th>
+                      <td>$<%= format("%.2f", @item.price) %></td>
+                    </tr>
+                    <tr>
+                      <th>Condition :</th>
+                      <td><%= @item.condition %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <% unless @item.seller == current_user %>
+                <%= link_to "Make Offer", new_offer_path({user: @item.seller_id, item: @item.id}), {class: 'btn btn-danger'}  %>
+                <%= link_to "Contact Seller", new_message_path({user: @item.seller_id, item: @item.id}), {class: 'btn btn-success'}  %>
+              <% end %>
+            </div>            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4 col-md-pull-9 col-sm-pull-8">
+        <div class="sidebar">
+          <div class="s-widget">
+            <h3>Other Items From: <%= @item.seller.name %></h3>
+            <% @selleritems.each do |sitem| %>
+              <div class="sw-content">
+                <a href="<%= user_item_path(sitem.seller, :id => sitem.id) %>"><%= image_tag sitem.product.url(:medium), :class => "img-responsive"%>
+                </a>
+                <a href="<%= user_item_path(sitem.seller, :id => sitem.id) %>">
+                  <h4><%= sitem.name %></h4>
+                </a>  
+                <br>
+                <span class="sw-price">$<%= sitem.price %></span>   
+                <div class="clearfix"></div>           
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-
+  </div> 
 </div>
-
-<br><br><br><br>
-
-<div class="col-sm-4">
-  <div class="panel panel-default" style="font-size: 20px;">
-    <div class="panel-body">
-      <p>
-        <% unless @item.seller == current_user %>
-          <b>Sold By: </b><%= link_to @item.seller.name, user_path(@item.seller) %>
-        <% end %>
-        <br>
-          <p>
-            <b>List Price: </b>$<%=  format("%.2f", @item.price) %>
-          </p>
-          <p>
-            <b>Condition: </b><%= @item.condition %>
-          </p>
-          <p>
-            <b>Description: </b><%= @item.description %>
-            </p>
-      </p>
-      <br>
-      
-      <% unless @item.seller == current_user %>
-        <%= link_to "Make Offer", new_offer_path({user: @item.seller_id, item: @item.id}), {class: 'btn btn-danger'}  %>
-        <br><br>
-        <%= link_to "Contact Seller", new_message_path({user: @item.seller_id, item: @item.id}), {class: 'btn btn-success'}  %>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<%= render partial: 'otheritems'  %>

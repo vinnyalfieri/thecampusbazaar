@@ -5,7 +5,7 @@
       <i class="fa fa-envelope color"></i> &nbsp; <a href="mailto:fakeemail@fakeemail.com">fakeemail@fakeemail.com</a>
       &nbsp;&nbsp;  
       <!-- Phone -->
-      <i class="fa fa-phone color"></i> &nbsp; +1 (5555)-(555)-555
+      <i class="fa fa-phone color"></i> &nbsp; +1 (555)-(555)-555
     </div>
     <div class="tb-social pull-right">
       <div class="brand-bg text-right">
@@ -77,15 +77,14 @@
         <div class="head-search pull-right">
           <a href="#" class="b-dropdown"><i class="fa fa-search square-2 rounded-1 bg-color white"></i></a>
           <div class="b-dropdown-block">
-            <form role="form">
-              <!-- Input Group -->
+            <%= form_tag "/items", :role => "form" do %>
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Type Something">
-                <span class="input-group-btn">
-                  <button class="btn btn-color" type="button">Search</button>
-                </span>
+              <%= text_field_tag :keyword, nil, :placeholder => "Search Here", :class =>"form-control", :name =>"keyword", :id =>"keyword" %>
               </div>
-            </form>
+              <span class="input-group-btn">
+              <%= submit_tag 'Search', :class => "btn btn-color btn-m", :name => "commit"%>
+              </span>
+            <% end %>
           </div>
         </div>
         <!-- Search section ends -->

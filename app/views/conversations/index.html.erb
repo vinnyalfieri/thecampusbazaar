@@ -16,3 +16,15 @@
 </ul>
 <%end%> 
 <%end%> 
+
+<!-- These are the mesages for each conversation -->
+<% current_user.conversations.each do |conversation|%>
+<% conversation.messages.each do |message| %>
+<ul>
+<li><%= User.find(message.sender_id).name %></li>
+<li><%= message.content %></li>
+</ul>
+<%end%>
+<%end%>
+
+

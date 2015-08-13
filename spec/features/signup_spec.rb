@@ -13,7 +13,6 @@ describe 'signing up', type: :feature do
     context 'without a community (.edu) email' do
 
       it 'signs up successfully & redirects to community search path' do
-        # binding.pry
         fill_in "Name", with: "Jake Faris"
         fill_in "Email", with: "jfaris@conncoll.edu"
         fill_in "Password", with: "password"

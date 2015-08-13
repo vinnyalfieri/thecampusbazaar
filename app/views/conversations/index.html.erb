@@ -1,12 +1,18 @@
-  <div class="well">
-    <div class="title">
-      <%= render partial: 'conversations/conversations_header' %>
-    <h3> Inbox </h3>
-      <% if @conversations == nil || @conversations.empty? %>
-      <i>Your Inbox folder is currently empty</i>
-      <% else %>
-        <%= render partial: 'conversations/messages_index' %>
-      <% end %>
-    </span>
-  </div>
-</div>
+<%#binding.pry %>
+<%current_user.conversations.each do |conversation|%>
+<% if current_user.id == conversation.user1_id %>
+<ul>
+<li><%= User.find(conversation.user2_id).name %></li>
+<li>For Item <%= Item.find(current_user.conversations.first.item_id).name %></li>
+</ul>
+<%end%> 
+<%end%> 
+
+<%current_user.conversations.each do |conversation|%>
+<% if current_user.id == conversation.user2_id %>
+<ul>
+<li><%= User.find(conversation.user1_id).name %></li>
+<li>For Item <%= Item.find(current_user.conversations.first.item_id).name %></li>
+</ul>
+<%end%> 
+<%end%> 

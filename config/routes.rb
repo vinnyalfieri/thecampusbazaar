@@ -1,11 +1,14 @@
 
 Rails.application.routes.draw do
-  get 'errors/file_not_found'
+  #get 'errors/file_not_found'
 
-  get 'errors/unprocessable'
+  #get 'errors/unprocessable'
 
-  get 'errors/internal_server_error'
+  #get 'errors/internal_server_error'
 
+  resources :conversations 
+  
+  
   resources :offers
 
   root 'communities#show'
@@ -17,23 +20,6 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'users#venmo'
   get '/auth/venmo', as: 'venmo_login'
 
-
-  resources :messages do
-    member do
-      post :new
-    end
-  end
-  resources :conversations do
-    member do
-      post :reply
-      post :trash
-      post :untrash
-    end
-    collection do
-      get :trashbin
-      post :empty_trash
-    end
-  end
 
   get '/communities/search', as: :search
   get '/communities/info', as: :info
@@ -66,8 +52,8 @@ Rails.application.routes.draw do
   get '/about' => 'static_pages#about', as: :about
 
 
-  match '/404', to: 'errors#file_not_found', via: :all
-  match '/422', to: 'errors#unprocessable', via: :all
-  match '/500', to: 'errors#internal_server_error', via: :all
+  #match '/404', to: 'errors#file_not_found', via: :all
+  #match '/422', to: 'errors#unprocessable', via: :all
+  #match '/500', to: 'errors#internal_server_error', via: :all
 
 end

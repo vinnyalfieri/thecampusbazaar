@@ -75,8 +75,16 @@ class User < ActiveRecord::Base
     self.items.collect{|item| item.offers}.flatten
   end
 
+  def pending_offers_received
+    self.offers_received.select{ |offer| offer.status=="pending"}
+  end
+
   def seller?
     !(self.items == [])
+  end 
+
+  def buyer?
+    !(self.offers_sent == [])
   end 
 
 end

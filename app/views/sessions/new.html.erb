@@ -1,13 +1,40 @@
-<center><h1>Login</h1>
-<br><br>
-<%= form_tag '/login' do %>
+<div class="page-heading-two">
+  <div class="container">
+    <h2>Login <span></span></h2>
+    <div class="clearfix"></div>
+  </div>
+</div>
 
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="well login-reg-form">
+      <%= form_tag '/login', :class => "form-horizontal", :type => "form" do %>
+        <!-- Form Group -->
+        <div class="form-group">
+          <!-- Label -->
+          <label for="user" class="col-sm-3 control-label">Email</label>
+          <div class="col-sm-9">
+            <!-- Input -->
+            <%= text_field_tag :email, nil, :class => 'form-control', :placeholder => "Enter Email", :type => "text" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-sm-3 control-label">Password</label>
+          <div class="col-sm-9">
+            <%= password_field_tag :password, nil, :type => "password", :placeholder => "Enter Password", :id => "password", :class => "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9">
+            <!-- Button -->
+            <%= submit_tag "Submit", :class => "btn btn-red" %>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <br><br><br><br>
+</div>
 
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
-
-<% end %>
-</center>

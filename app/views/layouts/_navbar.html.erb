@@ -1,55 +1,100 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="top-bar">
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-        <i class="fa fa-bars"></i>
-      </button>
-      <%= link_to 'CampusBazaar', root_path, {class: "navbar-brand page-scroll"} %>
+    <div class="tb-contact pull-left">
+      <!-- Email -->
+      <i class="fa fa-envelope color"></i> &nbsp; <a href="mailto:thecampusbazaar@gmail.com">thecampusbazaar@gmail.com</a>
+      &nbsp;&nbsp;  
     </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-      <ul class="nav navbar-nav">
+    <div class="tb-social pull-right">
+      <div class="brand-bg text-right">
+        <!-- Brand Icons -->
+        <a href="https://www.facebook.com/theCampusBazaar" target="_blank" class="facebook"><i class="fa fa-facebook square-2 rounded-1"></i></a>
+        <a href="https://twitter.com/theCampusBazaar" target="_blank" class="twitter"><i class="fa fa-twitter square-2 rounded-1"></i></a>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>  
+</div>
 
-        <!-- Adds Sell a New Item Link to NAVBAR ONLY when a user is logged in. -->
-        <% if current_user %>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Your Account <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><%= link_to  "Edit Your Account", user_path(current_user) %></li>
-            <li role="separator" class="divider"></li>
-            <li><%= link_to 'Messages', conversations_path%></li>
-            <!-- <li ><%#= link_to("Messages #{current_user.mailbox.inbox(:unread => true).count(:id, :distinct => true)}", conversations_path) %></li> -->
-            <li role="separator" class="divider"></li>
-            <li ><%= link_to('Sell an Item', new_user_item_path(:user_id => current_user.id)) %> </li>
-            <li role="separator" class="divider"></li>
-            <li ><%= link_to('Manage Your Items', user_items_path(:user_id => current_user.id)) %> </li>
-            <li role="separator" class="divider"></li>
-            <% if current_user.seller? %>
-            <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Offers</a>
-                <ul class="dropdown-menu">
-                <li><%= link_to('Offers you made', offers_sent_path(current_user))%></li>
-                <li><%= link_to('Offers for your items', offers_received_path(current_user))%></li>
+<div class="header-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <!-- Logo section -->
+        <div class="logo">
+          <h1><%= link_to 'CampusBazaar', root_path %></h1>
+        </div>
+      </div>
+      <div class="col-md-8">  
+              <!-- Navigation starts.  -->
+        <div class="navy">    
+          <ul>
+          <% if current_user %>
+            <!-- Main menu -->
+            <li class="has-sub"><span class="submenu-button"></span><a href="#">Your Account</a>
+              <!-- Submenu -->
+              <ul>
+                <li><%= link_to  "Edit Your Account", user_path(current_user) %></li>
+                <li ><%= link_to("Messages", conversations_path) %></li>
+                <li ><%= link_to('Sell an Item', new_user_item_path(:user_id => current_user.id)) %> </li>
+                <li ><%= link_to('Manage Your Items', user_items_path(:user_id => current_user.id)) %> </li>
+                <!-- 2nd Level sub menu -->
+                 <% if current_user.seller? %>
+                <li class="has-sub"><span class="submenu-button"></span>
+                  <a href="#">Offers</a>
+                  <ul>
+                    <li><%= link_to('Offers Sent', offers_sent_path(current_user))%></li>
+                    <li><%= link_to('Offers Received', offers_received_path(current_user))%></li>
+                  </ul>
+                </li>
+                <% elsif current_user.buyer? %>
+                  <li ><%= link_to('Offers Sent', offers_sent_path(current_user)) %> </li>
+                <% end %>
+
               </ul>
-             </li>
-             <% else %>
-            <li ><%= link_to('Offers Sent', offers_sent_path(current_user)) %> </li>
-             <% end %>
-          </ul>
-          <% end %>
-        </li>
-        <li class="hidden">
-          <a href="#page-top"></a> 
-        </li>
+            </li>              
+            <li><%= link_to(" About this Project", about_path) %></li>
+            <% end %>
         <% if current_user %>
-        <li><p class='navbar-text'><%= "Signed in as #{current_user.name}" %></p></li>
-        <li><p class='navbar-text'>|</p></li>
-        <li><%= link_to "Logout", '/logout' %></li>
-        <% else %>
-        <li><%= link_to 'Login', '/login' %></li>
-        <li><p class='navbar-text'>|</p></li>
-        <li><%= link_to 'Signup', '/signup' %></li>
+          <li class="pull-right"><%= link_to "Logout", '/logout' %></li>
+          <li class="pull-right"><%= link_to "|", '/' %></li>
+          <li class="pull-right"><%= link_to "Signed in as #{current_user.name}", '/' %></li>
+          <% else %>
+          <li class="pull-right"><%= link_to 'Login', '/login' %></li>
+          <li class="pull-right"><%= link_to "|", '/' %></li>
+          <li class="pull-right"><%= link_to 'Signup', '/signup' %></li>
         <% end %>
-      </ul>
+          </ul>
+        </div>              
+         <!-- Navigation ends -->        
+      </div>
+      <div class="col-md-1">
+        <!-- Search section -->
+        <div class="head-search pull-right">
+          <a href="#" class="b-dropdown"><i class="fa fa-search square-2 rounded-1 bg-color white"></i></a>
+          <div class="b-dropdown-block">
+            <%= form_tag('/items') do %> 
+               <div>
+               <%= text_field_tag :keyword%>  
+               <%= submit_tag 'Search' %> 
+               </div>
+            <% end -%>
+
+
+
+            <%#= form_tag "/items", :role => "form" do %>
+              <!-- <div class="input-group"> -->
+              <%#= text_field_tag :keyword, nil, :placeholder => "Search Here", :class =>"form-control", :name =>"keyword", :id =>"keyword" %>
+              <!-- </div>
+              <span class="input-group-btn"> -->
+              <%#= submit_tag 'Search', :class => "btn btn-color btn-m", :name => "commit"%>
+              <!-- </span> -->
+            <%# end %>
+          </div>
+        </div>
+        <!-- Search section ends -->
+        <div class="clearfix"></div>        
+      </div>
     </div>
   </div>
-</nav>
+</div>

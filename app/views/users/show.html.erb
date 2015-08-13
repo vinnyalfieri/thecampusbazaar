@@ -1,21 +1,55 @@
+<div class="main-block">
 
-<h2><%= @user.name %></h2>
-<%= image_tag @user.avatar.url(:medium) %><br><br>
-<% if (current_user.id == @user.id)%>
-  <%= button_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary', method: 'get' %><br>
+  <div class="page-heading-two">
+    <div class="container">
+      <h2>My Account <span>Campus Bazaar</span></h2>
+      <div class="breads">
+        Home / <a href="#">Page</a> / <a href="#">Sub Page</a>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
 
-  <% unless @user.has_venmo? %>
-    <%= link_to 'Log in with Venmo', venmo_login_path %>
-  <% end %>
-
-<%end%>
-
-
-<% if @user.items %>
-<h2> Items for sale </h2>
-<%end%>
-<ul style="list-style-type: none">
-  <% @user.items.each do |item|%>
-    <%= render partial: 'items/user_item', locals: {item: item} %>
-  <%end%>
-</ul>
+  <div class="container"> 
+    <div class="ecommerce">
+      <div class="row">
+        <div class="col-md-9 col-sm-8 col-md-push-3 col-sm-push-4">
+          <div class="shopping-content">
+            <h4><i class="fa fa-user color"></i>&nbsp; My Account&nbsp;<small>Campus Bazaar</small></h4>
+            <hr>
+            <div class="shopping-account">
+              <div class="row"> 
+                <div class="col-md-3 col-sm-4 col-xs-4">
+                  <!-- Image -->
+                  <%#= image_tag @user.avatar.url(:medium) %>
+                  <img src="<%= @user.avatar.url(:medium) %>" class="img-responsive img-thumbnail" alt="<%= @user.name%> profile picture">
+                </div>
+                <div class="col-md-9 col-sm-8 col-xs-8">
+                  <!-- Your Name / Heading -->
+                  <h4><%= @user.name %></h4>
+                  <div class="address">
+                    <!-- Email Address -->
+                    <span><i class="fa fa-envelope color"></i>&nbsp; <%= @user.email %></span><br>
+                    <span><i class="fa fa-cubes color"></i>&nbsp; <%= @user.items.count%> items for sale</span><br>
+                    <span><i class="fa fa-money color"></i>&nbsp; <%= @user.pending_offers_received.count %> offers pending</span>
+                  </div>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div> <!--PUSH-4-->
+        <div class="col-md-3 col-sm-4 col-md-pull-9 col-sm-pull-8">
+          <div class="sidebar">
+            <h2>Navigation</h2>
+            <ul class="account-nav">
+              <li><%= link_to  "Your Account", user_path(current_user) %></li>
+              <li><%= link_to "Edit Account", edit_user_path(current_user)%></li>
+              <li><%= link_to "Manage Items", user_items_path(current_user)%></li>
+            </ul>
+          </div>
+        </div> <!--PULL-8-->
+      </div> <!--ROW-->
+    </div>
+  </div>
+</div>
+          

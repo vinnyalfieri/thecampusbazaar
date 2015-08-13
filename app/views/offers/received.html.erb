@@ -1,3 +1,9 @@
+<div class="page-heading-two">
+  <div class="container">
+    <h2>Offers Received<span></span></h2>
+    <div class="clearfix"></div>
+  </div>
+</div>
 <div class="tables_of_items">
   
   <% if @count > 0 %>
@@ -5,7 +11,7 @@
     <div class="all_offered_item_tables">
     <% @available_items.each do |item| %>
       <% if item.offers.count > 0 %>
-    <h2><%= link_to item.name, user_item_path(item.community, item)%> </h2>
+    <h4><%= link_to item.name, user_item_path(item.community, item)%> </h4>
        <%= render :partial => "table_of_received", locals: {item: item}%>
      <% end %>
     <% end %>

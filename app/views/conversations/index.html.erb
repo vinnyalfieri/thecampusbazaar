@@ -7,112 +7,31 @@
       <div class="col-md-4 col-sm-4">
         <!-- Contact Heading -->
         <h3><i class="fa fa-user lblue"></i>&nbsp; All Contacts</h3>
+        
+
         <!-- Profile user chat contacts -->
         <div class="chat-contact">
+          <% current_user.conversations.each do |conversation| %>
+          <% if current_user.id == conversation.user1.id%>
+            <% other_user = conversation.user2 %>
+          <% else %>
+            <% other_user = conversation.user1%>
+          <% end %>
           <!-- Chat contact member -->
           <div class="chat-member">
             <!-- Member Image -->
             <div class="img-container">
-              <a href="#"><img class="mg-responsive" src="img/user/2.jpg" alt="" /></a>
-              <span class="st-live status"></span>
+              <a href="#"><img class="mg-responsive" src='<%= other_user.avatar.url(:thumb) %>' alt="" /></a>
             </div>
             <!-- Name -->
-            <h4><a href="#">Barbara Warts</a></h4>
+            <h4><a href="#"><%= other_user.name %></a></h4>
             <!-- Paragraph -->
-            <p>I am online now.</p>
+            <p><%= conversation.item.name%></p>
             <div class="clearfix"></div>
           </div>
-          <!-- Chat contact member -->
-          <div class="chat-member">
-            <!-- Member Image -->
-            <div class="img-container">
-              <a href="#"><img class="mg-responsive" src="img/user/3.jpg" alt="" /></a>
-              <span class="st-hide status"></span>
-            </div>
-            <!-- Name -->
-            <h4><a href="#">Medona Doe</a></h4>
-            <!-- Paragraph -->
-            <p>3 hours ago.</p>
-            <div class="clearfix"></div>
-          </div>
-          <!-- Chat contact member -->
-          <div class="chat-member">
-            <!-- Member Image -->
-            <div class="img-container">
-              <a href="#"><img class="mg-responsive" src="img/user/4.jpg" alt="" /></a>
-              <span class="st-off status"></span>
-            </div>
-            <!-- Name -->
-            <h4><a href="#">July Doe</a></h4>
-            <!-- Paragraph -->
-            <p>8 hours ago.</p>
-            <div class="clearfix"></div>
-          </div>
-          <!-- Chat contact member -->
-          <div class="chat-member">
-            <!-- Member Image -->
-            <div class="img-container">
-              <a href="#"><img class="mg-responsive" src="img/user/5.jpg" alt="" /></a>
-              <span class="st-live status"></span>
-            </div>
-            <!-- Name -->
-            <h4><a href="#">Henry Gates</a></h4>
-            <!-- Paragraph -->
-            <p>I am online now.</p>
-            <div class="clearfix"></div>
-          </div>
-          <!-- Chat contact member -->
-          <div class="chat-member">
-            <!-- Member Image -->
-            <div class="img-container">
-              <a href="#"><img class="img-responsive" src="img/user/6.jpg" alt="" /></a>
-              <span class="st-busy status"></span>
-            </div>
-            <!-- Name -->
-            <h4><a href="#">Jennifer Loren</a></h4>
-            <!-- Paragraph -->
-            <p>I am busy now. </p>
-            <div class="clearfix"></div>
-          </div>
-          <!-- Chat contact member -->
-          <div class="chat-member">
-            <!-- Member Image -->
-            <div class="img-container">
-              <a href="#"><img class="mg-responsive" src="img/user/7.jpg" alt="" /></a>
-              <span class="st-live status"></span>
-            </div>
-            <!-- Name -->
-            <h4><a href="#">James Louis</a></h4>
-            <!-- Paragraph -->
-            <p>I am online now.</p>
-            <div class="clearfix"></div>
-          </div>
-          <!-- Chat contact member -->
-          <div class="chat-member">
-            <!-- Member Image -->
-            <div class="img-container">
-              <a href="#"><img class="mg-responsive" src="img/user/3.jpg" alt="" /></a>
-              <span class="st-hide status"></span>
-            </div>
-            <!-- Name -->
-            <h4><a href="#">Medona Doe</a></h4>
-            <!-- Paragraph -->
-            <p>3 hours ago.</p>
-            <div class="clearfix"></div>
-          </div>
-          <!-- Chat contact member -->
-          <div class="chat-member">
-            <!-- Member Image -->
-            <div class="img-container">
-              <a href="#"><img class="mg-responsive" src="img/user/4.jpg" alt="" /></a>
-              <span class="st-off status"></span>
-            </div>
-            <!-- Name -->
-            <h4><a href="#">July Doe</a></h4>
-            <!-- Paragraph -->
-            <p>8 hours ago.</p>
-            <div class="clearfix"></div>
-          </div>
+          
+          <% end %>
+
         </div>
       </div>
       <div class="col-md-8 col-sm-8">
@@ -249,24 +168,3 @@
 </script>
   </div>
 </div>
-
-<%current_user.conversations.each do |conversation|%>
-<% if current_user.id == conversation.user1_id %>
-<ul>
-<%#binding.pry%>
-<li><%= User.find(conversation.user2_id).name %></li>
-<li>For Item <%= conversation.item.name %></li>
-<li><%= link_to 'See conversation', conversation_messages_path(conversation) %></li>
-</ul>
-<%end%> 
-<%end%> 
-
-<%current_user.conversations.each do |conversation|%>
-<% if current_user.id == conversation.user2_id %>
-<ul>
-<li><%= User.find(conversation.user1_id).name %></li>
-<li>For Item <%= conversation.item.name %></li>
-<li><%= link_to 'See conversation', conversation_messages_path(conversation) %></li>
-</ul>
-<%end%> 
-<%end%> 

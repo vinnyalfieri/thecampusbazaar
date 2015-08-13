@@ -1,67 +1,51 @@
-<div class="panel panel-info">
-
-    <div class="panel-heading">
-      <h1>Sell an Item</h1>
-    </div>
-
-    <div class= "panel-body col-md-8">
-
-        <%= form_for([current_user, Item.new]) do |f| %>
+<div class="page-heading-two">
+  <div class="container">
+    <h2>Sell an Item <span></span></h2>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="container">
+    <div class="components">
+        <div class="col-md-5 col-md-push-1 col-sm-push-1">
+            <%= form_for([current_user, Item.new]) do |f| %>
             <%= f.hidden_field :seller_id, :value => current_user.id %>
-
-
-            <h3>What are you selling?</h3>
-
-            <div class="well clearfix">
-                <div class="form-group">
-                    <%= f.label :name %>
-                    <%= f.text_field :name %>
-                </div>
-                <div class="form-group">
-                    <%= f.label :price %>
-                    <%= f.number_field :price, :step => 0.01  %>
-                </div>
-
-                <!-- <div class="check_box">
-                        <%= f.label :delete_product%>
-                        <%= f.check_box(:delete_product)%><br>
-                </div> -->
-
-                <div class="form-group col-md-8 col-md-offset-2">
-                    <%= f.label :description %>
-                    <%= f.text_area :description, class: 'form-control' %>
-                </div>
-
-                <br>
-
-                <div class="form-group col-md-10 col-md-offset-1">
-                <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
-                </div>
-                
-                <div class="form-group col-md-6">
-                    <%= f.label :condition %>
-                    <%= f.select :condition,['New','Excellent','Good','Acceptable'],:prompt => 'Select One', :class => 'form-control' %>
-                </div>  
-
-                <div class="form-group col-md-6">
-                    <%= f.submit 'Add Item', :class => 'btn btn-info'%>
-                </div>
+            <div class="form-group">
+                <%= f.label :name %>
+                <%= f.text_field :name %>
+            </div>
+            <div class="form-group">
+                <%= f.label :price %>
+                <%= f.number_field :price, :step => 0.01 %>
             </div>
 
-        
-    </div>
-
-    <div class="panel-body col-md-4">
-
-        <div class="upload-preview">
-            <%=image_tag 'placeholder-product.gif'%>
+            <div class="form-group">
+                <%= f.label :description %>
+                <%= f.text_area :description, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+                <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+            </div>
+            <div class="form-group">
+                <%= f.label :condition %>
+                <%= f.select :condition,['New','Excellent','Good','Acceptable'], :class => 'form-control', :prompt => 'Select One'%>
+            </div>
+            <%= f.submit 'Add Item', :class => 'btn btn-info'%>
+            
+            <br>
+            <br>
         </div>
-
-        <div class="form-group">
-            <%= f.label :product, "Item Preview" %>
-            <%= f.file_field :product, class: 'file'%>
+        <div class="col-md-5 col-md-push-1 col-sm-push-1">
+            <div class="upload-preview">
+                <%=image_tag 'placeholder-product.gif'%>
+            </div>
+            <div class="form-group">
+                <%= f.label :product, "Item Preview" %>
+                <%= f.file_field :product, class: 'file'%>
+            </div>
         </div>
+        <% end %>
     </div>
-<% end %>
 </div>
+<br><br><br>
+
 

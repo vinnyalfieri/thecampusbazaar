@@ -1,51 +1,86 @@
-<h1>Signup!</h1>
-<div class="container">
-<%= form_for :user, url: '/users' do |f| %>
 
-  <% if @user && @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group <%= "error_field" if @user && @user.errors[:name] %>">
-    <%= f.label :name %>
-    <% if @user && @user.errors[:name] %>
-      <span><%= @user.errors[:name].first %></span>
-    <% end %>
-    <%= f.text_field :name %>
+<div class="page-heading-two">
+  <div class="container">
+    <h2>Signup!<span></span></h2>
+    <div class="clearfix"></div>
   </div>
-
-  <div class="form-group <%= "error_field" if @user && @user.errors[:email] %>">
-    <%= f.label :email %> 
-    <% if @user && @user.errors[:email] %>
-      <span><%= @user.errors[:email].first %></span>
-    <% end %>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="form-group <%= "error_field" if @user && @user.errors[:password] %>">
-    <%= f.label :password %>
-    <% if @user && @user.errors[:password] %>
-      <span><%= @user.errors[:password].first %></span>
-    <% end %>
-    <%= f.password_field :password %>
-  </div>
-
-  <div class="form-group <%= "error_field" if @user && @user.errors[:password] %>">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit "Submit" %>
-  </div>
-
-<% end %>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="well login-reg-form">
+      <%= form_for :user, url: '/users', :class => "form-horizontal", :type => "form" do |f| %>
+        <% if @user && @user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+            <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <!-- Form Group -->
+        <div class="form-group <%= "error_field" if @user && @user.errors[:name] %>">
+          <!-- Label -->
+            <%= f.label :name, :class => "col-sm-3 control-label"  %>
+          <div class="col-sm-9">
+            <!-- Input -->
+            <% if @user && @user.errors[:name] %>
+              <span><%= @user.errors[:name].first %></span>
+            <% end %>
+            <%= f.text_field :name, :class => 'form-control', :type => "text" %>
+          </div>
+        </div>
+
+        <div class="form-group <%= "error_field" if @user && @user.errors[:email] %>">
+          <!-- Label -->
+            <%= f.label :email, :class => "col-sm-3 control-label"  %>
+          <div class="col-sm-9">
+            <!-- Input -->
+            <% if @user && @user.errors[:email] %>
+              <span><%= @user.errors[:email].first %></span>
+            <% end %>
+            <%= f.text_field :email, :class => 'form-control', :type => "text" %>
+          </div>
+        </div>
+
+        <div class="form-group <%= "error_field" if @user && @user.errors[:password] %>">
+          <!-- Label -->
+            <%= f.label :password, :class => "col-sm-3 control-label" %>
+          <div class="col-sm-9">
+            <!-- Input -->
+            <% if @user && @user.errors[:password] %>
+              <span><%= @user.errors[:password].first %></span>
+            <% end %>
+            <%= f.password_field :password, :class => 'form-control', :type => "text" %>
+          </div>
+        </div>
+
+        <div class="form-group <%= "error_field" if @user && @user.errors[:password] %>">
+          <!-- Label -->
+            <%= f.label :password_confirmation, :class => "col-sm-3 control-label" %>
+          <div class="col-sm-9">
+            <!-- Input -->
+            <%= f.password_field :password_confirmation, :class => 'form-control', :type => "text" %>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9">
+            <!-- Button -->
+            <%= f.submit "Submit", :class => "btn btn-red" %>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <br><br><br><br>
+</div>
+
+

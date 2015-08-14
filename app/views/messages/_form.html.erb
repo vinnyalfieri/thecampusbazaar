@@ -1,12 +1,13 @@
 <%#binding.pry%>
         <div class="chat-input-box">
           <div class="input-group">
-            <%= form_for [conversation, Message.new] do |f| %>
+            <%# binding.pry %>
+            <%= form_for [conversation, Message.new], remote: true do |f| %>
               <%= f.hidden_field :recipient_id, :value => recipient%>
               <%= f.hidden_field :sender_id, :value => current_user.id%>
               <%= f.hidden_field :conversation_id, :value => conversation.id %>
 
-              <%= f.text_area :content, placeholder: 'Type your message', class: 'form-control'%><br />
+              <%= f.text_area :content, placeholder: 'Type your message', class: 'form-control'%>
 
             <span class="input-group-btn">
               <%= f.submit 'Send Message', class: 'btn btn-lblue'%>

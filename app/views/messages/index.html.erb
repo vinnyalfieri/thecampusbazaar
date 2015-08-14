@@ -1,5 +1,6 @@
 
-<div class="chat-content">
+<!-- <div class="chat-content"> -->
+<div class="chat-partial">
           <!-- Chat box -->
         <% @messages.each do |message| %>
           <% if current_user.id == message.sender.id %>
@@ -33,4 +34,4 @@
 </div>
 
         <!-- Chatting message input box -->
-<%= render 'messages/form' %>
+<%= render 'messages/form', recipient: @recipient, conversation: @conversation%>

@@ -1,6 +1,11 @@
-<div class="chat-content">
+
+<div class="chat-partial">
+        
           <!-- Chat box -->
+        <%# binding.pry %>
+
         <% messages.each do |message| %>
+
           <% if current_user.id == message.sender.id %>
           <div class="chat-box chat-in">
             <!-- image -->
@@ -30,6 +35,7 @@
           <%end%>
           <%end%>
 </div>
-
+<%# binding.pry %>
         <!-- Chatting message input box -->
 <%= render 'messages/form', recipient: recipient, conversation: conversation  %>
+<%#= j render partial: 'form', locals: {recipient: recipient, conversation: conversation } %>

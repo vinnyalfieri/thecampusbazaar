@@ -1,5 +1,5 @@
-<td><%= offer.seller.name %></td>
-<td><%= offer.item.name %></td>
+<td><%= link_to offer.seller.name, user_path(offer.seller) %></td>
+<td><%= link_to offer.item.name, user_item_path(offer.seller,offer.item) %></td>
 <td><%= offer.item.price %></td>
 <td><%= offer.offer_price %></td>
 <td><% if offer.comment %>

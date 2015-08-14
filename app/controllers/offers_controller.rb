@@ -40,16 +40,16 @@ class OffersController < ApplicationController
   def accepted
     offer = Offer.find(params[:id])
 
-    case params[:payment_method]
-    when "Venmo"
-      transaction_status = offer.charge_venmo
-    when "Cash"
-      transaction_status = "cash"
+    case params[:payment_method].downcase
+    when "venmo"
+      transaction_status = offer.charge_venmo.to_sym
+    when "cash"
+      transaction_status = :cash
     else
       transaction_status = nil
     end
 
-    if transaction_status == "settled" || transaction_status == "cash"
+    if transaction_status == :settled || transaction_status == :cash
       offer.settle
     end
     
@@ -88,7 +88,7 @@ class OffersController < ApplicationController
         cash: "You have agreed to transact with cash. Please contact the buyer to establish a meeting time, etc.",
         error: "Either this offer hasn't specified any payment options, or another error occurred."
       }
-      messages[flag.to_sym] || "Either you or #{offer.buyer.name} has yet to login to Campus Bazaar with Venmo, and we are unable to make this transaction."
+      messages[flag] || "Either you or #{offer.buyer.name} has yet to login to Campus Bazaar with Venmo, and we are unable to make this transaction."
     end
 
 end

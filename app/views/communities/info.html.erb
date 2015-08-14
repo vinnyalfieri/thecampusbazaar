@@ -1,10 +1,21 @@
-<center>
-<h1><%= @community.name %></h1>
-<h3><%= @item_count %> items being sold to <%= @member_count %> members</h3>
+<div class="page-heading-two">
+  <div class="container">
+    <h2><%= @community.name %>  <span><%= @item_count %> items being sold to <%= @member_count %> members</span></h2>
+    <div class="clearfix"></div>
+  </div>
+</div>
 
-<ul style="list-style-type: none">
-<% @community.users.each do |user| %>
-  <%= render partial: 'users/community_user', locals: {user: user} %>
-<% end %>
-</ul>
-</center>
+<div class="container">
+  <div class="about-us-three">
+    <div class="block-heading-eight">
+      <h3><i class="fa fa-hand-o-right color"></i> <%= @community.name %> Members <span class="color">!!!</span></h3>
+    </div>
+    <div class="team-seven">
+      <div class="row">
+        <% @community.users.each do |user| %>
+          <%= render partial: 'users/community_user', locals: {user: user} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

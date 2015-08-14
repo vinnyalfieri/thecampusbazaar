@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
     @conversation = Conversation.find(params[:conversation_id])
     @recipient = @conversation.recipient(current_user)
     @messages = @conversation.messages
+ 
     respond_to do |format|
         format.html {}
         format.js {}
@@ -13,7 +14,14 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.save
-    redirect_to conversation_messages_path
+    @conversation = Conversation.find(params[:conversation_id])
+    @recipient = @conversation.recipient(current_user)
+    @messages = @conversation.messages
+    respond_to do |format|
+        format.html {}
+        format.js { }
+      end
+   
   end
 
 private

@@ -5,6 +5,12 @@
  */
 
  /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/*
+.chat-content {
+    width: 100%;
+    height: 250px;
+    overflow: scroll;
+}*/
  .upload-preview img{
   max-width: 30%;
   max-height: 30%;
@@ -6953,4 +6959,9 @@ body {
   position:absolute;
   bottom:0;
   left:0;
+}
+
+.center {
+    margin: auto;
+    width: 35%;
 }

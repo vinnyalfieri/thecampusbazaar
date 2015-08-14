@@ -1,16 +1,18 @@
-<li class="col-sm-4">
-  <div class="panel panel-success">
-    <div class="panel-heading">
-      <h3>
-      <%= image_tag user.avatar.url(:medium), :class => "img-responsive center-block"%>
-      </h3>
-    </div>
-    <div class="panel-body">
-      <div class="row" style="font-size:23px"> <%= link_to(user.name, user_path(current_user, :id => user.id)) %></div>
-      <div style="font-size:15px">
-        <div class="row">Items Selling: <%= user.items.count %></div>
-      </div>
-    </div>
-  </div>
-</li>
 
+
+<div class="col-md-3 col-sm-6">
+  <!-- Team member -->
+  <div class="team-member"> 
+    <div class="t-container">
+      <!-- Social -->
+      <div class="social brand-bg">
+        <a class="facebook" href="/users/<%= user.id %>"><i class="fa fa-user circle-3"></i></a>
+      </div>
+      <!-- Image -->
+      <%= image_tag user.avatar.url(:medium), :class => "img-responsive center-block"%>
+    </div>
+    <!-- Name -->
+    <h4> <%= link_to(user.name, user_path(current_user, :id => user.id)) %> </h4>
+    <p>Items Selling: <%= user.items.count %></p>
+  </div>
+</div>

@@ -18,8 +18,9 @@ class ConversationsController < ApplicationController
   end
 
   def new 
-    #binding.pry
     @item = Item.find(params[:item_id])
+    @user1 = User.find(params[:user1_id])
+    @user2 = User.find(params[:user2_id])
   end
 
 private

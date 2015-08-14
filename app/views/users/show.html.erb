@@ -34,6 +34,9 @@
                     <span><i class="fa fa-money color"></i>&nbsp; <%= @user.pending_offers_received.count %> offers pending</span>
                   </div>
                 </div> 
+                <% unless @user.has_venmo? %>
+                  <%= link_to 'Log in with Venmo', venmo_login_path %>
+                <% end %>
               </div>
             </div>
           </div>

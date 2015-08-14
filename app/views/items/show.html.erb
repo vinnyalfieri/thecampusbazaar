@@ -56,17 +56,19 @@
         <div class="sidebar">
           <div class="s-widget">
             <h3>Other Items From: <%= @item.seller.name %></h3>
-            <% @selleritems.each do |sitem| %>
+            <% @selleritems.each do |item| %>
               <div class="sw-content">
-                <a href="<%= user_item_path(sitem.seller, :id => sitem.id) %>"><%= image_tag sitem.product.url(:medium), :class => "img-responsive"%>
+              <% if item != @item %>
+                <a href="<%= user_item_path(item.seller, :id => item.id) %>"><%= image_tag item.product.url(:medium), :class => "img-responsive"%>
                 </a>
-                <a href="<%= user_item_path(sitem.seller, :id => sitem.id) %>">
-                  <h4><%= sitem.name %></h4>
+                <a href="<%= user_item_path(item.seller, :id => item.id) %>">
+                  <h4><%= item.name %></h4>
                 </a>  
                 <br>
-                <span class="sw-price">$<%= format("%.2f", sitem.price) %></span>   
+                <span class="sw-price">$<%= format("%.2f", item.price) %></span>   
                 <div class="clearfix"></div>           
               </div>
+            <% end %>
             <% end %>
           </div>
         </div>

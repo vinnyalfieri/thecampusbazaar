@@ -1,12 +1,53 @@
-<h1>Create an Offer for <%= @item.name %></h1>
-<p><%= form_for(Offer.new) do |f|%></p>
-  <%= f.label :offer_price %>
-  <p><%= f.number_field :offer_price, :value => "#{@item.price}", :step => 0.01 %></p>
-  <%= f.label :comment %>
-  <p><%= f.text_area :comment %></p>
-  <%= f.hidden_field(:buyer_id, value: "#{current_user.id}") %>
-  <%= f.hidden_field(:item_id, value: "#{@item.id}") %>
-  <%= f.collection_check_boxes :payment_option_ids, PaymentOption.all, :id, :name %>
-  <p>(If no payment option selected, cash will be the default.)</p>
-  <%= f.submit 'Submit Offer', class: "btn btn-primary" %>
-<% end %>
+<div class="main-block">
+
+  <div class="page-heading-two">
+    <div class="container">
+      <h2>Make an Offer <span><%= @item.name %></span></h2>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+  <div class="container"> 
+    <div class="ecommerce">
+      <div class="row">
+        <div class="col-md-9 col-sm-8 col-md-push-3 col-sm-push-4">
+          <div class="shopping-content">
+              <div class="row"> 
+
+                <div class="smart-wrap">
+                  <div class="smart-forms wrap-3">
+                    <h1>Make an Offer for <%= @item.name %></h1>
+                    <p><%= form_for(Offer.new) do |f|%></p>
+                    <%= f.label :offer_price %>
+                    <p><%= f.number_field :offer_price, :value => format("%.2f", @item.price), :step => 0.01 %></p>
+                    <%= f.label :comment %>
+                    <p><%= f.text_area :comment %></p>
+                    <%= f.hidden_field(:buyer_id, value: "#{current_user.id}") %>
+                    <%= f.hidden_field(:item_id, value: "#{@item.id}") %>
+
+                    <%= f.collection_check_boxes(:payment_option_ids, PaymentOption.all, :id, :name, class: 'checkbox checkbox-inline')%>
+                    <p>(If no payment option selected, cash will be the default.)</p>
+                    <%= f.submit 'Submit Offer', class: "btn btn-color" %>
+                    <% end %>
+
+                  </div><!-- end .smart-forms section -->
+                </div><!-- end .smart-wrap section -->
+
+              </div>
+          </div>
+        </div> <!--PUSH-4-->
+        <div class="col-md-3 col-sm-4 col-md-pull-9 col-sm-pull-8">
+          <div class="sidebar">
+            <h2>Navigation</h2>
+            <ul class="account-nav">
+              <li><%= link_to  "Offers Sent", offers_sent_path(current_user) %></li>
+              <li><%= link_to "Edit Account", edit_user_path(current_user)%></li>
+              <li><%= link_to "Manage Items", user_items_path(current_user)%></li>
+            </ul>
+          </div>
+        </div> <!--PULL-8-->
+      </div> <!--ROW-->
+    </div>
+  </div>
+</div>
+

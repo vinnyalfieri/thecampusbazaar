@@ -45,7 +45,7 @@
                   <% conversation_id = @item.convo_id(current_user)%>
                   <%= link_to "Contact Seller", conversations_path()  %>
                 <% else %>
-                  <%= link_to "Contact Seller", new_conversation_path({item_id: @item.id})  %>
+                  <%= link_to "Contact Seller", new_conversation_path({item_id: @item.id, user1_id: current_user.id, user2_id: @item.seller.id})  %>
                 <% end %>
               <% end %>
             </div>            

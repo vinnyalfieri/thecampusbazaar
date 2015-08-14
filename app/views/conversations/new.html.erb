@@ -1,13 +1,23 @@
-<%#binding.pry%>
 <%= form_for Conversation.new do |f| %>
-  Seller: <%= @item.seller.name%><br>
+<% if @user1 == current_user %>
+  Seller: <%= @user2.name%><br>
   Buyer: <%= current_user.name %><br>
+<% else %>
+  Seller: <%= current_user.name %><br>
+  Buyer: <%= @user1.name %><br>
+<% end %>
 
   Message for item: <%= @item.name %><br />
 
   <%= f.hidden_field :item_id, :value => @item.id%>
+  <% if @user1 == current_user %>
+
   <%= f.hidden_field :user2_id, :value => @item.seller.id%>
   <%= f.hidden_field :user1_id, :value => current_user.id%>
+  <% else %>
+  <%= f.hidden_field :user1_id, :value => @item.seller.id%>
+  <%= f.hidden_field :user2_id, :value => current_user.id%>
+  <% end %>
 
   <%= f.fields_for :messages do |message_form| %>
   <%= message_form.label :content %>

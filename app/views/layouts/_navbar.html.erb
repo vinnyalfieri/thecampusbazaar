@@ -58,7 +58,7 @@
         <% if current_user %>
           <li class="pull-right"><%= link_to "Logout", '/logout' %></li>
           <li class="pull-right"><%= link_to "|", '/' %></li>
-          <li class="pull-right"><%= link_to "Signed in as #{current_user.name}", '/' %></li>
+          <li class="pull-right"><%= link_to "Signed in as #{current_user.name}", user_path(current_user) %></li>
           <% else %>
           <li class="pull-right"><%= link_to 'Login', '/login' %></li>
           <li class="pull-right"><%= link_to "|", '/' %></li>

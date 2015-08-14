@@ -43,9 +43,9 @@
                 <%= link_to "Make Offer", new_offer_path({user: @item.seller_id, item: @item.id}), {class: 'btn btn-danger'}  %>
                 <% if @item.conversation_exist?(current_user)%>
                   <% conversation_id = @item.convo_id(current_user)%>
-                  <%= link_to "Contact Seller", conversations_path()  %>
+                  <%= link_to "Contact Seller", conversations_path(), class: 'btn btn-default'  %>
                 <% else %>
-                  <%= link_to "Contact Seller", new_conversation_path({item_id: @item.id})  %>
+                  <%= link_to "Contact Seller", new_conversation_path({item_id: @item.id}), class: 'btn btn-default'  %>
                 <% end %>
               <% end %>
             </div>            

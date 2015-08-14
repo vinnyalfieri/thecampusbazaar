@@ -1,4 +1,4 @@
-<%#binding.pry%>
+
         <div class="chat-input-box">
           <div class="input-group">
             <%# binding.pry %>
@@ -7,11 +7,11 @@
               <%= f.hidden_field :sender_id, :value => current_user.id%>
               <%= f.hidden_field :conversation_id, :value => conversation.id %>
 
-              <%= f.text_area :content, placeholder: 'Type your message', class: 'form-control'%>
+              <%= f.text_field :content, placeholder: 'Type your message', class: 'text form-control'%>
+<!--             <input type="text" class="form-control" placeholder="Type your message"> -->
 
             <span class="input-group-btn">
               <%= f.submit 'Send Message', class: 'btn btn-lblue'%>
-<!--             <input type="text" class="form-control" placeholder="Type your message"> -->
               <% end %>
               <!-- <button class="btn btn-lblue" type="button">Send</button> -->
             </span>

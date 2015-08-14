@@ -59,7 +59,7 @@
             <% if @user && @user.errors[:password] %>
               <span><%= @user.errors[:password].first %></span>
             <% end %>
-            <%= f.password_field :password, :class => 'form-control', :type => "text" %>
+            <%= f.password_field :password, :class => 'form-control' %>
           </div>
         </div>
 
@@ -68,7 +68,7 @@
             <%= f.label :password_confirmation, :class => "control-label" %>
           <div class="">
             <!-- Input -->
-            <%= f.password_field :password_confirmation, :class => 'form-control', :type => "text" %>
+            <%= f.password_field :password_confirmation, :class => 'form-control'%>
           </div>
         </div>
 

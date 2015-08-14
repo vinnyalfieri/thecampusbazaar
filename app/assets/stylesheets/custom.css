@@ -6954,3 +6954,8 @@ body {
   bottom:0;
   left:0;
 }
+
+.center {
+    margin: auto;
+    width: 35%;
+}

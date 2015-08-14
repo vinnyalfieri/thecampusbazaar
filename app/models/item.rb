@@ -56,9 +56,26 @@ class Item < ActiveRecord::Base
     end 
   end 
 
+  def prop
+    case 
+    when self.price < 50.0
+      return "p1"
+    when self.price < 100.0
+      return "p2"
+    when self.price < 500.0
+      return "p3"
+    when self.price < 1000.0
+      return "p4"
+    else
+      return "p5"
+    end
+  end
+
   private 
   def between_seller_and_buyer?(convo, current_user)
     (convo.user1 == current_user && convo.user2 == self.seller) || (convo.user2 == current_user && convo.user1 == self.seller)
   end 
+
+
 
 end

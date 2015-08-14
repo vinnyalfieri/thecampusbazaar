@@ -1,0 +1,7 @@
+  <div class="owl-content"> 
+    <div class="padd-15">
+      <a href=<%= user_item_path(item.seller, :id => item.id)%>><img src="/assets/<%= item.product.url(:medium)  %>" alt=<%= item.name %> class="img-responsive"></a>
+      <h4><a href=<%= user_item_path(item.seller, :id => item.id)%>> <%= item.name %> <span class="color pull-right">$<%= item.price %></span></a></h4>
+      <div class="clearfix"></div>
+    </div>
+  </div>

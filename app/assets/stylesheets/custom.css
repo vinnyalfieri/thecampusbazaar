@@ -5,6 +5,10 @@
  */
 
  /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+textarea.form-control#item_description {
+  height: 275px;
+  }
+
  .upload-preview img{
   max-width: 30%;
   max-height: 30%;

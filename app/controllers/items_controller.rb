@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
 
   def search 
     @keyword = params[:keyword]
-    @results = Search.for(@keyword)
+    @results = Search.for(@keyword, current_user)
   end 
 
   def create
@@ -44,11 +44,6 @@ class ItemsController < ApplicationController
       render 'items/new'
     end
   end
-
-  def search 
-    @keyword = params[:keyword]
-    @results = Search.for(@keyword)
-  end 
 
   def show
     @item = Item.find_by(:id => params[:id])

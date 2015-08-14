@@ -1,10 +1,31 @@
-<h1>Welcome, <%= current_user.name %></h1>
-<h2>Join a Community</h2>
-<%= form_for '/community' do |f| %>
+<div class="page-heading-two">
+  <div class="container">
+    <h2>Welcome <%= current_user.name %>!  <span>Join a Community</span></h2>
+    <div class="clearfix"></div>
+  </div>
+</div>
 
-<%= f.collection_select :community_id, Community.order(:name),:id,:name, include_blank: true %>
 
-<%= f.submit "Save" %>
-<% end %>
-
-<p>Don't see yours? <a href="./new">Create a community.</a></p>
+<div class="container">
+  <div class="row">
+    <div class="center login-center">
+    <div class="">
+      <div class="well login-reg-form">
+      <%= form_for '/community' do |f| %>
+        <!-- Form Group -->
+        <div class="form-group">
+          <div class="col-sm-9 col-sm-9-push-0">
+            <!-- Input -->
+            <%= f.collection_select :community_id, Community.order(:name),:id,:name, include_blank: true, :class => "dropdown-menu" %>
+          </div>
+           <%= f.submit "Save" %>
+        </div>
+        <div class="divider-1"></div>
+      <% end %>
+      <p>Don't see yours? <a href="./new">Create a community.</a></p>
+      </div>
+    </div>
+    </div>
+  </div>
+  <br><br><br><br>
+</div>

@@ -1,11 +1,18 @@
 <%#binding.pry%>
-<%= form_for [@conversation, Message.new] do |f| %>
+        <div class="chat-input-box">
+          <div class="input-group">
+            <%= form_for [conversation, Message.new] do |f| %>
+              <%= f.hidden_field :recipient_id, :value => recipient%>
+              <%= f.hidden_field :sender_id, :value => current_user.id%>
+              <%= f.hidden_field :conversation_id, :value => conversation.id %>
 
-  <%= f.hidden_field :recipient_id, :value => @conversation.recipient(current_user)%>
-  <%= f.hidden_field :sender_id, :value => current_user.id%>
-  <%= f.hidden_field :conversation_id, :value => @conversation.id %>
+              <%= f.text_area :content, placeholder: 'Type your message', class: 'form-control'%><br />
 
-  <%= f.text_area :content, placeholder: 'Type your message'%><br />
-
-  <%= f.submit 'Send Message' %>
-<% end %>
+            <span class="input-group-btn">
+              <%= f.submit 'Send Message', class: 'btn btn-lblue'%>
+<!--             <input type="text" class="form-control" placeholder="Type your message"> -->
+              <% end %>
+              <!-- <button class="btn btn-lblue" type="button">Send</button> -->
+            </span>
+          </div>
+        </div>

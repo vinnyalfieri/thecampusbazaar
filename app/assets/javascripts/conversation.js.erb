@@ -1,0 +1,31 @@
+$(document).ready(function(){
+
+$('.chat-member').click(function(){
+      event.preventDefault();
+      event.stopPropagation();
+   
+  var id = parseInt(this.id)
+  var url = "/conversations/" + id + "/messages"
+  var method = 'GET'
+
+      $.ajax({
+        method: method,
+        url: url,
+        dataType: 'script'
+      }); 
+
+  // $.ajax({
+  // url: "/conversations/" + id + "/messages",
+  // // dataType: 'script'
+  // }).done(function(data) {
+  // $('.chat-partial').html(data);
+  // });
+
+    // $.get(url, function(data){
+    //   debugger;
+    //     $('.chat-partial').html(data)
+    // });
+
+});
+  
+})

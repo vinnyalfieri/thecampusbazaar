@@ -15,7 +15,7 @@
             <h4><i class="fa fa-user color"></i>&nbsp; <%= @user.name %>&nbsp;</h4>
             <hr>
             <div class="shopping-account">
-              <div class="row"> 
+              <div class="container"> 
                 <%= form_for @user, :html => {:multipart => true} do |f| %>
 
                 <div class="upload-preview">
@@ -23,33 +23,44 @@
                   <%= f.label :avatar, class: 'control-label'%>  
                   <%= f.file_field :avatar, class: 'form_field file' %>
                 </div>
-                <%= f.label :delete_avatar%>
-                <%= f.check_box(:delete_avatar)%><br>
 
-                <%= f.label :name %>:
-                <%= f.text_field :name, class: 'form-control', :placeholder => @user.name %><br />
+                <div class="form-group">
+                  <%= f.label :delete_avatar%>
+                  <%= f.check_box(:delete_avatar)%><br>
+                </div>
 
-                <%= f.label :email %>:
-                <%= f.text_field :email, class: 'form-control', :placeholder => @user.email %><br />
+                <div class="form-group">
+                <%= f.label :name,  class: "col-md-4" %>
+                <%= f.text_field :name, class: 'form-control col-md-6', style: "max-width:300px;",:placeholder => @user.name %><br />
+                </div>
 
-                <%= f.label :old_password, class: 'control-label'%>
-                <%= f.password_field :password, class: 'form-control' %>
+                <div class="form-group">
+                <%= f.label :email,  class: "col-md-4" %>
+                <%= f.text_field :email, class: 'form-control col-md-6', style: "max-width:300px;",:placeholder => @user.email %><br />
+                </div>
 
-                <%= f.label :new_password, class: 'control-label'%>
-                <%= f.password_field :new_password, class: 'form-control' %>
-                <%= f.label :new_password_confirmation, class: 'control-label'%>
-                <%= f.password_field :new_password_confirmation, class: 'form-control' %>
+                <div class="form-group">
+                <%= f.label :old_password, class: 'control-label col-md-4' %>
+                <%= f.password_field :password, class: 'form-control col-md-6', style: "max-width:300px;" %>
+                </div>
 
-                <%= f.submit "Save Changes", class: "btn btn-primary" %>
-                <% end %>
+                <div class="form-group">
+                <%= f.label :new_password, class: 'control-label col-md-4'%>
+                <%= f.password_field :new_password, class: 'form-control col-md-6', style: "max-width:300px;" %>
+                </div>
 
+                <div class="form-group">
+                <%= f.label :new_password_confirmation, class: 'control-label col-md-4'%>
+                <%= f.password_field :new_password_confirmation, class: 'form-control col-md-6', style: "max-width:300px;" %>
+                </div>
+                
+                <div class="clearfix"></div>
 
+                <div class="form-group">
+                  <%= f.submit "Save Changes", class: "btn btn-primary" %>
+                  <% end %>
+                </div>
 
-
-
-                <% unless @user.has_venmo? %>
-                <%= link_to 'Log in with Venmo', venmo_login_path %>
-                <% end %>
               </div>
             </div>
           </div>

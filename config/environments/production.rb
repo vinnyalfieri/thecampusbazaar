@@ -12,7 +12,6 @@ Rails.application.configure do
   }
 }
   config.assets.compress = true
-config.assets.precompile = true
 config.assets.precompile += %w( '.woff', '.eot', '.svg', '.ttf' ) 
 
 # config.paperclip_defaults = {

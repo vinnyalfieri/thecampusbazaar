@@ -11,6 +11,8 @@ Rails.application.configure do
     :secret_access_key => ENV['amazon_secret']
   }
 }
+  config.assets.compress = true
+
 
 # config.paperclip_defaults = {
 #   :storage => :s3,

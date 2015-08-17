@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree ../../../vendor/assets/javascripts/.
-//= require_tree .
 //= require bootstrap
+//= require_tree .
 (function($){
   $(document).ready(function(){
     $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {

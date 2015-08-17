@@ -14,7 +14,10 @@
 textarea.form-control#item_description {
   height: 275px;
   }
-  
+
+.page-heading-two #welcomeid h2{
+  text-align: center;
+}
  .upload-preview img{
   max-width: 30%;
   max-height: 30%;

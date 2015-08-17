@@ -22,8 +22,8 @@ class User < ActiveRecord::Base
   before_validation {avatar.clear if delete_avatar =='1'}
 
   has_attached_file :avatar, 
-                    :styles => { :medium => "300x300>", 
-                                 :thumb => "100x100>" },
+                    :styles => { :medium => "300x300#", 
+                                 :thumb => "100x100#" },
                     :default_url => 'placeholder-avatar.png'
                     # :storage => :s3,
                     # :s3_permissions => "public-read",

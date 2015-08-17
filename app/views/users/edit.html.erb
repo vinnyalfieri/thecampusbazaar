@@ -1,28 +1,81 @@
-<h1> Update your profile </h1>
-<%= form_for @user, :html => {:multipart => true} do |f| %>
+<div class="main-block">
 
+  <div class="page-heading-two">
+    <div class="container">
+    <h2>Edit Account <span>Campus Bazaar</span></h2>
+      <div class="clearfix"></div>
+    </div>
+  </div>
 
-<div class="upload-preview">
-<img/>
-  <%= f.label :avatar, class: 'control-label'%>  
-  <%= f.file_field :avatar, class: 'form_field file' %>
+  <div class="container"> 
+    <div class="ecommerce">
+      <div class="row">
+        <div class="col-md-9 col-sm-8 col-md-push-3 col-sm-push-4">
+          <div class="shopping-content">
+            <h4><i class="fa fa-user color"></i>&nbsp; <%= @user.name %>&nbsp;</h4>
+            <hr>
+            <div class="shopping-account">
+              <div class="container"> 
+                <%= form_for @user, :html => {:multipart => true} do |f| %>
+
+                <div class="upload-preview">
+                  <img/>
+                  <%= f.label :avatar, class: 'control-label'%>  
+                  <%= f.file_field :avatar, class: 'form_field file' %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :delete_avatar%>
+                  <%= f.check_box(:delete_avatar)%><br>
+                </div>
+
+                <div class="form-group">
+                <%= f.label :name,  class: "col-md-4" %>
+                <%= f.text_field :name, class: 'form-control col-md-6', style: "max-width:300px;",:placeholder => @user.name %><br />
+                </div>
+
+                <div class="form-group">
+                <%= f.label :email,  class: "col-md-4" %>
+                <%= f.text_field :email, class: 'form-control col-md-6', style: "max-width:300px;",:placeholder => @user.email %><br />
+                </div>
+
+                <div class="form-group">
+                <%= f.label :old_password, class: 'control-label col-md-4' %>
+                <%= f.password_field :password, class: 'form-control col-md-6', style: "max-width:300px;" %>
+                </div>
+
+                <div class="form-group">
+                <%= f.label :new_password, class: 'control-label col-md-4'%>
+                <%= f.password_field :new_password, class: 'form-control col-md-6', style: "max-width:300px;" %>
+                </div>
+
+                <div class="form-group">
+                <%= f.label :new_password_confirmation, class: 'control-label col-md-4'%>
+                <%= f.password_field :new_password_confirmation, class: 'form-control col-md-6', style: "max-width:300px;" %>
+                </div>
+                
+                <div class="clearfix"></div>
+
+                <div class="form-group">
+                  <%= f.submit "Save Changes", class: "btn btn-primary" %>
+                  <% end %>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div> <!--PUSH-4-->
+        <div class="col-md-3 col-sm-4 col-md-pull-9 col-sm-pull-8">
+          <div class="sidebar">
+            <h2>Navigation</h2>
+            <ul class="account-nav">
+              <li><%= link_to "Edit Account", edit_user_path(current_user)%></li>
+              <li><%= link_to  "Your Account", user_path(current_user) %></li>
+              <li><%= link_to "Manage Items", user_items_path(current_user)%></li>
+            </ul>
+          </div>
+        </div> <!--PULL-8-->
+      </div> <!--ROW-->
+    </div>
+  </div>
 </div>
-  <%= f.label :delete_avatar%>
-  <%= f.check_box(:delete_avatar)%><br>
-
-  <%= f.label :name %>:
-  <%= f.text_field :name, class: 'form-control', :placeholder => @user.name %><br />
-
-  <%= f.label :email %>:
-  <%= f.text_field :email, class: 'form-control', :placeholder => @user.email %><br />
-
-  <%= f.label :old_password, class: 'control-label'%>
-  <%= f.password_field :password, class: 'form-control' %>
-
-  <%= f.label :new_password, class: 'control-label'%>
-  <%= f.password_field :new_password, class: 'form-control' %>
-  <%= f.label :new_password_confirmation, class: 'control-label'%>
-  <%= f.password_field :new_password_confirmation, class: 'form-control' %>
-
-  <%= f.submit "Save Changes", class: "btn btn-primary" %>
-<% end %>

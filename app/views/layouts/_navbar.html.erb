@@ -16,7 +16,7 @@
   </div>  
 </div>
 
-<div class="header-2">
+<div class="header-2 bg-grey" >
   <div class="container">
     <div class="row">
       <div class="col-md-3">
@@ -31,7 +31,7 @@
           <ul>
           <% if current_user %>
             <!-- Main menu -->
-            <li class="has-sub"><span class="submenu-button"></span><a href="#">Your Account</a>
+            <li class="has-sub"><span class="submenu-button"></span><a href="">Menu</a>
               <!-- Submenu -->
               <ul>
                 <li><%= link_to  "Edit Your Account", user_path(current_user) %></li>
@@ -58,7 +58,7 @@
         <% if current_user %>
           <li class="pull-right"><%= link_to "Logout", '/logout' %></li>
           <li class="pull-right"><%= link_to "|", '/' %></li>
-          <li class="pull-right"><%= link_to "Signed in as #{current_user.name}", '/' %></li>
+          <li class="pull-right"><%= link_to "Signed in as #{current_user.name}", user_path(current_user) %></li>
           <% else %>
           <li class="pull-right"><%= link_to 'Login', '/login' %></li>
           <li class="pull-right"><%= link_to "|", '/' %></li>

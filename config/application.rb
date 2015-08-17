@@ -37,7 +37,10 @@ module CampusBazaar
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
         html_tag
     }
+    config.serve_static_assets = true
     #Tells Rails to allow any exceptions to be handled by the application router.
     config.exceptions_app = self.routes
+
+    config.serve_static_assets = true
   end
 end

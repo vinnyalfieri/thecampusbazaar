@@ -14,7 +14,7 @@ class Item < ActiveRecord::Base
 
   before_validation {product.clear if delete_product =='1'}
 
-  has_attached_file :product, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => 'placeholder-product.gif'
+  has_attached_file :product, :styles => { :medium => "300x300#", :thumb => "100x100#" }, :default_url => 'placeholder-product.gif'
   validates_attachment_content_type :product, :content_type => /\Aimage\/.*\Z/
 
   def self.findselleritems(item)

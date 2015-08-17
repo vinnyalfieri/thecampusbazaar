@@ -1,10 +1,13 @@
+<form class="form" role="form">
+<div class= "contact form">
+<div class = "center">
 <%= form_for Conversation.new do |f| %>
 <% if @user1 == current_user %>
   Seller: <%= @user2.name%><br>
   Buyer: <%= current_user.name %><br>
 <% else %>
-  Seller: <%= current_user.name %><br>
-  Buyer: <%= @user1.name %><br>
+  <h2>Seller: <%= current_user.name %></h2><br>
+  <h2>Buyer: <%= @user1.name %></h2><br>
 <% end %>
 
   Message for item: <%= @item.name %><br />
@@ -18,10 +21,17 @@
   <%= f.hidden_field :user1_id, :value => @item.seller.id%>
   <%= f.hidden_field :user2_id, :value => current_user.id%>
   <% end %>
+<div class="form-group">
 
   <%= f.fields_for :messages do |message_form| %>
-  <%= message_form.label :content %>
-  <%= message_form.text_area :content, :rows => "5", placeholder: 'Write your message here'%><br />
+  
+  <%= message_form.text_area :content, :rows => "5", placeholder: 'Write your message here', class: 'form-control' %><br />
   <% end %>
-  <%= f.submit 'Send Message' %>
+  <%= f.submit 'Send Message' , class: 'btn btn-default'%>
 <% end %>
+</div>
+</div>
+</div>
+</form>
+
+            

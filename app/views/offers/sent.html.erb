@@ -4,37 +4,40 @@
     <div class="clearfix"></div>
   </div>
 </div>
-<% if @pending_offers.count > 0 %>
-  <h2>Pending Offers Sent</h2>
-    <%= render 'offercontenthead' %>
-      <tbody>
-    <% @pending_offers.each do |offer| %>
-      <tr id='offer_<%= offer.id %>'><%= render :partial => "offercontent", locals: {offer: offer} %></tr>
-    <% end %>
-      </tbody>
-    </table> 
-  <% else %>
-    <h2> You have no PENDING offers</h2><br><br><br>
-<% end %>
 
-<% if @accepted_offers.count > 0 %>
-  <h2>Accepted Offers Sent</h2>
-    <%= render 'offercontenthead' %>
-      <tbody>
-    <% @accepted_offers.each do |offer| %>
-      <tr id='offer_<%= offer.id %>'><%= render :partial => "offercontent", locals: {offer: offer} %></tr>
-    <% end %>
-      </tbody>
-    </table> 
-<% end %>
+<div class="container">
+  <% if @pending_offers.count > 0 %>
+    <h2>Pending Offers Sent</h2>
+      <%= render 'offercontenthead' %>
+        <tbody>
+      <% @pending_offers.each do |offer| %>
+        <tr id='offer_<%= offer.id %>'><%= render :partial => "offercontent", locals: {offer: offer} %></tr>
+      <% end %>
+        </tbody>
+      </table> 
+    <% else %>
+      <h2> You have no PENDING offers</h2><br><br><br>
+  <% end %>
 
-<% if @rejected_offers.count > 0 %>
-  <h2>Rejected Offers Sent</h2>
-    <%= render 'offercontenthead' %>
-      <tbody>
-    <% @rejected_offers.each do |offer| %>
-      <tr id='offer_<%= offer.id %>'><%= render :partial => "offercontent", locals: {offer: offer} %></tr>
-    <% end %>
-      </tbody>
-    </table> 
-<% end %>
+  <% if @accepted_offers.count > 0 %>
+    <h2>Accepted Offers Sent</h2>
+      <%= render 'offercontenthead' %>
+        <tbody>
+      <% @accepted_offers.each do |offer| %>
+        <tr id='offer_<%= offer.id %>'><%= render :partial => "offercontent", locals: {offer: offer} %></tr>
+      <% end %>
+        </tbody>
+      </table> 
+  <% end %>
+
+  <% if @rejected_offers.count > 0 %>
+    <h2>Rejected Offers Sent</h2>
+      <%= render 'offercontenthead' %>
+        <tbody>
+      <% @rejected_offers.each do |offer| %>
+        <tr id='offer_<%= offer.id %>'><%= render :partial => "offercontent", locals: {offer: offer} %></tr>
+      <% end %>
+        </tbody>
+      </table> 
+  <% end %>
+</div>

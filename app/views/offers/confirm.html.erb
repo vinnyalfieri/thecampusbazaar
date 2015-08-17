@@ -1,8 +1,11 @@
-Are you sure you want to sell <%= @offer.item.name %>  to <%= @buyer.name %>?
+<div class="container">
 
-<% @offer.payment_options.each do |p_o| %>
-<%= link_to "Pay with #{p_o.name.capitalize}", offer_accepted_path(@offer, payment_method: p_o.name) , class: 'btn btn-success' %>
-<% end %>
+  <p>Are you sure you want to sell <%= @offer.item.name %>  to <%= @buyer.name %>? </p>
 
-<%= link_to 'Go back', offer_path(@offer), class: 'btn btn-danger' %>
+  <% @offer.payment_options.each do |p_o| %>
+    <p><%= link_to "Pay with #{p_o.name.capitalize}", offer_accepted_path(@offer, payment_method: p_o.name) , class: 'btn btn-success' %></p>
+  <% end %>
 
+  <%= link_to 'Go back', offer_path(@offer), class: 'btn btn-danger' %>
+
+</div>

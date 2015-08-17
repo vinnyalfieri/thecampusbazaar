@@ -40,5 +40,7 @@ module CampusBazaar
     config.serve_static_assets = true
     #Tells Rails to allow any exceptions to be handled by the application router.
     config.exceptions_app = self.routes
+
+    config.assets.enabled = true
   end
 end

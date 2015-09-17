@@ -1,6 +1,7 @@
-<form class="form" role="form">
+<form class="form">
 <div class= "contact form">
 <div class = "center">
+<div class="form-group">
 <%= form_for Conversation.new do |f| %>
 <% if @user1 == current_user %>
   Seller: <%= @user2.name%><br>
@@ -11,7 +12,7 @@
 <% end %>
 
   Message for item: <%= @item.name %><br />
-
+<%#binding.pry%>
   <%= f.hidden_field :item_id, :value => @item.id%>
   <% if @user1 == current_user %>
 
@@ -21,13 +22,12 @@
   <%= f.hidden_field :user1_id, :value => @item.seller.id%>
   <%= f.hidden_field :user2_id, :value => current_user.id%>
   <% end %>
-<div class="form-group">
 
   <%= f.fields_for :messages do |message_form| %>
   
   <%= message_form.text_area :content, :rows => "5", placeholder: 'Write your message here', class: 'form-control' %><br />
   <% end %>
-  <%= f.submit 'Send Message' , class: 'btn btn-default'%>
+  <%= f.submit 'Send Message', class: 'btn btn-default'%>
 <% end %>
 </div>
 </div>
